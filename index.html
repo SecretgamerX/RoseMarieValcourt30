@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Les 30 ans de Rose, samedi 19 décembre 2026 au Centre multifonctionnel de Saint-Éphrem. Confirmez votre présence!">
+<meta name="theme-color" content="#17121c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Les 30 ans de Rose · 19 décembre 2026">
+<meta property="og:description" content="Vous êtes invités! Souper, gâteau et danse à Saint-Éphrem-de-Beauce. Confirmez votre présence en ligne.">
+<meta property="og:image" content="https://secretgamerx.github.io/rosemarievalcourt30/img/og-image.jpg">
+<meta property="og:url" content="https://secretgamerx.github.io/rosemarievalcourt30/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317121c'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='32' text-anchor='middle' fill='%23ec9db3'%3E30%3C/text%3E%3C/svg%3E">
+<title>Rose a 30 ans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one long winter-night invitation; sticky nav, full-bleed bands, content in a 1080px column. Single committed dark look. */
+:root{
+  --night:#17121c;      /* page ground, plum-black winter night */
+  --night-2:#211a28;    /* raised surfaces */
+  --line:#3a3044;       /* hairlines */
+  --frost:#f3eef4;      /* main text */
+  --mist:#b7aabc;       /* secondary text */
+  --rose:#ec9db3;       /* accent: her name */
+  --rose-deep:#c46a86;
+  --champagne:#e8d2ac;  /* second accent, used sparingly */
+  --kids-1:#7fd1c7; --kids-2:#ffd36e; --kids-3:#ff9f8a;
+  --f-display:"Gloock", "Didot", Georgia, serif;
+  --f-body:"Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --gutter:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{background:var(--night);color:var(--frost);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--night)}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--rose)}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.band{padding-block:clamp(64px,10vw,120px)}
+.eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne);font-weight:600}
+.sec-head{display:grid;gap:12px;margin-bottom:40px;max-width:640px}
+.sec-head h2{font-size:clamp(2.2rem,5.5vw,3.6rem)}
+.sec-head p{color:var(--mist)}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--night) 86%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:20px;height:56px}
+nav.top .brand{font-family:var(--f-display);font-size:1.3rem;color:var(--frost);text-decoration:none;white-space:nowrap}
+nav.top .brand span{color:var(--rose)}
+nav.top .links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto;min-width:0}
+nav.top .links::-webkit-scrollbar{display:none}
+nav.top .links a{color:var(--mist);text-decoration:none;font-size:.9rem;padding:6px 12px;border-radius:99px;white-space:nowrap;transition:color .2s,background .2s}
+nav.top .links a:hover,nav.top .links a.on{color:var(--frost);background:var(--night-2)}
+nav.top .links a.cta{color:var(--night);background:var(--rose);font-weight:600}
+
+/* hero */
+.hero{position:relative;overflow:hidden;min-height:min(92vh,820px);display:grid;align-items:end;isolation:isolate}
+.hero .slides{position:absolute;inset:0;z-index:-2}
+.hero .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease;transform:scale(1.08)}
+.hero .slides img.show{opacity:1;animation:kb 9s ease-out forwards}
+@keyframes kb{from{transform:scale(1.14) translate(1.5%,1%)}to{transform:scale(1.02) translate(0,0)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--night) 35%,transparent) 0%,color-mix(in srgb,var(--night) 30%,transparent) 40%,var(--night) 96%)}
+#snow{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hero .wrap{width:100%;padding-block:120px 56px;display:grid;gap:22px}
+.hero .thirty{font-family:var(--f-display);font-size:clamp(9rem,32vw,20rem);line-height:.78;color:transparent;-webkit-text-stroke:1.5px var(--champagne);letter-spacing:-.04em;animation:rise 1.4s cubic-bezier(.2,.7,.2,1) both}
+.hero h1{font-size:clamp(2.6rem,8vw,5.4rem);animation:rise 1.4s .15s cubic-bezier(.2,.7,.2,1) both}
+.hero h1 em{font-style:normal;color:var(--rose)}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--frost);font-size:1.05rem;animation:rise 1.4s .3s cubic-bezier(.2,.7,.2,1) both}
+.hero .meta b{color:var(--champagne);font-weight:600}
+@keyframes rise{from{transform:translateY(28px);opacity:.2}to{transform:none;opacity:1}}
+.countdown{display:flex;gap:10px;flex-wrap:wrap;animation:rise 1.4s .45s cubic-bezier(.2,.7,.2,1) both}
+.countdown div{min-width:78px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--champagne) 40%,transparent);border-radius:14px;background:color-mix(in srgb,var(--night) 55%,transparent);backdrop-filter:blur(6px);text-align:center}
+.countdown b{display:block;font-family:var(--f-display);font-size:2rem;font-weight:400;line-height:1;font-variant-numeric:tabular-nums}
+.countdown span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem var(--f-body);padding:14px 26px;border-radius:99px;border:0;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
+.btn.primary{background:var(--rose);color:var(--night)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px var(--rose)}
+.btn.ghost{background:transparent;color:var(--frost);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--rose)}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;animation:rise 1.4s .6s cubic-bezier(.2,.7,.2,1) both}
+
+/* welcome */
+.welcome{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,6vw,72px);align-items:center}
+.welcome blockquote{margin:0;font-family:var(--f-display);font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1.3}
+.welcome blockquote em{font-style:normal;color:var(--rose)}
+.welcome .sig{margin-top:18px;color:var(--mist)}
+.welcome figure{margin:0;position:relative}
+.welcome figure img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:200px 200px 18px 18px}
+.welcome figcaption{margin-top:10px;color:var(--mist);font-size:.88rem}
+@media (max-width:760px){.welcome{grid-template-columns:1fr}.welcome figure{max-width:380px}}
+
+/* program */
+.prog{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.prog::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:linear-gradient(90deg,var(--champagne),var(--rose))}
+.prog .stop{display:grid;gap:10px;padding-right:18px;position:relative;align-content:start}
+.prog .dot{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:var(--night);border:1px solid var(--champagne);font-family:var(--f-display);font-size:1.05rem;color:var(--champagne);position:relative;z-index:1;transition:transform .3s,background .3s}
+.prog .stop:hover .dot{transform:scale(1.08);background:var(--night-2)}
+.prog .stop.big .dot{border-color:var(--rose);color:var(--rose)}
+.prog .time{font-family:var(--f-display);font-size:2.2rem;line-height:1;font-variant-numeric:tabular-nums}
+.prog h3{font-size:1.3rem}
+.prog p{color:var(--mist);font-size:.94rem;max-width:30ch}
+@media (max-width:760px){.prog{grid-template-columns:1fr;gap:28px}.prog::before{left:27px;right:auto;top:0;bottom:0;width:1px;height:auto;background:linear-gradient(180deg,var(--champagne),var(--rose))}.prog .stop{grid-template-columns:56px 1fr;column-gap:18px}.prog .stop>*:not(.dot){grid-column:2}.prog .dot{grid-row:1/span 3}}
+
+/* story strip */
+.story{border-block:1px solid var(--line);background:var(--night-2)}
+.strip{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--gutter-r) 24px var(--gutter);scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.strip::before,.strip::after{content:"";flex:0 0 max(0px,calc((100vw - 1080px)/2))}
+.frame{flex:0 0 auto;width:min(300px,74vw);scroll-snap-align:center;display:grid;gap:12px;cursor:zoom-in;background:none;border:0;padding:0;color:inherit;text-align:left;font:inherit}
+.frame .ph{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:16px;background:var(--night)}
+.frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.frame:hover img{transform:scale(1.06)}
+.frame .n{position:absolute;top:10px;left:10px;font:600 .75rem var(--f-body);letter-spacing:.1em;padding:4px 10px;border-radius:99px;background:color-mix(in srgb,var(--night) 70%,transparent);color:var(--champagne)}
+.frame h3{font-size:1.25rem}
+.frame p{color:var(--mist);font-size:.9rem}
+.strip-ctrl{display:flex;gap:10px;justify-content:flex-end;margin-top:-20px;margin-bottom:24px}
+.round{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--frost);cursor:pointer;font-size:1.1rem;transition:border-color .2s,background .2s}
+.round:hover{border-color:var(--rose);background:var(--night)}
+.agebar{height:3px;background:var(--line);border-radius:3px;margin:8px 0 0;overflow:hidden}
+.agebar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--champagne),var(--rose));transition:width .2s}
+
+/* RSVP */
+.rsvp-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:860px){.rsvp-grid{grid-template-columns:1fr}}
+.facts{display:grid;gap:18px}
+.fact{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.fact .k{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mist);grid-column:1/-1}
+.fact .v{font-family:var(--f-display);font-size:1.45rem;grid-column:1/-1}
+form.card{background:var(--night-2);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,4vw,36px);display:grid;gap:20px}
+.field{display:grid;gap:8px;min-width:0}
+.field label,.field .lbl{font-size:.85rem;font-weight:600;color:var(--mist)}
+input[type=text],input[type=email],input[type=tel],textarea,select{width:100%;font:inherit;color:var(--frost);background:var(--night);border:1px solid var(--line);border-radius:12px;padding:12px 14px;transition:border-color .2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--rose)}
+textarea{resize:vertical;min-height:84px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+.seg{display:flex;gap:8px;flex-wrap:wrap}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{flex:1;min-width:90px;text-align:center;padding:12px;border-radius:12px;border:1px solid var(--line);cursor:pointer;color:var(--frost);font-weight:600;transition:all .2s}
+.seg input:checked+label{background:var(--rose);border-color:var(--rose);color:var(--night)}
+.seg input:focus-visible+label{outline:2px solid var(--rose);outline-offset:2px}
+.stepper{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--night);border:1px solid var(--line);border-radius:14px;padding:8px 8px 8px 16px}
+.stepper .t{display:grid}
+.stepper .t b{font-weight:600}
+.stepper .t small{color:var(--mist)}
+.stepper .ctl{display:flex;align-items:center;gap:6px}
+.stepper output{min-width:34px;text-align:center;font-family:var(--f-display);font-size:1.6rem;font-variant-numeric:tabular-nums}
+.stepper button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--night-2);color:var(--frost);font-size:1.2rem;cursor:pointer}
+.stepper button:hover{border-color:var(--rose)}
+.note{font-size:.88rem;color:var(--mist)}
+.status{font-size:.92rem;padding:12px 14px;border-radius:12px;background:var(--night);border:1px solid var(--line)}
+.status.ok{border-color:var(--rose);color:var(--frost)}
+.done{display:grid;gap:14px;text-align:center;justify-items:center;padding:20px 0}
+.done h3{font-size:2rem}
+.done .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+
+/* admin */
+.admin{margin-top:40px;background:var(--night-2);border:1px solid var(--champagne);border-radius:20px;padding:clamp(18px,3vw,28px);display:grid;gap:18px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:620px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--night);border-radius:14px;padding:14px}
+.tile b{display:block;font-family:var(--f-display);font-size:2rem;font-weight:400;font-variant-numeric:tabular-nums}
+.tile span{font-size:.78rem;color:var(--mist);letter-spacing:.08em;text-transform:uppercase}
+.tbl{overflow-x:auto}
+.tbl table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:640px}
+.tbl th,.tbl td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{color:var(--mist);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.tbl td.num{font-variant-numeric:tabular-nums;text-align:right}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;font-size:.78rem;font-weight:600}
+.pill.yes{background:color-mix(in srgb,var(--kids-1) 25%,transparent);color:var(--kids-1)}
+.pill.no{background:color-mix(in srgb,var(--kids-3) 25%,transparent);color:var(--kids-3)}
+.pill.maybe{background:color-mix(in srgb,var(--kids-2) 25%,transparent);color:var(--kids-2)}
+
+/* kids */
+.kids{background:radial-gradient(circle at 15% 10%,color-mix(in srgb,var(--kids-1) 18%,transparent),transparent 40%),radial-gradient(circle at 90% 70%,color-mix(in srgb,var(--kids-2) 14%,transparent),transparent 45%),var(--night)}
+.kids .sec-head h2 span{display:inline-block;animation:bounce 2.4s ease-in-out infinite}
+.kids .sec-head h2 span:nth-child(2){animation-delay:.15s}.kids .sec-head h2 span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}}
+.inflatables{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:820px){.inflatables{grid-template-columns:1fr}}
+.inf{border-radius:22px;padding:24px;display:grid;gap:10px;background:var(--night-2);border:1px solid var(--line);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.inf:hover{transform:translateY(-6px) rotate(-.6deg)}
+.inf svg{width:100%;height:120px}
+.inf h3{font-size:1.5rem}
+.inf .age{font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.inf p{color:var(--mist);font-size:.94rem}
+.kids-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media (max-width:820px){.kids-cols{grid-template-columns:1fr}}
+.panel{background:var(--night-2);border:1px solid var(--line);border-radius:22px;padding:24px;display:grid;gap:14px;align-content:start}
+.panel h3{font-size:1.5rem}
+.sched{display:grid;gap:0}
+.sched div{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.sched div:last-child{border-bottom:0}
+.sched b{font-variant-numeric:tabular-nums;color:var(--kids-2)}
+.checks{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.checks li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.checks li::before{content:"";width:12px;height:12px;margin-top:7px;border-radius:50%;background:var(--kids-1)}
+.kidcount{font-size:.95rem;color:var(--mist)}
+.kidcount b{color:var(--kids-2);font-family:var(--f-display);font-size:1.6rem;font-weight:400}
+
+/* gallery */
+.masonry{columns:3 240px;column-gap:14px}
+.masonry button{display:block;width:100%;margin:0 0 14px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid;border-radius:14px;overflow:hidden;position:relative}
+.masonry img{width:100%;display:block;transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .4s}
+.masonry button:hover img{transform:scale(1.05);filter:brightness(1.08)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{font:600 .88rem var(--f-body);padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--mist);cursor:pointer}
+.filters button.on{background:var(--frost);color:var(--night);border-color:var(--frost)}
+
+dialog.lb{width:100%;height:100%;max-width:none;max-height:none;margin:0;border:0;padding:0;background:color-mix(in srgb,var(--night) 94%,transparent);color:var(--frost)}
+dialog.lb::backdrop{background:transparent}
+dialog.lb[open]{display:grid;grid-template-rows:1fr auto;animation:fade .3s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.lb .stage{display:grid;place-items:center;padding:56px 16px 8px;min-height:0}
+.lb .stage img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;animation:zoomin .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes zoomin{from{transform:scale(.94);opacity:.3}to{transform:none;opacity:1}}
+.lb .cap{text-align:center;padding:12px 16px calc(20px + env(safe-area-inset-bottom,0px))}
+.lb .cap h3{font-size:1.4rem}
+.lb .cap p{color:var(--mist);font-size:.9rem}
+.lb .x{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px))}
+.lb .prev,.lb .next{position:absolute;top:50%;transform:translateY(-50%)}
+.lb .prev{left:calc(12px + env(safe-area-inset-left,0px))}
+.lb .next{right:calc(12px + env(safe-area-inset-right,0px))}
+
+/* game */
+.game{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media (max-width:820px){.game{grid-template-columns:repeat(2,1fr)}}
+.guess{background:var(--night-2);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:grid}
+.guess img{width:100%;aspect-ratio:1;object-fit:cover}
+.guess .in{padding:14px;display:grid;gap:8px}
+.guess .in b{font-family:var(--f-display);font-size:1.6rem;font-weight:400}
+input[type=range]{width:100%;accent-color:var(--rose)}
+
+/* guestbook */
+.gb{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(24px,4vw,48px);align-items:start}
+@media (max-width:860px){.gb{grid-template-columns:1fr}}
+.notes{columns:2 220px;column-gap:14px}
+.notecard{break-inside:avoid;margin:0 0 14px;padding:18px;border-radius:16px;background:var(--night-2);border:1px solid var(--line);animation:pop .5s cubic-bezier(.3,1.5,.5,1) both}
+.notecard:nth-child(3n+2){border-color:color-mix(in srgb,var(--rose) 45%,var(--line))}
+.notecard p{font-family:var(--f-display);font-size:1.15rem;line-height:1.4}
+.notecard small{display:block;margin-top:10px;color:var(--mist)}
+@keyframes pop{from{transform:scale(.9) translateY(10px);opacity:.3}to{transform:none;opacity:1}}
+.empty{color:var(--mist);border:1px dashed var(--line);border-radius:16px;padding:22px}
+
+/* gift */
+.gift{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:clamp(22px,4vw,40px);border-radius:24px;background:linear-gradient(135deg,color-mix(in srgb,var(--rose-deep) 35%,var(--night-2)),var(--night-2));border:1px solid var(--line)}
+@media (max-width:700px){.gift{grid-template-columns:1fr}}
+.gift h3{font-size:clamp(1.8rem,4vw,2.4rem)}
+.gift p{color:var(--mist);margin-top:8px;max-width:56ch}
+
+/* venue */
+.venue{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch}
+@media (max-width:820px){.venue{grid-template-columns:1fr}}
+.vcard{background:var(--night-2);border:1px solid var(--line);border-radius:24px;padding:clamp(20px,4vw,32px);display:grid;gap:16px;align-content:start}
+.vcard h3{font-size:2rem}
+.addr{font-size:1.1rem}
+.mapart{border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--night-2);min-height:260px;position:relative}
+.mapart svg{width:100%;height:100%;display:block}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+@media (max-width:900px){.acts{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.acts{grid-template-columns:1fr}}
+.act{display:grid;gap:8px;padding:20px;border-radius:18px;background:var(--night-2);border:1px solid var(--line);text-decoration:none;color:var(--frost);transition:border-color .2s,transform .3s}
+.act:hover{border-color:var(--rose);transform:translateY(-3px)}
+.act .tag{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--champagne);font-weight:600}
+.act h4{margin:0;font-family:var(--f-display);font-weight:400;font-size:1.3rem}
+.act p{color:var(--mist);font-size:.92rem}
+.act .go{font-size:.85rem;color:var(--rose);font-weight:600}
+
+/* faq */
+.faq{display:grid;gap:10px;max-width:780px}
+.faq details{background:var(--night-2);border:1px solid var(--line);border-radius:16px;padding:0 20px}
+.faq summary{cursor:pointer;padding:18px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-display);font-size:1.5rem;line-height:1;color:var(--rose);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 18px;color:var(--mist)}
+
+footer{border-top:1px solid var(--line);padding-block:40px calc(40px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--mist)}
+footer .big{font-family:var(--f-display);font-size:clamp(2rem,6vw,3.4rem);color:var(--frost)}
+
+.reveal{transition:transform 1s cubic-bezier(.2,.7,.2,1),opacity 1s}
+.reveal.pre{transform:translateY(26px);opacity:.35}
+.music{position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:8;background:var(--night-2)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.reveal.pre{transform:none;opacity:1}}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#accueil">Rose <span>30</span></a>
+    <div class="links">
+      <a href="#soiree">La soirée</a>
+      <a href="#histoire">Son histoire</a>
+      <a href="#rsvp" class="cta">RSVP</a>
+      <a href="#enfants">Zone enfants</a>
+      <a href="#galerie">Galerie</a>
+      <a href="#jeu">Jeu</a>
+      <a href="#livre">Livre d'or</a>
+      <a href="#lieu">Lieu & activités</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <div class="slides" id="slides"></div>
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="thirty" aria-hidden="true">30</div>
+    <h1>On célèbre les 30 ans de <em>Rose</em></h1>
+    <div class="meta">
+      <span><b>Samedi 19 décembre 2026</b></span>
+      <span>Centre multifonctionnel de Saint-Éphrem</span>
+      <span>Accueil dès 17 h</span>
+    </div>
+    <div class="countdown" id="countdown" aria-live="off">
+      <div><b id="cd-d">—</b><span>jours</span></div>
+      <div><b id="cd-h">—</b><span>heures</span></div>
+      <div><b id="cd-m">—</b><span>minutes</span></div>
+      <div><b id="cd-s">—</b><span>secondes</span></div>
+    </div>
+    <div class="ctas">
+      <a class="btn primary" href="#rsvp">Je confirme ma présence</a>
+      <a class="btn ghost" href="#histoire">Voir son histoire</a>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap welcome reveal">
+    <div>
+      <p class="eyebrow">Bienvenue</p>
+      <blockquote style="margin-top:14px">Trente ans de rires, d'aventures et de grands sauts dans le vide. Le 19 décembre, on se réunit pour fêter <em>Rose</em>, entourée de toutes les personnes qu'elle aime.</blockquote>
+      <p class="sig">Avec amour, au nom de toute la famille</p>
+    </div>
+    <figure>
+      <img src="img/17.jpg" alt="Rose assise sur un rocher, une ville et la mer derrière elle">
+      <figcaption>Toujours prête pour la prochaine aventure.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band" id="soiree" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Déroulement</p>
+      <h2>La soirée</h2>
+      <p>Un souper, un gâteau, puis on danse jusqu'à ce que les derniers danseurs rendent les armes.</p>
+    </div>
+    <div class="prog reveal">
+      <div class="stop"><span class="dot">1</span><span class="time">17 h</span><h3>Arrivée des invités</h3><p>Accueil, on prend un verre et on retrouve tout le monde.</p></div>
+      <div class="stop"><span class="dot">2</span><span class="time">18 h 30</span><h3>Souper</h3><p>On passe à table. Les options du menu seront annoncées bientôt, dès qu'elles seront confirmées.</p></div>
+      <div class="stop big"><span class="dot">3</span><span class="time">20 h</span><h3>Gâteau</h3><p>On chante bonne fête à Rose et on souffle les 30 bougies.</p></div>
+      <div class="stop"><span class="dot">4</span><span class="time">Après</span><h3>Danse</h3><p>La piste reste ouverte jusqu'à ce que tout le monde ait fini de danser.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band story" id="histoire">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">De la petite Rose à aujourd'hui</p>
+      <h2>Son histoire en photos</h2>
+      <p>Faites défiler de gauche à droite, de ses premiers tours de vélo jusqu'à aujourd'hui. Touchez une photo pour l'agrandir.</p>
+    </div>
+    <div class="strip-ctrl">
+      <button class="round" id="sPrev" aria-label="Photos précédentes">←</button>
+      <button class="round" id="sNext" aria-label="Photos suivantes">→</button>
+    </div>
+  </div>
+  <div class="strip" id="strip"></div>
+  <div class="wrap"><div class="agebar" aria-hidden="true"><i id="agebar"></i></div></div>
+</section>
+
+<section class="band" id="rsvp">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Liste d'invités</p>
+      <h2>Serez-vous des nôtres?</h2>
+      <p>Indiquez combien d'adultes et d'enfants vous accompagnent. Ça nous aide à prévoir la nourriture, les places et l'espace des enfants.</p>
+    </div>
+    <div class="rsvp-grid">
+      <div class="facts reveal">
+        <div class="fact"><span class="k">Quand</span><span class="v">Samedi 19 décembre 2026</span><span class="note">Accueil 17 h · Souper 18 h 30 · Gâteau 20 h</span></div>
+        <div class="fact"><span class="k">Où</span><span class="v">Centre multifonctionnel de Saint-Éphrem</span><span class="note">34, route 271 Sud, Saint-Éphrem-de-Beauce</span></div>
+        <div class="fact"><span class="k">Réponse souhaitée avant</span><span class="v">Le 5 décembre 2026</span></div>
+        <div class="fact"><span class="k">Enfants</span><span class="v">Bienvenus!</span><span class="note">Jeu gonflable et coin des tout-petits</span></div>
+      </div>
+
+      <form class="card reveal" id="rsvpForm" novalidate>
+        <div class="field">
+          <label for="r-name">Nom complet</label>
+          <input type="text" id="r-name" autocomplete="name" required placeholder="Ex. Julie Poulin">
+        </div>
+        <div class="row2">
+          <div class="field"><label for="r-email">Courriel</label><input type="email" id="r-email" autocomplete="email" placeholder="nom@exemple.com"></div>
+          <div class="field"><label for="r-phone">Téléphone</label><input type="tel" id="r-phone" autocomplete="tel" placeholder="418 555-1234"></div>
+        </div>
+        <div class="field">
+          <span class="lbl" id="att-l">Serez-vous présent?</span>
+          <div class="seg" role="radiogroup" aria-labelledby="att-l">
+            <input type="radio" name="att" id="att-y" value="yes" checked><label for="att-y">Oui!</label>
+            <input type="radio" name="att" id="att-m" value="maybe"><label for="att-m">Peut-être</label>
+            <input type="radio" name="att" id="att-n" value="no"><label for="att-n">Non</label>
+          </div>
+        </div>
+        <div class="stepper" data-step="adults">
+          <div class="t"><b>Adultes</b><small>Vous inclus</small></div>
+          <div class="ctl"><button type="button" data-d="-1" aria-label="Moins d'adultes">−</button><output id="r-adults">1</output><button type="button" data-d="1" aria-label="Plus d'adultes">+</button></div>
+        </div>
+        <div class="stepper" data-step="kids">
+          <div class="t"><b>Enfants</b><small>17 ans et moins</small></div>
+          <div class="ctl"><button type="button" data-d="-1" aria-label="Moins d'enfants">−</button><output id="r-kids">0</output><button type="button" data-d="1" aria-label="Plus d'enfants">+</button></div>
+        </div>
+        <div class="field" id="kidsAgesField" hidden>
+          <label for="r-ages">Prénoms et âges des enfants</label>
+          <input type="text" id="r-ages" placeholder="Ex. Léo 6 ans, Emma 3 ans">
+        </div>
+        <div class="field"><label for="r-diet">Allergies ou restrictions alimentaires</label><input type="text" id="r-diet" placeholder="Ex. sans noix, végétarien"></div>
+        <div class="field"><label for="r-song">Une chanson pour faire danser Rose?</label><input type="text" id="r-song" placeholder="Titre et artiste"></div>
+        <div class="field"><label for="r-msg">Un petit mot pour Rose (optionnel)</label><textarea id="r-msg" placeholder="Il sera gardé secret jusqu'à la fête"></textarea></div>
+        <div class="status" id="rsvpStatus" hidden></div>
+        <button class="btn primary" type="submit" id="rsvpBtn">Envoyer ma réponse</button>
+        <p class="note">Vous pourrez modifier votre réponse plus tard en revenant sur cette page, à partir du même téléphone ou ordinateur.</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<section class="band kids" id="enfants">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow" style="color:var(--kids-2)">Pour les petits</p>
+      <h2><span>Zone</span> <span>des</span> <span>enfants</span></h2>
+      <p>Pendant que les grands célèbrent, les enfants auront leur propre espace avec un jeu gonflable, un coin tapis et jouets pour les tout-petits, et des collations.</p>
+          </div>
+    <div class="inflatables">
+      <article class="inf reveal">
+        <svg viewBox="0 0 200 120" aria-hidden="true"><rect x="30" y="50" width="140" height="60" rx="10" fill="var(--kids-3)"/><rect x="30" y="20" width="26" height="40" rx="6" fill="var(--kids-2)"/><rect x="144" y="20" width="26" height="40" rx="6" fill="var(--kids-2)"/><rect x="87" y="28" width="26" height="32" rx="6" fill="var(--kids-1)"/><circle cx="43" cy="16" r="7" fill="var(--kids-1)"/><circle cx="157" cy="16" r="7" fill="var(--kids-1)"/><path d="M80 110 v-26 a20 20 0 0 1 40 0 v26z" fill="var(--night)"/></svg>
+        <span class="age" style="color:var(--kids-3)">Pour les plus grands</span>
+        <h3>Jeu gonflable</h3>
+        <p>Pour sauter, grimper et se dépenser pendant que les grands célèbrent.</p>
+      </article>
+      <article class="inf reveal">
+        <svg viewBox="0 0 200 120" aria-hidden="true"><rect x="10" y="84" width="60" height="26" rx="4" fill="var(--kids-1)"/><rect x="70" y="84" width="60" height="26" rx="4" fill="var(--kids-2)"/><rect x="130" y="84" width="60" height="26" rx="4" fill="var(--kids-3)"/><rect x="30" y="58" width="26" height="26" rx="4" fill="var(--kids-3)"/><rect x="40" y="34" width="24" height="24" rx="4" fill="var(--kids-2)"/><circle cx="104" cy="68" r="16" fill="var(--kids-1)"/><path d="M140 84 c0-22 34-22 34 0z" fill="var(--kids-2)"/><circle cx="148" cy="58" r="6" fill="var(--kids-3)"/><circle cx="166" cy="58" r="6" fill="var(--kids-3)"/></svg>
+        <span class="age" style="color:var(--kids-1)">Pour les tout-petits</span>
+        <h3>Coin tapis et jouets</h3>
+        <p>Un espace douillet avec des tapis de sol et des jouets, parfait pour les bébés et les petits qui préfèrent jouer en douceur.</p>
+      </article>
+    </div>
+    
+    <div class="kids-cols">
+      <div class="panel reveal">
+        <h3>Horaire des enfants</h3>
+        <div class="sched">
+          <div><b>17 h</b><span>Arrivée : jeu gonflable et coin jouets ouverts</span></div>
+          <div><b>18 h 30</b><span>Souper avec les grands</span></div>
+                    <div><b>20 h</b><span>Gâteau : tout le monde chante pour Rose</span></div>
+          <div><b>Ensuite</b><span>Danse avec les grands ou dernier tour de jeu gonflable!</span></div>
+        </div>
+      </div>
+      <div class="panel reveal">
+        <h3>Sécurité et quoi apporter</h3>
+        <ul class="checks">
+          <li>Des adultes surveilleront les jeux en tout temps, mais les parents restent responsables de leurs enfants.</li>
+          <li>Bas obligatoires dans le jeu gonflable, pas de souliers ni de bijoux.</li>
+          <li>Les tout-petits ont leur propre coin avec tapis, à l'écart du jeu gonflable.</li>
+          <li>Apportez des souliers d'intérieur et un change de vêtements.</li>
+          <li>Indiquez les allergies de vos enfants dans le formulaire RSVP.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="galerie">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Galerie</p>
+      <h2>Rose, en images</h2>
+      <p>Les photos de la fête s'ajouteront ici après le 19 décembre.</p>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filtrer les photos">
+      <button class="on" data-f="all">Toutes</button>
+      <button data-f="enfance">Enfance</button>
+      <button data-f="ado">Adolescence</button>
+      <button data-f="aventure">Aventures</button>
+      <button data-f="proches">Avec ses proches</button>
+    </div>
+    <div class="masonry" id="masonry"></div>
+  </div>
+</section>
+
+<section class="band story" id="jeu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Jeu</p>
+      <h2>Quel âge avait Rose?</h2>
+      <p>Glissez pour deviner son âge sur chaque photo. Les bonnes réponses seront dévoilées pendant la fête, et la personne la plus proche gagne un prix!</p>
+    </div>
+    <div class="game" id="game"></div>
+    <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <button class="btn primary" id="saveGuess" type="button">Enregistrer mes réponses</button>
+      <span class="note" id="guessStatus"></span>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="livre">
+  <div class="wrap gb">
+    <div class="reveal">
+      <div class="sec-head" style="margin-bottom:24px">
+        <p class="eyebrow">Livre d'or</p>
+        <h2>Un mot pour Rose</h2>
+        <p>Un souvenir, un souhait, une blague d'initié. Tous les mots seront lus le soir de la fête.</p>
+      </div>
+      <form class="card" id="gbForm" novalidate>
+        <div class="field"><label for="g-name">Votre nom</label><input type="text" id="g-name" placeholder="Ex. Tante Lise"></div>
+        <div class="field"><label for="g-text">Votre message</label><textarea id="g-text" maxlength="500" placeholder="Bonne fête Rose!"></textarea></div>
+        <div class="status" id="gbStatus" hidden></div>
+        <button class="btn primary" type="submit">Publier mon mot</button>
+      </form>
+    </div>
+    <div class="notes" id="notes">
+      <div class="empty">Les messages des invités apparaîtront ici. Soyez la première personne à écrire à Rose!</div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:0">
+  <div class="wrap">
+    <div class="gift reveal">
+      <div>
+        <p class="eyebrow">Cadeau de groupe</p>
+        <h3 style="margin-top:8px">Votre présence est le plus beau cadeau.</h3>
+        <p>Pour ceux qui le souhaitent, une cagnotte commune servira à offrir à Rose une nouvelle aventure (parachute, voyage, surprise!). Les détails seront partagés bientôt.</p>
+      </div>
+      <span class="btn ghost" aria-disabled="true">Lien à venir</span>
+    </div>
+  </div>
+</section>
+
+<section class="band story" id="lieu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Lieu & activités</p>
+      <h2>Rendez-vous à Saint-Éphrem</h2>
+      <p>Au cœur du village, à deux pas de l'église. Stationnement gratuit sur place.</p>
+    </div>
+    <div class="venue">
+      <div class="vcard reveal">
+        <h3>Centre multifonctionnel de Saint-Éphrem</h3>
+        <p class="addr">34, route 271 Sud<br>Saint-Éphrem-de-Beauce, QC G0M 1R0</p>
+        <p class="note">Téléphone du centre : <span style="user-select:all;color:var(--frost)">418 484-5716</span></p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Centre+multifonctionnel+34+route+271+Sud+Saint-%C3%89phrem-de-Beauce+QC">Google Maps</a>
+          <a class="btn ghost" target="_blank" rel="noopener" href="https://waze.com/ul?q=34%20route%20271%20Sud%20Saint-Ephrem-de-Beauce&navigate=yes">Waze</a>
+        </div>
+        <p class="note">Conduite d'hiver : prévoyez des pneus d'hiver et un peu plus de temps. Vérifiez l'état des routes sur Québec 511 avant de partir.</p>
+      </div>
+      <div class="mapart reveal" aria-label="Plan stylisé de Saint-Éphrem-de-Beauce">
+        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+          <rect width="400" height="300" fill="var(--night-2)"/>
+          <g stroke="var(--line)" stroke-width="1">
+            <path d="M0 60 H400 M0 140 H400 M0 220 H400 M80 0 V300 M260 0 V300 M340 0 V300" />
+          </g>
+          <path d="M190 -10 C186 80 196 160 192 310" stroke="var(--mist)" stroke-width="6" fill="none" opacity=".55"/>
+          <path d="M-10 190 C120 170 260 200 410 176" stroke="var(--mist)" stroke-width="4" fill="none" opacity=".35"/>
+          <text x="200" y="28" fill="var(--mist)" font-size="11" font-family="Figtree,sans-serif">Route 271</text>
+          <text x="300" y="170" fill="var(--mist)" font-size="11" font-family="Figtree,sans-serif">Route 108</text>
+          <rect x="205" y="98" width="22" height="16" rx="3" fill="var(--line)"/>
+          <text x="232" y="110" fill="var(--mist)" font-size="10" font-family="Figtree,sans-serif">Église</text>
+          <circle cx="192" cy="150" r="26" fill="var(--rose)" opacity=".18"><animate attributeName="r" values="14;34;14" dur="2.6s" repeatCount="indefinite"/></circle>
+          <circle cx="192" cy="150" r="8" fill="var(--rose)"/>
+          <text x="110" y="140" fill="var(--frost)" font-size="13" font-family="Gloock,serif">La fête!</text>
+        </svg>
+      </div>
+    </div>
+
+    <h3 style="font-size:1.8rem;margin-top:48px">À faire dans les environs</h3>
+    <p class="note" style="margin-top:6px">Pour ceux qui arrivent tôt ou restent la fin de semaine. Vérifiez les heures d'ouverture avant de vous déplacer, c'est le début de la saison d'hiver.</p>
+    <div class="acts">
+      <a class="act" target="_blank" rel="noopener" href="https://chaudiereappalaches.com/en/plan-your-stay/what-to-do/centre-de-ski-st-georges-saint-georges-en-6109488/"><span class="tag">Ski alpin · Saint-Georges</span><h4>Centre de ski St-Georges</h4><p>Une petite station familiale, parfaite pour initier les enfants au ski.</p><span class="go">En savoir plus →</span></a>
+      <a class="act" target="_blank" rel="noopener" href="https://www.quebecgetaways.com/en/attractions/club-de-ski-de-fond-rendez-vous"><span class="tag">Ski de fond & raquette</span><h4>Club Rendez-vous St-Georges</h4><p>17 km de sentiers de ski classique, du pas de patin et 8 km de raquette. Location sur place.</p><span class="go">En savoir plus →</span></a>
+      <a class="act" target="_blank" rel="noopener" href="https://www.google.com/search?q=Mont+Adstock"><span class="tag">Station de ski</span><h4>Mont Adstock</h4><p>Une station plus grande pour une journée complète de glisse.</p><span class="go">En savoir plus →</span></a>
+      <a class="act" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=restaurants+Saint-Georges+Beauce"><span class="tag">Restos & balade</span><h4>Centre-ville de Saint-Georges</h4><p>Restaurants, la grande cathédrale et les sculptures de Beauce Art le long de la rivière.</p><span class="go">Voir les restos →</span></a>
+      <a class="act" target="_blank" rel="noopener" href="https://www.saint-ephrem.com"><span class="tag">Au village</span><h4>Patinoire et parcs de Saint-Éphrem</h4><p>Patinoire extérieure et espaces verts gérés par la municipalité.</p><span class="go">Site de la municipalité →</span></a>
+      <a class="act" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=h%C3%A9bergement+Saint-Georges+Beauce"><span class="tag">Où dormir</span><h4>Hébergement à Saint-Georges</h4><p>Hôtels et motels à Saint-Georges, ou chalets et Airbnb dans la région.</p><span class="go">Voir les options →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal"><p class="eyebrow">Questions</p><h2>Bon à savoir</h2></div>
+    <div class="faq">
+      <details><summary>Les enfants sont-ils invités?</summary><p>Oui! Il y aura une zone enfants avec un jeu gonflable et un coin tapis et jouets pour les tout-petits. Indiquez le nombre d'enfants et leur âge dans le RSVP.</p></details>
+      <details><summary>Y a-t-il du stationnement?</summary><p>Oui, le stationnement du Centre multifonctionnel est gratuit et juste à côté de l'entrée.</p></details>
+      <details><summary>Quel est le code vestimentaire?</summary><p>Chic et confortable. Un petit clin d'œil rose est toujours le bienvenu!</p></details>
+      <details><summary>Puis-je venir accompagné?</summary><p>Oui, ajoutez simplement la personne dans le nombre d'adultes de votre RSVP.</p></details>
+      <details><summary>Que puis-je offrir à Rose?</summary><p>Votre présence suffit. Pour ceux qui veulent participer, une cagnotte de groupe sera partagée sous peu.</p></details>
+      <details><summary>À quelle heure finit la soirée?</summary><p>Accueil à 17 h, souper à 18 h 30 et gâteau à 20 h. Ensuite on danse jusqu'à ce que tout le monde ait fini de danser. Partez quand vous voulez!</p></details>
+      <details><summary>Le souper est-il inclus?</summary><p>Oui, le souper est servi à 18 h 30. Les options du menu seront disponibles bientôt, dès qu'elles seront confirmées. D'ici là, indiquez vos allergies et restrictions alimentaires dans le RSVP.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:grid;gap:10px">
+    <p class="big">À bientôt le 19 décembre</p>
+    <p>Samedi 19 décembre 2026 · Dès 17 h · Saint-Éphrem-de-Beauce</p>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Photo agrandie">
+  <div class="stage" id="lbStage"><img id="lbImg" alt=""></div>
+  <div class="cap"><h3 id="lbTitle"></h3><p id="lbText"></p></div>
+  <button class="round x" id="lbX" aria-label="Fermer">✕</button>
+  <button class="round prev" id="lbP" aria-label="Photo précédente">←</button>
+  <button class="round next" id="lbN" aria-label="Photo suivante">→</button>
+</dialog>
+
+<script>
+const PHOTOS=[
+ {t:"Premiers tours de roue",d:"Déjà le sourire d'une aventurière.",c:"enfance"},
+ {t:"Avec son fidèle compagnon",d:"Un câlin à son petit caniche blanc.",c:"enfance"},
+ {t:"Ce sourire-là",d:"Il n'a jamais changé.",c:"enfance"},
+ {t:"Finissante!",d:"La fin du secondaire avec la gang.",c:"ado"},
+ {t:"Le grand soir avec maman",d:"Prête pour son bal des finissants.",c:"proches"},
+ {t:"Avec grand-maman et grand-papa",d:"Des grands-parents tellement fiers.",c:"proches"},
+ {t:"Main dans la main",d:"Le bal, avec sa meilleure amie.",c:"ado"},
+ {t:"Le cœur grand comme le monde",d:"Un voyage qui l'a marquée.",c:"aventure"},
+ {t:"Boucles rouges",d:"L'époque des cheveux rouges.",c:"ado"},
+ {t:"Tendresse",d:"Une petite pause câlin (avec oreilles de lapin).",c:"proches"},
+ {t:"Simplement Rose",d:"",c:"ado"},
+ {t:"Une petite découverte",d:"Juste avant de sauter de l'avion.",c:"aventure"},
+ {t:"En chute libre",d:"Elle l'a fait!",c:"aventure"},
+ {t:"Ensemble dans les nuages",d:"En télécabine, à deux.",c:"proches"},
+ {t:"Toujours plus haut",d:"Une marche à la fois.",c:"aventure"},
+ {t:"Au bord de la rivière",d:"Sa place préférée : dehors.",c:"aventure"},
+ {t:"Au sommet",d:"La vue valait la montée.",c:"aventure"},
+ {t:"Entre amies",d:"Prêtes pour la soirée.",c:"proches"},
+ {t:"Amoureuse des chiens",d:"Impossible de résister à un câlin.",c:"aventure"},
+ {t:"Santé!",d:"À la prochaine décennie.",c:"proches"}
+].map((p,i)=>({...p,src:`img/${String(i+1).padStart(2,"0")}.jpg`,n:i+1}));
+
+/* hero slideshow */
+const slideIdx=[16,13,7,15,19];
+const slides=document.getElementById("slides");
+slideIdx.forEach((n,i)=>{const im=new Image();im.src=PHOTOS[n-1].src;im.alt="";if(i===0)im.className="show";slides.appendChild(im)});
+let cur=0;const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce)setInterval(()=>{const ims=slides.children;ims[cur].classList.remove("show");cur=(cur+1)%ims.length;ims[cur].classList.add("show")},6500);
+
+/* countdown */
+const target=new Date("2026-12-19T17:00:00-05:00").getTime();
+function tick(){let s=Math.max(0,Math.floor((target-Date.now())/1000));
+ const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;
+ [["cd-d",d],["cd-h",h],["cd-m",m],["cd-s",s]].forEach(([id,v])=>document.getElementById(id).textContent=String(v).padStart(2,"0"))}
+tick();setInterval(tick,1000);
+
+/* snow */
+(function(){const c=document.getElementById("snow");if(reduce)return;const x=c.getContext("2d");let W,H,flakes=[];
+ function size(){W=c.width=c.offsetWidth*devicePixelRatio;H=c.height=c.offsetHeight*devicePixelRatio;const n=Math.min(140,Math.floor(W*H/14000/devicePixelRatio));
+  flakes=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*2.2+.6)*devicePixelRatio,s:Math.random()*.6+.3,w:Math.random()*Math.PI*2,gold:Math.random()<.18}))}
+ size();addEventListener("resize",size);
+ (function loop(){x.clearRect(0,0,W,H);for(const f of flakes){f.y+=f.s*devicePixelRatio;f.w+=.01;f.x+=Math.sin(f.w)*.4*devicePixelRatio;if(f.y>H){f.y=-5;f.x=Math.random()*W}
+  x.beginPath();x.arc(f.x,f.y,f.r,0,7);x.fillStyle=f.gold?"rgba(232,210,172,.85)":"rgba(243,238,244,.7)";x.fill()}requestAnimationFrame(loop)})()})();
+
+/* story strip */
+const strip=document.getElementById("strip");
+PHOTOS.forEach((p,i)=>{const b=document.createElement("button");b.className="frame";b.type="button";
+ b.innerHTML=`<div class="ph"><img loading="lazy" src="${p.src}" alt="${p.t}"><span class="n">${String(p.n).padStart(2,"0")} / ${PHOTOS.length}</span></div><h3>${p.t}</h3><p>${p.d||"&nbsp;"}</p>`;
+ b.onclick=()=>openLB(i,PHOTOS);strip.appendChild(b)});
+const bar=document.getElementById("agebar");
+strip.addEventListener("scroll",()=>{const m=strip.scrollWidth-strip.clientWidth;bar.style.width=(m>0?strip.scrollLeft/m*100:0)+"%"},{passive:true});
+document.getElementById("sPrev").onclick=()=>strip.scrollBy({left:-strip.clientWidth*.8,behavior:"smooth"});
+document.getElementById("sNext").onclick=()=>strip.scrollBy({left:strip.clientWidth*.8,behavior:"smooth"});
+
+/* gallery */
+const mas=document.getElementById("masonry");let shown=PHOTOS;
+function renderGallery(f){shown=f==="all"?PHOTOS:PHOTOS.filter(p=>p.c===f);mas.innerHTML="";
+ shown.forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Agrandir : "+p.t);b.innerHTML=`<img loading="lazy" src="${p.src}" alt="${p.t}">`;b.onclick=()=>openLB(i,shown);b.animate?.([{opacity:.2,transform:"scale(.96)"},{opacity:1,transform:"none"}],{duration:450,delay:i*30,easing:"cubic-bezier(.2,.7,.2,1)",fill:"backwards"});mas.appendChild(b)})}
+renderGallery("all");
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b));renderGallery(b.dataset.f)});
+
+/* lightbox */
+const lb=document.getElementById("lb");let lbList=PHOTOS,lbI=0;
+function showLB(){const p=lbList[lbI];const im=document.getElementById("lbImg");im.style.animation="none";im.offsetHeight;im.style.animation="";im.src=p.src;im.alt=p.t;document.getElementById("lbTitle").textContent=p.t;document.getElementById("lbText").textContent=p.d}
+function openLB(i,list){lbList=list;lbI=i;showLB();lb.showModal()}
+function step(d){lbI=(lbI+d+lbList.length)%lbList.length;showLB()}
+document.getElementById("lbX").onclick=()=>lb.close();
+document.getElementById("lbP").onclick=()=>step(-1);
+document.getElementById("lbN").onclick=()=>step(1);
+document.getElementById("lbStage").addEventListener("click",e=>{if(e.target.id==="lbStage")lb.close()});
+lb.addEventListener("keydown",e=>{if(e.key==="ArrowLeft")step(-1);if(e.key==="ArrowRight")step(1)});
+let tx=null;lb.addEventListener("touchstart",e=>tx=e.touches[0].clientX,{passive:true});
+lb.addEventListener("touchend",e=>{if(tx==null)return;const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>50)step(dx<0?1:-1);tx=null});
+
+/* reveal on scroll (content stays visible; only eases into place) */
+if(!reduce&&"IntersectionObserver" in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove("pre");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
+ document.querySelectorAll(".reveal").forEach(el=>{const r=el.getBoundingClientRect();if(r.top>innerHeight){el.classList.add("pre");io.observe(el)}})}
+
+/* nav highlight */
+const navLinks=[...document.querySelectorAll("nav.top .links a")];
+const secIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)navLinks.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id&&!a.classList.contains("cta")))}),{rootMargin:"-45% 0px -50% 0px"});
+document.querySelectorAll("section[id]").forEach(s=>secIO.observe(s));
+
+/* steppers */
+const counts={adults:1,kids:0};
+document.querySelectorAll(".stepper").forEach(s=>{const k=s.dataset.step;s.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;counts[k]=Math.max(k==="adults"?0:0,Math.min(15,counts[k]+Number(b.dataset.d)));syncSteppers()})});
+function syncSteppers(){document.getElementById("r-adults").textContent=counts.adults;document.getElementById("r-kids").textContent=counts.kids;document.getElementById("kidsAgesField").hidden=counts.kids===0}
+
+/* game */
+const GAME=[1,2,3,4];const guesses={};
+const game=document.getElementById("game");
+GAME.forEach(n=>{const p=PHOTOS[n-1];guesses[n]=8;const d=document.createElement("div");d.className="guess";
+ d.innerHTML=`<img loading="lazy" src="${p.src}" alt="${p.t}"><div class="in"><span class="note">Photo ${n}</span><b><span id="gv${n}">8</span> ans</b><input type="range" id="g${n}" min="1" max="20" value="8" aria-label="Âge deviné pour la photo ${n}"></div>`;
+ game.appendChild(d);d.querySelector("input").addEventListener("input",e=>{guesses[n]=+e.target.value;document.getElementById("gv"+n).textContent=e.target.value})});
+
+/* ---------- shared data: Google Firebase (Firestore) ---------- */
+// Same Firebase project as Jahan's Arcade. Guests need no account.
+const FIREBASE_PROJECT="star-catcher-891e9";
+const DB="projects/"+FIREBASE_PROJECT+"/databases/(default)/documents";
+const API="https://firestore.googleapis.com/v1/"+DB;
+const ID_KEY="rose30_rsvp_id";
+
+function toVal(v){if(typeof v==="number")return Number.isInteger(v)?{integerValue:String(v)}:{doubleValue:v};
+ if(typeof v==="boolean")return{booleanValue:v};
+ if(v&&typeof v==="object")return{mapValue:{fields:toFields(v)}};
+ return{stringValue:String(v??"")}}
+function toFields(o){const f={};for(const k in o){if(o[k]!==undefined)f[k]=toVal(o[k])}return f}
+function fromVal(v){if("stringValue" in v)return v.stringValue;if("integerValue" in v)return Number(v.integerValue);
+ if("doubleValue" in v)return v.doubleValue;if("booleanValue" in v)return v.booleanValue;if("timestampValue" in v)return v.timestampValue;
+ if("mapValue" in v)return fromFields(v.mapValue.fields||{});return null}
+function fromFields(f){const o={};for(const k in f)o[k]=fromVal(f[k]);return o}
+function newId(){const a=new Uint8Array(18);crypto.getRandomValues(a);return Array.from(a,b=>("0"+b.toString(16)).slice(-2)).join("")}
+function store(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v)}catch(e){}}
+function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+
+// write one whole document, stamping a server time field
+async function commit(path,data,stamp){
+ const r=await fetch(API+":commit",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({writes:[{update:{name:DB+"/"+path,fields:toFields(data)},updateTransforms:[{fieldPath:stamp,setToServerValue:"REQUEST_TIME"}]}]})});
+ if(!r.ok)throw new Error("status "+r.status)}
+
+const rStatus=document.getElementById("rsvpStatus");
+function say(el,msg,ok){el.hidden=false;el.textContent=msg;el.classList.toggle("ok",!!ok)}
+const NET="Impossible de joindre le serveur. Vérifiez votre connexion Internet et réessayez.";
+let myId=load(ID_KEY),mine=null;
+
+// this guest's earlier answer (same phone or computer)
+(async()=>{if(!myId)return;
+ try{const r=await fetch(API+"/rsvps/"+myId);if(!r.ok)return;const d=await r.json();mine=fromFields(d.fields||{});
+  if(mine.attending&&mine.attending!=="none"){
+   document.getElementById("r-name").value=mine.name||"";document.getElementById("r-email").value=mine.email||"";document.getElementById("r-phone").value=mine.phone||"";
+   const a=document.getElementById("att-"+({yes:"y",maybe:"m",no:"n"}[mine.attending]||"y"));if(a)a.checked=true;
+   counts.adults=mine.adults??1;counts.kids=mine.kids??0;syncSteppers();
+   document.getElementById("r-ages").value=mine.kidsAges||"";document.getElementById("r-diet").value=mine.diet||"";document.getElementById("r-song").value=mine.song||"";document.getElementById("r-msg").value=mine.message||"";
+   document.getElementById("rsvpBtn").textContent="Mettre à jour ma réponse";say(rStatus,"Votre réponse est enregistrée. Vous pouvez la modifier ci-dessous.",true)}
+  if(mine.guesses)Object.entries(mine.guesses).forEach(([n,v])=>{const s=document.getElementById("g"+n.replace("p",""));if(s){s.value=v;guesses[n.replace("p","")]=v;document.getElementById("gv"+n.replace("p","")).textContent=v}})
+ }catch(e){}})();
+
+function guessMap(){const g={};for(const k in guesses)g["p"+k]=Number(guesses[k]);return g}
+
+async function saveMine(data){if(!myId){myId=newId();store(ID_KEY,myId)}
+ const doc={name:"",email:"",phone:"",attending:"none",adults:0,kids:0,kidsAges:"",diet:"",song:"",message:"",...(mine||{}),...data,guesses:guessMap()};
+ delete doc.updatedAt;await commit("rsvps/"+myId,doc,"updatedAt");mine=doc}
+
+document.getElementById("rsvpForm").addEventListener("submit",async e=>{e.preventDefault();
+ const name=document.getElementById("r-name").value.trim();
+ if(!name){say(rStatus,"Entrez votre nom pour que l'on sache qui vient.");document.getElementById("r-name").focus();return}
+ const data={name:name.slice(0,100),email:document.getElementById("r-email").value.trim().slice(0,120),phone:document.getElementById("r-phone").value.trim().slice(0,40),
+  attending:document.querySelector('input[name=att]:checked').value,adults:counts.adults,kids:counts.kids,
+  kidsAges:document.getElementById("r-ages").value.trim().slice(0,300),diet:document.getElementById("r-diet").value.trim().slice(0,300),
+  song:document.getElementById("r-song").value.trim().slice(0,200),message:document.getElementById("r-msg").value.trim().slice(0,1000)};
+ const btn=document.getElementById("rsvpBtn");btn.disabled=true;
+ try{await saveMine(data);
+  say(rStatus,data.attending==="no"?"Merci de nous avoir avisés. Vous allez nous manquer!":"Merci "+name.split(" ")[0]+"! Votre réponse est enregistrée. À bientôt le 19 décembre.",true);
+  btn.textContent="Mettre à jour ma réponse";if(data.attending!=="no")confetti();showCal();
+ }catch(err){say(rStatus,NET)}finally{btn.disabled=false}});
+
+function showCal(){if(document.getElementById("calLinks"))return;const d=document.createElement("div");d.id="calLinks";d.style.cssText="display:flex;gap:10px;flex-wrap:wrap";
+ const a=document.createElement("a");a.className="btn ghost";a.target="_blank";a.rel="noopener";a.textContent="Ajouter à Google Agenda";
+ a.href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Les 30 ans de Rose")+"&dates=20261219T170000/20261220T010000&ctz=America/Toronto&location="+encodeURIComponent("Centre multifonctionnel, 34 route 271 Sud, Saint-Éphrem-de-Beauce, QC");
+ d.appendChild(a);rStatus.after(d)}
+
+document.getElementById("saveGuess").onclick=async()=>{const st=document.getElementById("guessStatus");
+ try{await saveMine(mine?{}:{name:document.getElementById("r-name").value.trim().slice(0,100)||"Invité (jeu)"});
+  st.textContent=mine&&mine.attending!=="none"?"Réponses enregistrées. Dévoilées le 19 décembre!":"Réponses enregistrées. Pensez aussi à remplir le RSVP!"}
+ catch(e){st.textContent=NET}};
+
+// guestbook
+async function loadNotes(){try{
+ const r=await fetch(API+":runQuery",{method:"POST",headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({structuredQuery:{from:[{collectionId:"guestbook"}],orderBy:[{field:{fieldPath:"at"},direction:"DESCENDING"}],limit:100}})});
+ if(!r.ok)return;const rows=await r.json();renderNotes(rows.filter(x=>x.document).map(x=>fromFields(x.document.fields||{})))}catch(e){}}
+function renderNotes(list){const box=document.getElementById("notes");if(!list.length)return;box.innerHTML="";
+ list.forEach(n=>{const c=document.createElement("div");c.className="notecard";const p=document.createElement("p");p.textContent=n.text;const s=document.createElement("small");s.textContent="— "+(n.name||"Un invité");c.append(p,s);box.appendChild(c)})}
+loadNotes();setInterval(loadNotes,60000);
+
+document.getElementById("gbForm").addEventListener("submit",async e=>{e.preventDefault();const st=document.getElementById("gbStatus");
+ const name=document.getElementById("g-name").value.trim().slice(0,60),text=document.getElementById("g-text").value.trim().slice(0,500);
+ if(!text){say(st,"Écrivez un petit message avant de publier.");return}
+ try{await commit("guestbook/"+newId(),{name:name||"Un invité",text},"at");say(st,"Merci! Votre mot a été ajouté.",true);document.getElementById("g-text").value="";loadNotes()}
+ catch(err){say(st,NET)}});
+
+/* confetti */
+function confetti(){if(reduce)return;const cv=document.createElement("canvas");cv.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20";document.body.appendChild(cv);
+ const x=cv.getContext("2d");cv.width=innerWidth;cv.height=innerHeight;const cols=["#ec9db3","#e8d2ac","#f3eef4","#7fd1c7","#ffd36e"];
+ const ps=Array.from({length:160},()=>({x:innerWidth/2,y:innerHeight*.6,vx:(Math.random()-.5)*14,vy:-Math.random()*16-6,r:Math.random()*6+3,c:cols[Math.floor(Math.random()*cols.length)],a:Math.random()*6}));
+ let t=0;(function f(){x.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.a+=.2;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);x.restore()});
+  if(++t<140)requestAnimationFrame(f);else cv.remove()})()}
+</script>
+</body>
+</html>

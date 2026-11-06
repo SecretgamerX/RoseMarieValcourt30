@@ -1,0 +1,43 @@
+// ================================================================
+// Rose's 30th birthday site: rules to ADD to your Firebase project
+// (star-catcher-891e9 · Firestore Database · Rules tab)
+//
+// Paste the two "match" blocks below INSIDE your existing
+//     match /databases/{database}/documents { ... }
+// right next to the "leaderboards" rules that Jahan's games use.
+// Do not delete anything that is already there, then click Publish.
+// ================================================================
+
+    // RSVPs: guests can send and update their own answer (the long random
+    // id saved on their phone acts as their key). Nobody can list them from
+    // the website; you see them all in the Firebase console.
+    match /rsvps/{id} {
+      allow get: if true;
+      allow list, delete: if false;
+      allow create, update: if id.size() >= 30
+        && request.resource.data.keys().hasOnly(['name','email','phone','attending','adults','kids','kidsAges','diet','song','message','guesses','updatedAt'])
+        && request.resource.data.name is string && request.resource.data.name.size() <= 100
+        && request.resource.data.attending in ['yes','maybe','no','none']
+        && request.resource.data.adults is int && request.resource.data.adults >= 0 && request.resource.data.adults <= 15
+        && request.resource.data.kids is int && request.resource.data.kids >= 0 && request.resource.data.kids <= 15
+        && request.resource.data.email is string && request.resource.data.email.size() <= 120
+        && request.resource.data.phone is string && request.resource.data.phone.size() <= 40
+        && request.resource.data.kidsAges is string && request.resource.data.kidsAges.size() <= 300
+        && request.resource.data.diet is string && request.resource.data.diet.size() <= 300
+        && request.resource.data.song is string && request.resource.data.song.size() <= 200
+        && request.resource.data.message is string && request.resource.data.message.size() <= 1000
+        && request.resource.data.guesses is map && request.resource.data.guesses.size() <= 10
+        && request.resource.data.updatedAt == request.time;
+    }
+
+    // Guestbook: everyone can read messages and add one; only you can
+    // change or delete them (in the Firebase console).
+    match /guestbook/{id} {
+      allow read: if true;
+      allow update, delete: if false;
+      allow create: if id.size() >= 30
+        && request.resource.data.keys().hasOnly(['name','text','at'])
+        && request.resource.data.name is string && request.resource.data.name.size() <= 60
+        && request.resource.data.text is string && request.resource.data.text.size() > 0 && request.resource.data.text.size() <= 500
+        && request.resource.data.at == request.time;
+    }
