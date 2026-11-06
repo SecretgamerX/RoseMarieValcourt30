@@ -524,6 +524,124 @@ body.menu-open{overflow:hidden}
  .float-rsvp{bottom:calc(12px + env(safe-area-inset-bottom,0px))}
 }
 .welcome figure img{object-position:72% 50%}
+
+/* ===== Phone: clean & calm (overrides everything above) ===== */
+.opt-toggle{display:none}
+.hero .slides img{transition:opacity 1.3s ease!important}
+.hero .slides img.show{animation:kb 9s ease-out forwards!important}
+@media (max-width:760px){
+ body{font-size:15.5px;line-height:1.55}
+ .hero .slides img.show{animation:kbm 6s ease-out forwards!important}
+ @keyframes kbm{from{transform:scale(1.18) translate(2%,1.5%)}to{transform:scale(1.02) translate(0,0)}}
+ .band{padding-block:52px}
+ .sec-head{margin-bottom:22px;gap:8px;max-width:none}
+ .sec-head .eyebrow{font-size:.66rem;letter-spacing:.24em}
+ .sec-head .eyebrow::before{width:22px}
+ .sec-head h2{font-size:2.3rem;line-height:1.02}
+ .sec-head p{font-size:.93rem;line-height:1.55;color:var(--mist)}
+ h3{font-size:1.3rem}
+ /* hero */
+ .hero h1{font-size:2.85rem;line-height:.98}
+ .hero .meta{font-size:.86rem}
+ .hero .meta b{font-weight:600}
+ .hero .ctas .btn{padding:15px 18px;font-size:.98rem}
+ .mband{padding-block:4px 30px}
+ .mband .countdown{gap:6px}
+ .mband .countdown div{padding:10px 2px 8px;border-radius:12px;background:transparent;border-color:rgba(232,210,172,.2)}
+ .mband .countdown b{font-size:1.65rem}
+ .mband .countdown span{font-size:.58rem;letter-spacing:.12em}
+ .mbday{font-size:1.02rem;margin-top:14px}
+ /* welcome: words only */
+ .welcome figure{display:none}
+ .welcome blockquote{font-size:1.45rem;line-height:1.3;margin-top:10px!important}
+ .welcome .sig{font-size:.88rem}
+ /* timeline */
+ .prog{gap:20px}
+ .prog::before{left:17px}
+ .prog .stop{grid-template-columns:36px 1fr;column-gap:16px;row-gap:2px;padding:0}
+ .prog .dot{width:36px;height:36px;font-size:.85rem}
+ .prog .time{font-size:1.55rem}
+ .prog h3{font-size:1.05rem;font-family:var(--f-body);font-weight:600;letter-spacing:.01em}
+ .prog p{font-size:.88rem;max-width:none}
+ /* story */
+ .frame{width:70vw}
+ .frame h3{font-size:1.1rem}
+ .frame p{font-size:.82rem}
+ .agebar{display:none}
+ /* rsvp */
+ .facts{display:none}
+ .tally{padding:18px;border-radius:18px;margin-bottom:22px}
+ .tally-nums b{font-size:2.5rem}
+ .tally-foot{font-size:.78rem}
+ form.card{padding:18px;gap:16px;border-radius:18px;background:transparent;border:0;padding-inline:0}
+ .field label,.field .lbl{font-size:.8rem;font-weight:500}
+ input[type=text],input[type=email],input[type=tel],textarea{font-size:16px;padding:13px 14px;border-radius:12px}
+ .seg label{padding:11px 6px;font-size:.92rem;min-width:0}
+ .stepper{padding:6px 6px 6px 14px}
+ .stepper .t b{font-size:.95rem}.stepper .t small{font-size:.75rem}
+ .stepper output{font-size:1.4rem}
+ .stepper button{width:38px;height:38px}
+ .opt-toggle{display:block;text-align:left;background:none;border:0;padding:4px 0;color:var(--champagne);font:500 .88rem var(--f-body);cursor:pointer}
+ .opt{display:none;gap:16px}
+ .opt.open{display:grid}
+ .row2{grid-template-columns:1fr;gap:16px}
+ form.card .note{font-size:.78rem}
+ /* kids */
+ .kids .sec-head p{display:none}
+ .inflatables{gap:8px}
+ .inf{padding:14px;gap:6px;border-radius:16px}
+ .inf svg{height:56px}
+ .inf .age{font-size:.62rem}
+ .inf h3{font-size:1.1rem}
+ .inf p{display:none}
+ .kids-cols{gap:8px;margin-top:8px}
+ .panel{padding:0 16px;gap:0;border-radius:16px}
+ .panel h3{font-size:1.02rem;font-family:var(--f-body);font-weight:600;padding:15px 0;display:flex;justify-content:space-between;cursor:pointer}
+ .panel h3::after{content:"+";font-family:var(--f-display);font-size:1.4rem;line-height:.8;color:var(--rose);transition:transform .3s}
+ .panel.open h3::after{transform:rotate(45deg)}
+ .panel>:not(h3){display:none}
+ .panel.open>:not(h3){display:grid;padding-bottom:14px}
+ .sched div{grid-template-columns:62px 1fr;font-size:.88rem;padding:8px 0}
+ .checks{font-size:.88rem}
+ /* gallery */
+ #galerie .sec-head p{display:none}
+ .filters button{font-size:.8rem;padding:7px 13px}
+ .masonry{column-gap:6px}.masonry button{margin-bottom:6px;border-radius:10px}
+ /* game */
+ #jeu .sec-head p{font-size:.88rem}
+ .game{gap:8px}
+ .guess{border-radius:14px}
+ .guess .in{padding:10px;gap:4px}
+ .guess .in b{font-size:1.25rem}
+ .guess .in .note{font-size:.72rem}
+ /* guestbook */
+ .gb{gap:20px}
+ .gb .sec-head{margin-bottom:16px!important}
+ #gbForm{padding:0;background:transparent;border:0;gap:14px}
+ .notes{columns:1}
+ .notecard{padding:14px;border-radius:14px}
+ .notecard p{font-size:1.05rem}
+ .empty{font-size:.88rem;padding:16px;border-radius:14px}
+ /* venue */
+ .mapart{display:none}
+ .vcard{padding:18px;gap:12px;border-radius:18px}
+ .vcard h3{font-size:1.5rem}
+ .addr{font-size:.98rem}
+ .vcard .note{font-size:.82rem}
+ .vcard .btn{padding:11px 18px;font-size:.9rem}
+ #lieu h3[style]{font-size:1.5rem!important;margin-top:34px!important}
+ .act{padding:16px;border-radius:16px}
+ .act h4{font-size:1.15rem}
+ .act p{font-size:.84rem}
+ /* faq */
+ .faq{gap:0}
+ .faq details{background:transparent;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:0}
+ .faq summary{font-size:.95rem;font-weight:500;padding:16px 0}
+ .faq details p{font-size:.9rem}
+ footer{padding-block:36px calc(90px + env(safe-area-inset-bottom,0px))}
+ footer .big{font-size:2rem}
+ footer p{font-size:.85rem}
+}
 </style>
 </head>
 <body>
@@ -678,10 +796,6 @@ body.menu-open{overflow:hidden}
           <label for="r-name">Nom complet</label>
           <input type="text" id="r-name" autocomplete="name" required placeholder="Ex. Julie Poulin">
         </div>
-        <div class="row2">
-          <div class="field"><label for="r-email">Courriel</label><input type="email" id="r-email" autocomplete="email" placeholder="nom@exemple.com"></div>
-          <div class="field"><label for="r-phone">Téléphone</label><input type="tel" id="r-phone" autocomplete="tel" placeholder="418 555-1234"></div>
-        </div>
         <div class="field">
           <span class="lbl" id="att-l">Serez-vous présent?</span>
           <div class="seg" role="radiogroup" aria-labelledby="att-l">
@@ -703,8 +817,15 @@ body.menu-open{overflow:hidden}
           <input type="text" id="r-ages" placeholder="Ex. Léo 6 ans, Emma 3 ans">
         </div>
         <div class="field"><label for="r-diet">Allergies ou restrictions alimentaires</label><input type="text" id="r-diet" placeholder="Ex. sans noix, végétarien"></div>
+        <button type="button" class="opt-toggle" id="optToggle" aria-expanded="false">+ Ajouter un courriel, une chanson ou un petit mot (optionnel)</button>
+        <div class="opt" id="optFields">
+        <div class="row2">
+          <div class="field"><label for="r-email">Courriel</label><input type="email" id="r-email" autocomplete="email" placeholder="nom@exemple.com"></div>
+          <div class="field"><label for="r-phone">Téléphone</label><input type="tel" id="r-phone" autocomplete="tel" placeholder="418 555-1234"></div>
+        </div>
         <div class="field"><label for="r-song">Une chanson pour faire danser Rose?</label><input type="text" id="r-song" placeholder="Titre et artiste"></div>
         <div class="field"><label for="r-msg">Un petit mot pour Rose (optionnel)</label><textarea id="r-msg" placeholder="Il sera gardé secret jusqu'à la fête"></textarea></div>
+        </div>
         <button class="btn primary" type="submit" id="rsvpBtn">Envoyer ma réponse</button>
         <div class="status" id="rsvpStatus" role="status" aria-live="polite" hidden></div>
         <p class="note">Vous pourrez modifier votre réponse plus tard en revenant sur cette page, à partir du même téléphone ou ordinateur.</p>
@@ -1064,7 +1185,7 @@ const EN={
 "Réponses enregistrées. Pensez aussi à remplir le RSVP!":"Guesses saved. Don't forget to fill in the RSVP too!",
 "Écrivez un petit message avant de publier.":"Write a short message before posting.",
 "Merci! Votre mot a été ajouté.":"Thank you! Your note has been added.",
-"Un invité":"A guest","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
+"Un invité":"A guest","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
 };
 const FR={};for(const k in EN)FR[EN[k]]=k;
 let LANG="fr";try{if(localStorage.getItem("rose30_lang")==="en")LANG="en"}catch(e){}
@@ -1251,6 +1372,11 @@ function setMenu(open){mmenu.hidden=!open;burger.setAttribute("aria-expanded",op
 burger.onclick=()=>setMenu(mmenu.hidden);
 mmenu.addEventListener("click",e=>{if(e.target.closest("a"))setMenu(false)});
 addEventListener("keydown",e=>{if(e.key==="Escape"&&!mmenu.hidden)setMenu(false)});
+
+/* phone toggles */
+const optT=document.getElementById("optToggle"),optF=document.getElementById("optFields");
+optT.onclick=()=>{const o=!optF.classList.contains("open");optF.classList.toggle("open",o);optT.setAttribute("aria-expanded",o);optT.textContent=T(o?"− Masquer les champs optionnels":"+ Ajouter un courriel, une chanson ou un petit mot (optionnel)")};
+document.querySelectorAll(".kids-cols .panel h3").forEach(h=>h.addEventListener("click",()=>{if(isPhone.matches)h.parentElement.classList.toggle("open")}));
 /* steppers */
 const counts={adults:1,kids:0};
 document.querySelectorAll(".stepper").forEach(s=>{const k=s.dataset.step;s.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;counts[k]=Math.max(k==="adults"?0:0,Math.min(15,counts[k]+Number(b.dataset.d)));syncSteppers()})});
@@ -1260,7 +1386,7 @@ function syncSteppers(){document.getElementById("r-adults").textContent=counts.a
 const GAME=[1,2,3,4];const guesses={};
 const game=document.getElementById("game");
 GAME.forEach(n=>{const p=PHOTOS.find(x=>x.src==="img/"+String(n).padStart(2,"0")+".jpg");guesses[n]=8;const d=document.createElement("div");d.className="guess";
- d.innerHTML=`<img loading="lazy" src="${p.src}" alt="${p.t}"><div class="in"><span class="note">Photo ${n}</span><b><span id="gv${n}">8</span> ans</b><input type="range" id="g${n}" min="1" max="20" value="8" aria-label="Âge deviné pour la photo ${n}"></div>`;
+ d.innerHTML=`<img loading="lazy" src="${p.th}" alt="${p.t}"><div class="in"><span class="note">Photo ${n}</span><b><span id="gv${n}">8</span> ans</b><input type="range" id="g${n}" min="1" max="20" value="8" aria-label="Âge deviné pour la photo ${n}"></div>`;
  game.appendChild(d);d.querySelector("input").addEventListener("input",e=>{guesses[n]=+e.target.value;document.getElementById("gv"+n).textContent=e.target.value})});
 
 /* ---------- shared data: Google Firebase (Firestore) ---------- */
@@ -1303,6 +1429,7 @@ let myId=load(ID_KEY),mine=null;
    const a=document.getElementById("att-"+({yes:"y",maybe:"m",no:"n"}[mine.attending]||"y"));if(a)a.checked=true;
    counts.adults=mine.adults??1;counts.kids=mine.kids??0;syncSteppers();
    document.getElementById("r-ages").value=mine.kidsAges||"";document.getElementById("r-diet").value=mine.diet||"";document.getElementById("r-song").value=mine.song||"";document.getElementById("r-msg").value=mine.message||"";
+   if(mine.email||mine.phone||mine.song||mine.message){optF.classList.add("open")}
    document.getElementById("rsvpBtn").textContent=T("Mettre à jour ma réponse");say(rStatus,"Votre réponse est enregistrée. Vous pouvez la modifier ci-dessous.",true)}
   if(mine.guesses)Object.entries(mine.guesses).forEach(([n,v])=>{const s=document.getElementById("g"+n.replace("p",""));if(s){s.value=v;guesses[n.replace("p","")]=v;document.getElementById("gv"+n.replace("p","")).textContent=v}})
  }catch(e){}})();
