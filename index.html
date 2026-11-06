@@ -398,6 +398,71 @@ html.seen{--intro:0s}html.seen .intro{display:none}
  .hero .ctas .btn{padding:13px 20px}
 }
 @media (prefers-reduced-motion:reduce){.intro{display:none}.mq{animation:none}html{--intro:0s}}
+
+/* ===== Phone polish ===== */
+html,body,h1,h2,h3,.countdown b,.prog .time,.mq span,.fact .v,.stepper output,.tile b,.guess .in b,.frame .n,.intro .isub{font-variant-numeric:lining-nums}
+.burger{display:none}
+.more-wrap{display:flex;justify-content:center;margin-top:22px}
+.mmenu{position:fixed;inset:0;z-index:20;background:radial-gradient(120% 70% at 50% 0%,#2a1f31 0%,var(--night) 60%);display:flex;flex-direction:column;justify-content:center;padding:calc(80px + env(safe-area-inset-top,0px)) max(28px,env(safe-area-inset-right,0px)) calc(32px + env(safe-area-inset-bottom,0px)) max(28px,env(safe-area-inset-left,0px));animation:mmIn .45s cubic-bezier(.2,.7,.2,1)}
+.mmenu nav{display:grid;gap:4px}
+.mmenu a{font-family:var(--f-display);font-size:2.3rem;font-weight:500;line-height:1.25;color:var(--frost);text-decoration:none;opacity:0;transform:translateY(14px);animation:mmItem .5s cubic-bezier(.2,.7,.2,1) forwards}
+.mmenu a:nth-child(3){font-style:italic;background:linear-gradient(100deg,#f6b8c8,#ec9db3 40%,#f3dfb6 80%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mmenu a:nth-child(1){animation-delay:.05s}.mmenu a:nth-child(2){animation-delay:.09s}.mmenu a:nth-child(3){animation-delay:.13s}.mmenu a:nth-child(4){animation-delay:.17s}.mmenu a:nth-child(5){animation-delay:.21s}.mmenu a:nth-child(6){animation-delay:.25s}.mmenu a:nth-child(7){animation-delay:.29s}.mmenu a:nth-child(8){animation-delay:.33s}.mmenu a:nth-child(9){animation-delay:.37s}
+.mm-foot{margin-top:34px;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--champagne)}
+@keyframes mmIn{from{opacity:0}to{opacity:1}}
+@keyframes mmItem{to{opacity:1;transform:none}}
+body.menu-open{overflow:hidden}
+@media (max-width:760px){
+ nav.top .links{display:none}
+ nav.top .wrap{height:60px;gap:10px}
+ nav.top .lang{margin-left:auto}
+ nav.top{z-index:21}
+ .burger{display:grid;place-items:center;gap:6px;width:44px;height:44px;border:1px solid rgba(243,238,244,.25);border-radius:50%;background:rgba(23,18,28,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;padding:0;align-content:center}
+ .burger span{display:block;width:18px;height:1.5px;background:var(--frost);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+ .burger[aria-expanded="true"] span:first-child{transform:translateY(3.75px) rotate(45deg)}
+ .burger[aria-expanded="true"] span:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+ nav.top .lang{padding:9px 13px;background:rgba(23,18,28,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-color:rgba(243,238,244,.25)}
+ .hbars{top:calc(62px + env(safe-area-inset-top,0px))}
+ /* hero */
+ .hero .slides{height:72svh;height:72vh}
+ @supports (height:72svh){.hero .slides{height:72svh}}
+ .hero .wrap{padding-block:61svh 36px;gap:12px}
+ .hero h1{font-size:clamp(2.9rem,13vw,3.8rem);line-height:.95}
+ .hero .meta{display:grid;gap:2px;font-size:.95rem}
+ .hero .meta span:first-child b{font-size:1.02rem;letter-spacing:.02em}
+ .hero .bday{font-size:1.15rem;padding-left:14px;border-left:1px solid rgba(232,210,172,.45)}
+ .countdown{margin-top:6px}
+ .countdown div{padding:12px 2px 10px;border-radius:16px}
+ .hero .ctas{display:grid;grid-template-columns:1fr;gap:10px;margin-top:4px}
+ .hero .ctas .btn{width:100%;padding:16px 20px;font-size:1.02rem}
+ /* sections */
+ .band{padding-block:72px}
+ .sec-head{margin-bottom:28px;gap:10px}
+ .sec-head h2{font-size:clamp(2.5rem,11vw,3.2rem)}
+ .sec-head p{font-size:.98rem}
+ .welcome{gap:30px}
+ .welcome figure{max-width:none;margin-inline:12px}
+ .welcome blockquote{font-size:1.75rem}
+ .mq span{font-size:1.5rem}
+ /* gallery */
+ .masonry{columns:2;column-gap:8px}
+ .masonry button{margin-bottom:8px;border-radius:12px}
+ .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));padding-inline:var(--gutter) var(--gutter-r);padding-bottom:4px}
+ .filters::-webkit-scrollbar{display:none}
+ .filters button{flex:0 0 auto}
+ /* story strip */
+ .frame{width:78vw}
+ .strip-ctrl{display:none}
+ .strip{gap:12px;scroll-padding-inline:var(--gutter)}
+ /* cards */
+ form.card,.panel,.inf,.vcard{border-radius:22px}
+ .gift{border-radius:22px}
+ .faq summary{padding:16px 0}
+ .acts{gap:10px}
+ .game{gap:10px}
+ footer .big{font-size:2.4rem}
+ .float-rsvp{width:calc(100% - 32px);max-width:420px}
+}
 </style>
 </head>
 <body>
@@ -418,8 +483,23 @@ html.seen{--intro:0s}html.seen .intro{display:none}
       <a href="#faq">FAQ</a>
     </div>
     <button type="button" class="lang" id="langBtn" aria-label="Switch to English">EN</button>
+    <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </nav>
+<div class="mmenu" id="mmenu" hidden>
+  <nav aria-label="Menu">
+    <a href="#soiree">La soirée</a>
+    <a href="#histoire">Son histoire</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#enfants">Zone enfants</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#jeu">Jeu</a>
+    <a href="#livre">Livre d'or</a>
+    <a href="#lieu">Lieu & activités</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+  <p class="mm-foot">Samedi 19 décembre 2026 · Saint-Éphrem</p>
+</div>
 
 <header class="hero" id="accueil">
   <div class="slides" id="slides"></div>
@@ -614,6 +694,7 @@ html.seen{--intro:0s}html.seen .intro{display:none}
       <button data-f="proches">Avec ses proches</button>
     </div>
     <div class="masonry" id="masonry"></div>
+    <div class="more-wrap"><button type="button" class="btn ghost" id="galMore" hidden>Voir toutes les photos</button></div>
   </div>
 </section>
 
@@ -901,7 +982,7 @@ const EN={
 "Amoureuse des chiens":"Dog lover","Impossible de résister à un câlin.":"Can't resist a cuddle.",
 "Santé!":"Cheers!","À la prochaine décennie.":"To the next decade.",
 "Fous rires au verger":"Laughing it up at the orchard","Un bisou au verger":"A kiss at the orchard","La tête en bas!":"Upside down!","Un nouvel ami":"A new friend","La rivière au crépuscule":"The river at dusk","Une rencontre inattendue":"An unexpected encounter","Au bout du monde":"At the edge of the world","Sur la piste Cabot":"On the Cabot Trail","Un baiser sur la route":"A kiss on the road","Prête pour la pluie":"Ready for the rain","Entre amis":"With friends","Sur la terrasse":"On the patio","Petit explorateur":"Little explorer","Dodo après la route":"Napping after the ride","Au coucher du soleil":"At sunset","À l'arcade":"At the arcade","Aux chutes Niagara":"At Niagara Falls","Gâteau de melon d'eau":"Watermelon cake","Une journée au golf":"A day on the golf course","Sous la vieille charpente":"Under the old beams","Petit savant fou":"Little mad scientist","Un coup de golf en automne":"An autumn golf swing",
-"Diplômée!":"Graduate!","Un diplôme en main et le sourire aux lèvres.":"Diploma in hand and a big smile.","Rafting entre amis":"Rafting with friends","Pagaie en main, prête pour les rapides.":"Paddle in hand, ready for the rapids.","Aux commandes":"At the controls","Rose pilote un avion, rien de moins.":"Rose flying a plane, no less.","Les pieds dans la mer turquoise":"Feet in the turquoise sea","Le soleil, les vagues et rien d'autre.":"Sun, waves and nothing else.","Élégante":"Elegant","Un petit miroir, un grand sourire.":"A small mirror, a big smile.","Une amie à plumes":"A feathered friend","Un perroquet sur l'épaule, tout naturellement.":"A parrot on her shoulder, like it's nothing.","Mission chocolat":"Chocolate mission","Elle ne fait jamais les choses à moitié.":"She never does anything halfway.","Douce sieste":"Sweet nap","Un rare moment de calme.":"A rare quiet moment.","Complicité à quatre pattes":"Four-legged best friend","Toujours un câlin pour les toutous.":"Always a cuddle for the pups.","Sous le grand sapin de New York":"Under New York's giant tree","La magie des Fêtes à Manhattan.":"Holiday magic in Manhattan.","Les lumières de New York":"New York lights","Une soirée d'hiver illuminée.":"A glowing winter night.","Times Square, le 31 décembre":"Times Square, December 31","Les yeux vers le ciel pour le décompte.":"Eyes to the sky for the countdown.","Le Nouvel An à deux":"New Year's Eve together","Rose et Deepesh à Times Square.":"Rose and Deepesh in Times Square.","Défiler":"Scroll down",
+"Diplômée!":"Graduate!","Un diplôme en main et le sourire aux lèvres.":"Diploma in hand and a big smile.","Rafting entre amis":"Rafting with friends","Pagaie en main, prête pour les rapides.":"Paddle in hand, ready for the rapids.","Aux commandes":"At the controls","Rose pilote un avion, rien de moins.":"Rose flying a plane, no less.","Les pieds dans la mer turquoise":"Feet in the turquoise sea","Le soleil, les vagues et rien d'autre.":"Sun, waves and nothing else.","Élégante":"Elegant","Un petit miroir, un grand sourire.":"A small mirror, a big smile.","Une amie à plumes":"A feathered friend","Un perroquet sur l'épaule, tout naturellement.":"A parrot on her shoulder, like it's nothing.","Mission chocolat":"Chocolate mission","Elle ne fait jamais les choses à moitié.":"She never does anything halfway.","Douce sieste":"Sweet nap","Un rare moment de calme.":"A rare quiet moment.","Complicité à quatre pattes":"Four-legged best friend","Toujours un câlin pour les toutous.":"Always a cuddle for the pups.","Sous le grand sapin de New York":"Under New York's giant tree","La magie des Fêtes à Manhattan.":"Holiday magic in Manhattan.","Les lumières de New York":"New York lights","Une soirée d'hiver illuminée.":"A glowing winter night.","Times Square, le 31 décembre":"Times Square, December 31","Les yeux vers le ciel pour le décompte.":"Eyes to the sky for the countdown.","Le Nouvel An à deux":"New Year's Eve together","Rose et Deepesh à Times Square.":"Rose and Deepesh in Times Square.","Défiler":"Scroll down","Voir toutes les photos":"See all photos","Menu":"Menu","Samedi 19 décembre 2026 · Saint-Éphrem":"Saturday, December 19, 2026 · Saint-Éphrem",
 /* messages from the page's code */
 "Photo":"Photo","ans":"years old",
 "Votre réponse est enregistrée. Vous pouvez la modifier ci-dessous.":"Your RSVP is saved. You can change it below.",
@@ -992,7 +1073,7 @@ const PHOTOS=[
  {src:"img/47.jpg",t:"Sous la vieille charpente",d:"",c:"proches",g:1},
  {src:"img/48.jpg",t:"Petit savant fou",d:"",c:"proches",g:1},
  {src:"img/49.jpg",t:"Un coup de golf en automne",d:"",c:"proches",g:1}
-].map((p,i)=>({...p,n:i+1}));
+].map((p,i)=>({...p,th:p.src.replace("img/","img/t/"),n:i+1}));
 
 /* hero slideshow */
 /* hero slideshow: phone and desktop framing per photo */
@@ -1010,7 +1091,7 @@ const slides=document.getElementById("slides"),hbars=document.getElementById("hb
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,isPhone=matchMedia("(max-width:760px)");
 const SLIDES=HERO.filter(h=>!(h.only==="m"&&!isPhone.matches));HERO.length=0;HERO.push(...SLIDES);
 const SLIDE=6.5;hbars.style.setProperty("--slide",SLIDE+"s");
-HERO.forEach((h,i)=>{const im=new Image();im.decoding="async";if(i>1)im.loading="lazy";im.src=h.src;im.alt="";im.style.objectPosition=isPhone.matches?h.m:h.d;slides.appendChild(im);
+HERO.forEach((h,i)=>{const im=new Image();im.decoding="async";im.src=isPhone.matches?h.src.replace(".jpg","-m.jpg"):h.src;im.alt="";im.style.objectPosition=isPhone.matches?h.m:h.d;slides.appendChild(im);
  const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Photo "+(i+1));b.innerHTML="<span><i></i></span>";b.onclick=()=>go(i);hbars.appendChild(b)});
 isPhone.addEventListener?.("change",()=>[...slides.children].forEach((im,i)=>im.style.objectPosition=isPhone.matches?HERO[i].m:HERO[i].d));
 let cur=-1,timer=null;
@@ -1018,7 +1099,8 @@ function go(n){const ims=slides.children,bs=hbars.children;if(cur>=0)ims[cur].cl
  const im=ims[cur];im.loading="eager";im.classList.add("show");
  [...bs].forEach((b,i)=>{b.classList.toggle("done",i<cur);b.classList.remove("on")});void bs[cur].offsetWidth;bs[cur].classList.add("on");
  const nx=ims[(cur+1)%HERO.length];nx.loading="eager";
- clearTimeout(timer);if(!reduce)timer=setTimeout(()=>go(cur+1),SLIDE*1000)}
+ clearTimeout(timer);timer=setTimeout(()=>go(cur+1),SLIDE*1000)}
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&cur>=0)go(cur)});
 setTimeout(()=>go(0),0);
 
 /* countdown */
@@ -1040,7 +1122,7 @@ tick();setInterval(tick,1000);
 const strip=document.getElementById("strip");
 const STORY=PHOTOS.filter(p=>!p.g);
 STORY.forEach((p,i)=>{const b=document.createElement("button");b.className="frame";b.type="button";
- b.innerHTML=`<div class="ph"><img loading="lazy" src="${p.src}" alt="${p.t}"><span class="n">${String(i+1).padStart(2,"0")} / ${STORY.length}</span></div><h3>${p.t}</h3><p>${p.d||"&nbsp;"}</p>`;
+ b.innerHTML=`<div class="ph"><img loading="lazy" src="${p.th}" alt="${p.t}"><span class="n">${String(i+1).padStart(2,"0")} / ${STORY.length}</span></div><h3>${p.t}</h3><p>${p.d||"&nbsp;"}</p>`;
  b.onclick=()=>openLB(i,STORY);strip.appendChild(b)});
 const bar=document.getElementById("agebar");
 strip.addEventListener("scroll",()=>{const m=strip.scrollWidth-strip.clientWidth;bar.style.width=(m>0?strip.scrollLeft/m*100:0)+"%"},{passive:true});
@@ -1049,10 +1131,13 @@ document.getElementById("sNext").onclick=()=>strip.scrollBy({left:strip.clientWi
 
 /* gallery */
 const mas=document.getElementById("masonry");let shown=PHOTOS;
+const moreBtn=document.getElementById("galMore");let galAll=false;
 function renderGallery(f){shown=f==="all"?PHOTOS:PHOTOS.filter(p=>p.c===f);mas.innerHTML="";
- shown.forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",T("Agrandir : ")+T(p.t));b.innerHTML=`<img loading="lazy" src="${p.src}" alt="${p.t}">`;b.onclick=()=>openLB(i,shown);b.animate?.([{opacity:.2,transform:"scale(.96)"},{opacity:1,transform:"none"}],{duration:450,delay:i*30,easing:"cubic-bezier(.2,.7,.2,1)",fill:"backwards"});mas.appendChild(b)})}
+ const lim=isPhone.matches&&!galAll?12:999;moreBtn.hidden=shown.length<=lim;moreBtn.textContent=T("Voir toutes les photos")+" ("+shown.length+")";
+ shown.slice(0,lim).forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",T("Agrandir : ")+T(p.t));b.innerHTML=`<img loading="lazy" decoding="async" src="${p.th}" alt="${p.t}">`;b.onclick=()=>openLB(i,shown);b.animate?.([{opacity:.2,transform:"scale(.96)"},{opacity:1,transform:"none"}],{duration:450,delay:i*30,easing:"cubic-bezier(.2,.7,.2,1)",fill:"backwards"});mas.appendChild(b)})}
 renderGallery("all");
-document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b));renderGallery(b.dataset.f)});
+document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b));galAll=false;renderGallery(b.dataset.f)});
+moreBtn.onclick=()=>{galAll=true;renderGallery(document.querySelector("#filters button.on").dataset.f)};
 
 /* lightbox */
 const lb=document.getElementById("lb");let lbList=PHOTOS,lbI=0;
@@ -1087,6 +1172,13 @@ addEventListener("scroll",onScroll,{passive:true});onScroll();
 document.querySelectorAll(".inflatables,.acts,.prog,.faq,.kids-cols,.game,.facts").forEach(g=>[...g.children].forEach((c,i)=>{c.classList.add("reveal");c.style.transitionDelay=(i*90)+"ms"}));
 if(!reduce&&"IntersectionObserver" in window){const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove("pre");io2.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
  document.querySelectorAll(".reveal:not(.pre)").forEach(el=>{const r=el.getBoundingClientRect();if(r.top>innerHeight){el.classList.add("pre");io2.observe(el)}})}
+
+/* phone menu */
+const burger=document.getElementById("burger"),mmenu=document.getElementById("mmenu");
+function setMenu(open){mmenu.hidden=!open;burger.setAttribute("aria-expanded",open);document.body.classList.toggle("menu-open",open);navEl.classList.toggle("solid",open||scrollY>40);if(open)applyLang&&LANG==="en"&&applyLang()}
+burger.onclick=()=>setMenu(mmenu.hidden);
+mmenu.addEventListener("click",e=>{if(e.target.closest("a"))setMenu(false)});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&!mmenu.hidden)setMenu(false)});
 /* steppers */
 const counts={adults:1,kids:0};
 document.querySelectorAll(".stepper").forEach(s=>{const k=s.dataset.step;s.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;counts[k]=Math.max(k==="adults"?0:0,Math.min(15,counts[k]+Number(b.dataset.d)));syncSteppers()})});
