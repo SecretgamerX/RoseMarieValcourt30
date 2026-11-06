@@ -366,8 +366,8 @@ html.seen{--intro:0s}html.seen .intro{display:none}
 .btn.ghost{border-color:rgba(243,238,244,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .btn.ghost:hover{border-color:#f3dfb6;color:#f3dfb6}
 /* floating RSVP on phones */
-.float-rsvp{position:fixed;z-index:8;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);opacity:0;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s;white-space:nowrap;padding:14px 28px}
-.float-rsvp.show{transform:translate(-50%,0);opacity:1}
+.btn.float-rsvp{position:fixed;z-index:8;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,140%);opacity:0;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s;white-space:nowrap;padding:14px 28px}
+.btn.float-rsvp.show{transform:translate(-50%,0);opacity:1}
 @media (min-width:761px){.float-rsvp{display:none}}
 .music{display:none}
 /* richer reveals */
@@ -471,6 +471,59 @@ body.menu-open{overflow:hidden}
 .btn.busy{opacity:.75;pointer-events:none}
 .btn.busy::before{content:"";width:14px;height:14px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+
+/* live headcount */
+.tally{margin:-8px 0 36px;padding:22px clamp(18px,4vw,30px);border-radius:24px;border:1px solid rgba(232,210,172,.28);background:radial-gradient(120% 140% at 0% 0%,rgba(236,157,179,.14),transparent 55%),radial-gradient(120% 140% at 100% 100%,rgba(243,223,182,.1),transparent 55%),var(--night-2)}
+.tally-head{display:flex;align-items:center;gap:10px;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--champagne);font-weight:600}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#7fd1a6;box-shadow:0 0 0 0 rgba(127,209,166,.6);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(127,209,166,0)}100%{box-shadow:0 0 0 0 rgba(127,209,166,0)}}
+.tally-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.tally-nums div{display:grid;justify-items:start;gap:2px}
+.tally-nums b{font-family:var(--f-display);font-weight:600;font-size:clamp(2.6rem,9vw,3.6rem);line-height:1;color:var(--frost)}
+.tally-nums .tot b{background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tally-nums span{font-size:.8rem;color:var(--mist);letter-spacing:.06em}
+.tally-foot{margin-top:12px;font-size:.85rem;color:var(--mist)}
+.tally b.bump{animation:bump .7s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bump{0%{transform:scale(.6);opacity:.2}100%{transform:none;opacity:1}}
+.mband{display:none}
+@media (max-width:760px){
+ /* calmer phone hero: photo, date, title, one line, one button */
+ #snow,.marquee,.hero .bday,.hero .countdown,.hero .ctas .ghost{display:none}
+ .hero .slides{height:74svh;height:74vh}
+ @supports (height:74svh){.hero .slides{height:74svh}}
+ .hero .wrap{padding-block:62svh 30px;gap:12px}
+ .hero .meta{display:flex;flex-wrap:wrap;gap:0 10px;font-size:.92rem;color:var(--mist)}
+ .hero .meta span:nth-child(2){display:none}
+ .hero .meta span+span::before{content:"·";margin-right:10px;color:var(--champagne)}
+ .hero .meta span:nth-child(3)::before{content:"·"}
+ .hero h1{font-size:clamp(3rem,13.5vw,3.9rem)}
+ .hero .ctas{margin-top:8px}
+ .hbars{gap:4px}
+ .hbars button span{height:2.5px}
+ .mband{display:block;padding-block:8px 34px}
+ .mband .countdown{animation:none}
+ .mband .countdown div{background:var(--night-2);border-color:rgba(232,210,172,.22)}
+ .mbday{margin-top:16px;font-family:var(--f-display);font-style:italic;font-size:1.15rem;line-height:1.4;color:var(--champagne);text-align:center;text-wrap:balance}
+ /* less clutter in sections */
+ .band{padding-block:60px}
+ .sec-head p{font-size:.95rem}
+ .welcome figure{max-width:300px;margin-inline:auto}
+ .welcome figure::after{display:none}
+ .acts{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin-inline:calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));padding-inline:var(--gutter) var(--gutter-r);scrollbar-width:none}
+ .acts::-webkit-scrollbar{display:none}
+ .acts .act{flex:0 0 80%;scroll-snap-align:start}
+ .inflatables{grid-template-columns:1fr 1fr;gap:10px}
+ .inf{padding:16px}
+ .inf svg{height:70px}
+ .inf h3{font-size:1.2rem}
+ .inf p{font-size:.86rem}
+ .facts{gap:12px}
+ .fact{padding-bottom:12px}
+ .fact .v{font-size:1.25rem}
+ .tally{margin-top:0}
+ .float-rsvp{bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+}
+.welcome figure img{object-position:72% 50%}
 </style>
 </head>
 <body>
@@ -536,6 +589,17 @@ body.menu-open{overflow:hidden}
   </div>
 </header>
 
+<section class="mband" aria-label="Compte à rebours">
+  <div class="wrap">
+    <div class="countdown cd2">
+      <div><b id="cd2-d">—</b><span>jours</span></div>
+      <div><b id="cd2-h">—</b><span>heures</span></div>
+      <div><b id="cd2-m">—</b><span>minutes</span></div>
+      <div><b id="cd2-s">—</b><span>secondes</span></div>
+    </div>
+    <p class="mbday">Son anniversaire est le 31 décembre, mais on la fête un peu d'avance, le 19!</p>
+  </div>
+</section>
 <div class="marquee" aria-hidden="true"><div class="mq"><span>Rose</span><i>✦</i><span>30</span><i>✦</i><span>19 · 12 · 2026</span><i>✦</i><span>Saint-Éphrem-de-Beauce</span><i>✦</i><span>Rose</span><i>✦</i><span>30</span><i>✦</i><span>19 · 12 · 2026</span><i>✦</i><span>Saint-Éphrem-de-Beauce</span><i>✦</i></div></div>
 <a class="float-rsvp btn primary" id="floatRsvp" href="#rsvp">Je confirme ma présence</a>
 
@@ -591,6 +655,15 @@ body.menu-open{overflow:hidden}
       <p class="eyebrow">Liste d'invités</p>
       <h2>Serez-vous des nôtres?</h2>
       <p>Indiquez combien d'adultes et d'enfants vous accompagnent. Ça nous aide à prévoir la nourriture, les places et l'espace des enfants.</p>
+    </div>
+    <div class="tally reveal" id="tally" aria-live="polite">
+      <div class="tally-head"><span class="live-dot" aria-hidden="true"></span><span>Déjà confirmés</span></div>
+      <div class="tally-nums">
+        <div><b id="tA">–</b><span>Adultes</span></div>
+        <div><b id="tK">–</b><span>Enfants</span></div>
+        <div class="tot"><b id="tT">–</b><span>Au total</span></div>
+      </div>
+      <p class="tally-foot" id="tF">Mis à jour à chaque nouvelle réponse.</p>
     </div>
     <div class="rsvp-grid">
       <div class="facts reveal">
@@ -991,7 +1064,7 @@ const EN={
 "Réponses enregistrées. Pensez aussi à remplir le RSVP!":"Guesses saved. Don't forget to fill in the RSVP too!",
 "Écrivez un petit message avant de publier.":"Write a short message before posting.",
 "Merci! Votre mot a été ajouté.":"Thank you! Your note has been added.",
-"Un invité":"A guest","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
+"Un invité":"A guest","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
 };
 const FR={};for(const k in EN)FR[EN[k]]=k;
 let LANG="fr";try{if(localStorage.getItem("rose30_lang")==="en")LANG="en"}catch(e){}
@@ -1086,7 +1159,7 @@ const HERO=[
 const slides=document.getElementById("slides"),hbars=document.getElementById("hbars");
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,isPhone=matchMedia("(max-width:760px)");
 const SLIDES=HERO.filter(h=>!(h.only==="m"&&!isPhone.matches));HERO.length=0;HERO.push(...SLIDES);
-const SLIDE=6.5;hbars.style.setProperty("--slide",SLIDE+"s");
+const SLIDE=5;hbars.style.setProperty("--slide",SLIDE+"s");
 HERO.forEach((h,i)=>{const im=new Image();im.decoding="async";im.src=isPhone.matches?h.src.replace(".jpg","-m.jpg"):h.src;im.alt="";im.style.objectPosition=isPhone.matches?h.m:h.d;slides.appendChild(im);
  const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Photo "+(i+1));b.innerHTML="<span><i></i></span>";b.onclick=()=>go(i);hbars.appendChild(b)});
 isPhone.addEventListener?.("change",()=>[...slides.children].forEach((im,i)=>im.style.objectPosition=isPhone.matches?HERO[i].m:HERO[i].d));
@@ -1098,12 +1171,15 @@ function go(n){const ims=slides.children,bs=hbars.children;if(cur>=0)ims[cur].cl
  clearTimeout(timer);timer=setTimeout(()=>go(cur+1),SLIDE*1000)}
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&cur>=0)go(cur)});
 setTimeout(()=>go(0),0);
+let hx=null;const heroEl=document.querySelector(".hero");
+heroEl.addEventListener("touchstart",e=>hx=e.touches[0].clientX,{passive:true});
+heroEl.addEventListener("touchend",e=>{if(hx==null)return;const dx=e.changedTouches[0].clientX-hx;if(Math.abs(dx)>45)go(cur+(dx<0?1:-1));hx=null},{passive:true});
 
 /* countdown */
 const target=new Date("2026-12-19T17:00:00-05:00").getTime();
 function tick(){let s=Math.max(0,Math.floor((target-Date.now())/1000));
  const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);s%=60;
- [["cd-d",d],["cd-h",h],["cd-m",m],["cd-s",s]].forEach(([id,v])=>document.getElementById(id).textContent=String(v).padStart(2,"0"))}
+ [["d",d],["h",h],["m",m],["s",s]].forEach(([id,v])=>{const t=String(v).padStart(2,"0");document.getElementById("cd-"+id).textContent=t;document.getElementById("cd2-"+id).textContent=t})}
 tick();setInterval(tick,1000);
 
 /* snow */
@@ -1235,7 +1311,9 @@ function guessMap(){const g={};for(const k in guesses)g["p"+k]=Number(guesses[k]
 
 async function saveMine(data){if(!myId){myId=newId();store(ID_KEY,myId)}
  const doc={name:"",email:"",phone:"",attending:"none",adults:0,kids:0,kidsAges:"",diet:"",song:"",message:"",...(mine||{}),...data,guesses:guessMap()};
- delete doc.updatedAt;await commit("rsvps/"+myId,doc,"updatedAt");mine=doc}
+ delete doc.updatedAt;await commit("rsvps/"+myId,doc,"updatedAt");mine=doc;
+ try{await commit("rsvpCounts/"+myId,{attending:doc.attending,adults:doc.adults,kids:doc.kids},"at")}catch(e){}
+ loadTally()}
 
 document.getElementById("rsvpForm").addEventListener("submit",async e=>{e.preventDefault();
  const name=document.getElementById("r-name").value.trim();
@@ -1268,6 +1346,21 @@ async function loadNotes(){try{
 function renderNotes(list){const box=document.getElementById("notes");if(!list.length)return;box.innerHTML="";
  list.forEach(n=>{const c=document.createElement("div");c.className="notecard";const p=document.createElement("p");p.textContent=n.text;const s=document.createElement("small");s.textContent="— "+(n.name||T("Un invité"));c.append(p,s);box.appendChild(c)})}
 loadNotes();setInterval(loadNotes,60000);
+
+/* live headcount: numbers only, no names */
+async function agg(where){
+ const q={structuredAggregationQuery:{structuredQuery:{from:[{collectionId:"rsvpCounts"}],...(where?{where:{fieldFilter:{field:{fieldPath:"attending"},op:"EQUAL",value:{stringValue:where}}}}:{})},
+  aggregations:[{alias:"a",sum:{field:{fieldPath:"adults"}}},{alias:"k",sum:{field:{fieldPath:"kids"}}},{alias:"n",count:{}}]}};
+ const r=await fetch(API+":runAggregationQuery",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(q)});
+ if(!r.ok)throw new Error("status "+r.status);const j=await r.json();const f=j[0].result.aggregateFields;
+ const n=v=>Number(v.integerValue??v.doubleValue??0);return{a:n(f.a),k:n(f.k),n:n(f.n)}}
+function bump(el,v){if(el.textContent!==String(v)){el.textContent=v;el.classList.remove("bump");void el.offsetWidth;el.classList.add("bump")}}
+async function loadTally(){try{const y=await agg("yes");const all=await agg(null);
+ bump(document.getElementById("tA"),y.a);bump(document.getElementById("tK"),y.k);bump(document.getElementById("tT"),y.a+y.k);
+ document.getElementById("tF").textContent=T(all.n===1?"1 réponse reçue · mis à jour à chaque nouvelle réponse":"{n} réponses reçues · mis à jour à chaque nouvelle réponse").replace("{n}",all.n);
+ document.getElementById("tally").classList.add("on")}catch(e){}}
+loadTally();setInterval(loadTally,20000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)loadTally()});
 
 document.getElementById("gbForm").addEventListener("submit",async e=>{e.preventDefault();const st=document.getElementById("gbStatus");
  const name=document.getElementById("g-name").value.trim().slice(0,60),text=document.getElementById("g-text").value.trim().slice(0,500);
