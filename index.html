@@ -11,6 +11,7 @@
 <meta property="og:image" content="https://secretgamerx.github.io/RoseMarieValcourt30/img/og-image.jpg">
 <meta property="og:url" content="https://secretgamerx.github.io/RoseMarieValcourt30/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="img/hero-1.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317121c'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='32' text-anchor='middle' fill='%23ec9db3'%3E30%3C/text%3E%3C/svg%3E">
 <title>Rose a 30 ans</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,6 +68,7 @@ nav.top .links a.cta{color:var(--night);background:var(--rose);font-weight:600}
 .hero{position:relative;overflow:hidden;min-height:min(92vh,820px);display:grid;align-items:end;isolation:isolate}
 .hero .slides{position:absolute;inset:0;z-index:-2}
 .hero .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease;transform:scale(1.08)}
+.hero .slides img:nth-child(3){object-position:center 30%}
 .hero .slides img.show{opacity:1;animation:kb 9s ease-out forwards}
 @keyframes kb{from{transform:scale(1.14) translate(1.5%,1%)}to{transform:scale(1.02) translate(0,0)}}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,color-mix(in srgb,var(--night) 35%,transparent) 0%,color-mix(in srgb,var(--night) 30%,transparent) 40%,var(--night) 96%)}
@@ -614,7 +616,7 @@ footer .big{font-family:var(--f-display);font-size:clamp(2rem,6vw,3.4rem);color:
       <details><summary>Y a-t-il du stationnement?</summary><p>Oui, le stationnement du Centre multifonctionnel est gratuit et juste à côté de l'entrée.</p></details>
       <details><summary>Quel est le code vestimentaire?</summary><p>Chic et confortable. Un petit clin d'œil rose est toujours le bienvenu!</p></details>
       <details><summary>Puis-je venir accompagné?</summary><p>Oui, ajoutez simplement la personne dans le nombre d'adultes de votre RSVP.</p></details>
-      <details><summary>Que puis-je offrir à Rose?</summary><p>Votre présence suffit. Pour ceux qui veulent participer, une cagnotte de groupe sera partagée sous peu.</p></details>
+      <details><summary>Que puis-je offrir à Rose?</summary><p>Votre présence est le plus beau des cadeaux, et elle suffit amplement. Si vous souhaitez tout de même offrir quelque chose à Rose, c'est entièrement votre choix : chaque attention venant du cœur lui fera plaisir.</p></details>
       <details><summary>À quelle heure finit la soirée?</summary><p>Accueil à 17 h, souper à 18 h 30 et gâteau à 20 h. Ensuite on danse jusqu'à ce que tout le monde ait fini de danser. Partez quand vous voulez!</p></details>
       <details><summary>Y aura-t-il un bar?</summary><p>Oui! Un bar ouvert vous attend toute la soirée, avec un choix de consommations limité mais très bien. Prévoyez un chauffeur désigné ou un retour en taxi pour rentrer en sécurité.</p></details>
       <details><summary>Le souper est-il inclus?</summary><p>Oui, le souper est servi à 18 h 30. Les options du menu seront disponibles bientôt, dès qu'elles seront confirmées. D'ici là, indiquez vos allergies et restrictions alimentaires dans le RSVP.</p></details>
@@ -742,7 +744,7 @@ const EN={
 "Puis-je venir accompagné?":"Can I bring someone?",
 "Oui, ajoutez simplement la personne dans le nombre d'adultes de votre RSVP.":"Yes, just include them in the number of adults in your RSVP.",
 "Que puis-je offrir à Rose?":"What can I give Rose?",
-"Votre présence suffit. Pour ceux qui veulent participer, une cagnotte de groupe sera partagée sous peu.":"Your presence is enough. For those who want to chip in, a group fund will be shared soon.",
+"Votre présence est le plus beau des cadeaux, et elle suffit amplement. Si vous souhaitez tout de même offrir quelque chose à Rose, c'est entièrement votre choix : chaque attention venant du cœur lui fera plaisir.":"Your presence is the best gift of all, and it is more than enough. If you would still like to give Rose something, that is entirely up to you: anything that comes from the heart will make her happy.",
 "À quelle heure finit la soirée?":"What time does the party end?",
 "Accueil à 17 h, souper à 18 h 30 et gâteau à 20 h. Ensuite on danse jusqu'à ce que tout le monde ait fini de danser. Partez quand vous voulez!":"Doors at 5 p.m., dinner at 6:30 and cake at 8. Then we dance until everyone is done dancing. Leave whenever you like!",
 "Y aura-t-il un bar?":"Will there be a bar?",
@@ -870,9 +872,9 @@ const PHOTOS=[
 ].map((p,i)=>({...p,src:`img/${String(i+1).padStart(2,"0")}.jpg`,n:i+1}));
 
 /* hero slideshow */
-const slideIdx=[17,22,27,14,18];
+const HERO=["img/hero-1.jpg","img/hero-2.jpg","img/hero-3.jpg","img/hero-4.jpg","img/hero-5.jpg"];
 const slides=document.getElementById("slides");
-slideIdx.forEach((n,i)=>{const im=new Image();im.src=PHOTOS[n-1].src;im.alt="";if(i===0)im.className="show";slides.appendChild(im)});
+HERO.forEach((src,i)=>{const im=new Image();im.src=src;im.alt="";if(i===0)im.className="show";slides.appendChild(im)});
 let cur=0;const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
 if(!reduce)setInterval(()=>{const ims=slides.children;ims[cur].classList.remove("show");cur=(cur+1)%ims.length;ims[cur].classList.add("show")},6500);
 
