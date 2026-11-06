@@ -11,7 +11,6 @@
 <meta property="og:image" content="https://rosemarie30.ca/img/og-image.jpg">
 <meta property="og:url" content="https://rosemarie30.ca/">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="img/hero-1.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317121c'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='32' text-anchor='middle' fill='%23ec9db3'%3E30%3C/text%3E%3C/svg%3E">
 <title>Rose a 30 ans</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -643,6 +642,16 @@ body.menu-open{overflow:hidden}
  footer .big{font-size:2rem}
  footer p{font-size:.85rem}
 }
+
+@media (max-width:760px){
+ .hero::before{display:none}
+ nav.top.solid{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(23,18,28,.96)}
+ .burger,nav.top .lang,.countdown div,.btn.ghost{backdrop-filter:none;-webkit-backdrop-filter:none}
+ .reveal.pre{filter:none}
+ .btn.primary::after{display:none}
+}
+.hbars{gap:3px}
+@media (max-width:760px){.hbars{gap:2px}}
 </style>
 </head>
 <body>
@@ -730,7 +739,7 @@ body.menu-open{overflow:hidden}
       <p class="sig">Avec amour, au nom de toute la famille</p>
     </div>
     <figure>
-      <img src="img/18.jpg" alt="Rose assise sur un rocher, une ville et la mer derrière elle">
+      <img loading="lazy" decoding="async" src="img/welcome.jpg" alt="Rose assise sur un rocher, une ville et la mer derrière elle">
       <figcaption>Toujours prête pour la prochaine aventure.</figcaption>
     </figure>
   </div>
@@ -1271,25 +1280,37 @@ const PHOTOS=[
 const HERO=[
  {src:"img/hero-tree.jpg",m:"50% 86%",d:"50% 82%"},
  {src:"img/hero-wings.jpg",m:"50% 42%",d:"50% 52%"},
+ {src:"img/hero-beach.jpg",m:"38% 50%",d:"50% 45%"},
  {src:"img/hero-pilot.jpg",m:"8% 40%",d:"50% 45%",only:"m"},
+ {src:"img/hero-parrot.jpg",m:"50% 22%",d:"50% 22%"},
  {src:"img/hero-1.jpg",m:"70% 50%",d:"50% 50%"},
  {src:"img/hero-tsq.jpg",m:"82% 40%",d:"50% 38%"},
+ {src:"img/hero-dogcuddle.jpg",m:"36% 40%",d:"50% 30%"},
  {src:"img/hero-family.jpg",m:"50% 40%",d:"50% 42%"},
  {src:"img/hero-river.jpg",m:"50% 40%",d:"50% 42%"},
- {src:"img/hero-2.jpg",m:"56% 50%",d:"55% 55%"}
+ {src:"img/hero-mirror.jpg",m:"50% 22%",d:"50% 18%"},
+ {src:"img/hero-nylights.jpg",m:"56% 50%",d:"50% 62%"},
+ {src:"img/hero-2.jpg",m:"56% 50%",d:"55% 55%"},
+ {src:"img/hero-doglover.jpg",m:"42% 12%",d:"50% 25%"},
+ {src:"img/hero-uncle.jpg",m:"76% 50%",d:"50% 40%"},
+ {src:"img/hero-stairs.jpg",m:"68% 55%",d:"50% 55%"},
+ {src:"img/hero-josi.jpg",m:"50% 45%",d:"50% 35%"},
+ {src:"img/hero-skydive.jpg",m:"48% 50%",d:"50% 40%"},
+ {src:"img/hero-raft.jpg",m:"22% 50%",d:"50% 50%"}
 ];
 const slides=document.getElementById("slides"),hbars=document.getElementById("hbars");
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,isPhone=matchMedia("(max-width:760px)");
 const SLIDES=HERO.filter(h=>!(h.only==="m"&&!isPhone.matches));HERO.length=0;HERO.push(...SLIDES);
 const SLIDE=5;hbars.style.setProperty("--slide",SLIDE+"s");
-HERO.forEach((h,i)=>{const im=new Image();im.decoding="async";im.src=isPhone.matches?h.src.replace(".jpg","-m.jpg"):h.src;im.alt="";im.style.objectPosition=isPhone.matches?h.m:h.d;slides.appendChild(im);
+const heroSrc=h=>isPhone.matches?h.src.replace(".jpg","-m.jpg"):h.src;
+HERO.forEach((h,i)=>{const im=new Image();im.decoding="async";if(i===0){im.src=heroSrc(h);im.fetchPriority="high"}im.dataset.src=heroSrc(h);im.alt="";im.style.objectPosition=isPhone.matches?h.m:h.d;slides.appendChild(im);
  const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Photo "+(i+1));b.innerHTML="<span><i></i></span>";b.onclick=()=>go(i);hbars.appendChild(b)});
 isPhone.addEventListener?.("change",()=>[...slides.children].forEach((im,i)=>im.style.objectPosition=isPhone.matches?HERO[i].m:HERO[i].d));
 let cur=-1,timer=null;
 function go(n){const ims=slides.children,bs=hbars.children;if(cur>=0)ims[cur].classList.remove("show");cur=(n+HERO.length)%HERO.length;
- const im=ims[cur];im.loading="eager";im.classList.add("show");
+ const im=ims[cur];if(!im.getAttribute("src"))im.src=im.dataset.src;im.classList.add("show");
  [...bs].forEach((b,i)=>{b.classList.toggle("done",i<cur);b.classList.remove("on")});void bs[cur].offsetWidth;bs[cur].classList.add("on");
- const nx=ims[(cur+1)%HERO.length];nx.loading="eager";
+ const nx=ims[(cur+1)%HERO.length];setTimeout(()=>{if(!nx.getAttribute("src"))nx.src=nx.dataset.src},1500);
  clearTimeout(timer);timer=setTimeout(()=>go(cur+1),SLIDE*1000)}
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&cur>=0)go(cur)});
 setTimeout(()=>go(0),0);
