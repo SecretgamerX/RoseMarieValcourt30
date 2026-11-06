@@ -345,7 +345,7 @@ footer .big{font-family:var(--f-display);font-size:clamp(2rem,6vw,3.4rem);color:
       <p class="sig">Avec amour, au nom de toute la famille</p>
     </div>
     <figure>
-      <img src="img/17.jpg" alt="Rose assise sur un rocher, une ville et la mer derrière elle">
+      <img src="img/18.jpg" alt="Rose assise sur un rocher, une ville et la mer derrière elle">
       <figcaption>Toujours prête pour la prochaine aventure.</figcaption>
     </figure>
   </div>
@@ -767,11 +767,19 @@ const EN={
 "Tendresse":"Tenderness","Une petite pause câlin (avec oreilles de lapin).":"A little cuddle break (with bunny ears).",
 "Simplement Rose":"Simply Rose","Une petite découverte":"A little discovery","Juste avant de sauter de l'avion.":"Just before jumping out of the plane.",
 "En chute libre":"Free fall","Elle l'a fait!":"She did it!",
-"Ensemble dans les nuages":"Together in the clouds","En télécabine, à deux.":"In a gondola, just the two of us.",
+"Dans les nuages avec son oncle":"In the clouds with her uncle","En télécabine avec son oncle.":"In a gondola with her uncle.",
 "Toujours plus haut":"Ever higher","Une marche à la fois.":"One step at a time.",
 "Au bord de la rivière":"By the river","Sa place préférée : dehors.":"Her favourite place: outdoors.",
 "Au sommet":"At the top","La vue valait la montée.":"The view was worth the climb.",
-"Entre amies":"With her girls","Prêtes pour la soirée.":"Ready for a night out.",
+"Avec Josi":"With Josi","Sa meilleure amie, toujours là.":"Her best friend, always there.",
+"Le soir du bal, main dans la main avec son amie.":"Graduation night, hand in hand with her friend.",
+"Avec maman, au crayon":"With Mom, in pencil","Un portrait dessiné de Rose et sa mère.":"A drawn portrait of Rose and her mother.",
+"Des ailes pour voler":"Wings to fly","Un fou rire devant le mur aux ailes.":"Cracking up in front of the wings mural.",
+"Motarde":"Biker","Prête à prendre la route.":"Ready to hit the road.",
+"Avec Ethan":"With Ethan","En moto avec son neveu adoré.":"On the bike with her beloved nephew.",
+"Dolly":"Dolly","Son grand amour à quatre pattes.":"Her four-legged true love.",
+"Rose et Deepesh":"Rose and Deepesh","Un baiser sous les lumières de Noël.":"A kiss under the Christmas lights.",
+"Nous deux":"The two of us","Front contre front, au soleil.":"Forehead to forehead, in the sun.",
 "Amoureuse des chiens":"Dog lover","Impossible de résister à un câlin.":"Can't resist a cuddle.",
 "Santé!":"Cheers!","À la prochaine décennie.":"To the next decade.",
 /* messages from the page's code */
@@ -808,24 +816,31 @@ const PHOTOS=[
  {t:"Finissante!",d:"La fin du secondaire avec la gang.",c:"ado"},
  {t:"Le grand soir avec maman",d:"Prête pour son bal des finissants.",c:"proches"},
  {t:"Avec grand-maman et grand-papa",d:"Des grands-parents tellement fiers.",c:"proches"},
- {t:"Main dans la main",d:"Le bal, avec sa meilleure amie.",c:"ado"},
+ {t:"Main dans la main",d:"Le soir du bal, main dans la main avec son amie.",c:"ado"},
+ {t:"Avec maman, au crayon",d:"Un portrait dessiné de Rose et sa mère.",c:"proches"},
  {t:"Le cœur grand comme le monde",d:"Un voyage qui l'a marquée.",c:"aventure"},
  {t:"Boucles rouges",d:"L'époque des cheveux rouges.",c:"ado"},
  {t:"Tendresse",d:"Une petite pause câlin (avec oreilles de lapin).",c:"proches"},
  {t:"Simplement Rose",d:"",c:"ado"},
  {t:"Une petite découverte",d:"Juste avant de sauter de l'avion.",c:"aventure"},
  {t:"En chute libre",d:"Elle l'a fait!",c:"aventure"},
- {t:"Ensemble dans les nuages",d:"En télécabine, à deux.",c:"proches"},
+ {t:"Dans les nuages avec son oncle",d:"En télécabine avec son oncle.",c:"proches"},
  {t:"Toujours plus haut",d:"Une marche à la fois.",c:"aventure"},
  {t:"Au bord de la rivière",d:"Sa place préférée : dehors.",c:"aventure"},
  {t:"Au sommet",d:"La vue valait la montée.",c:"aventure"},
- {t:"Entre amies",d:"Prêtes pour la soirée.",c:"proches"},
+ {t:"Avec Josi",d:"Sa meilleure amie, toujours là.",c:"proches"},
  {t:"Amoureuse des chiens",d:"Impossible de résister à un câlin.",c:"aventure"},
- {t:"Santé!",d:"À la prochaine décennie.",c:"proches"}
+ {t:"Santé!",d:"À la prochaine décennie.",c:"proches"},
+ {t:"Des ailes pour voler",d:"Un fou rire devant le mur aux ailes.",c:"aventure"},
+ {t:"Motarde",d:"Prête à prendre la route.",c:"aventure"},
+ {t:"Avec Ethan",d:"En moto avec son neveu adoré.",c:"proches"},
+ {t:"Dolly",d:"Son grand amour à quatre pattes.",c:"proches"},
+ {t:"Rose et Deepesh",d:"Un baiser sous les lumières de Noël.",c:"proches"},
+ {t:"Nous deux",d:"Front contre front, au soleil.",c:"proches"}
 ].map((p,i)=>({...p,src:`img/${String(i+1).padStart(2,"0")}.jpg`,n:i+1}));
 
 /* hero slideshow */
-const slideIdx=[16,13,7,15,19];
+const slideIdx=[17,22,27,14,18];
 const slides=document.getElementById("slides");
 slideIdx.forEach((n,i)=>{const im=new Image();im.src=PHOTOS[n-1].src;im.alt="";if(i===0)im.className="show";slides.appendChild(im)});
 let cur=0;const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
