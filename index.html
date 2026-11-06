@@ -1312,7 +1312,7 @@ function guessMap(){const g={};for(const k in guesses)g["p"+k]=Number(guesses[k]
 async function saveMine(data){if(!myId){myId=newId();store(ID_KEY,myId)}
  const doc={name:"",email:"",phone:"",attending:"none",adults:0,kids:0,kidsAges:"",diet:"",song:"",message:"",...(mine||{}),...data,guesses:guessMap()};
  delete doc.updatedAt;await commit("rsvps/"+myId,doc,"updatedAt");mine=doc;
- try{await commit("rsvpCounts/"+myId,{attending:doc.attending,adults:doc.adults,kids:doc.kids},"at")}catch(e){}
+ if(doc.attending!=="none"){const y=doc.attending==="yes";try{await commit("rsvpCounts/"+myId,{attending:doc.attending,adults:y?doc.adults:0,kids:y?doc.kids:0},"at")}catch(e){}}
  loadTally()}
 
 document.getElementById("rsvpForm").addEventListener("submit",async e=>{e.preventDefault();
@@ -1355,7 +1355,7 @@ async function agg(where){
  if(!r.ok)throw new Error("status "+r.status);const j=await r.json();const f=j[0].result.aggregateFields;
  const n=v=>Number(v.integerValue??v.doubleValue??0);return{a:n(f.a),k:n(f.k),n:n(f.n)}}
 function bump(el,v){if(el.textContent!==String(v)){el.textContent=v;el.classList.remove("bump");void el.offsetWidth;el.classList.add("bump")}}
-async function loadTally(){try{const y=await agg("yes");const all=await agg(null);
+async function loadTally(){try{const all=await agg(null);const y=all;
  bump(document.getElementById("tA"),y.a);bump(document.getElementById("tK"),y.k);bump(document.getElementById("tT"),y.a+y.k);
  document.getElementById("tF").textContent=T(all.n===1?"1 réponse reçue · mis à jour à chaque nouvelle réponse":"{n} réponses reçues · mis à jour à chaque nouvelle réponse").replace("{n}",all.n);
  document.getElementById("tally").classList.add("on")}catch(e){}}
