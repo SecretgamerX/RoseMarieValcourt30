@@ -2,7 +2,7 @@
 
 Invitation website for Rose's 30th birthday: **Saturday, December 19, 2026**, Centre multifonctionnel de Saint-Éphrem (34, route 271 Sud, Saint-Éphrem-de-Beauce).
 
-Live site: **https://secretgamerx.github.io/rosemarievalcourt30/**
+Live site: **https://secretgamerx.github.io/RoseMarieValcourt30/**
 
 ## What's in here
 
