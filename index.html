@@ -463,6 +463,14 @@ body.menu-open{overflow:hidden}
  footer .big{font-size:2.4rem}
  .float-rsvp{width:calc(100% - 32px);max-width:420px}
 }
+
+.status{font-size:.98rem;line-height:1.45;padding:14px 16px;border-radius:14px;animation:stIn .45s cubic-bezier(.2,.7,.2,1)}
+.status.ok{background:linear-gradient(120deg,rgba(236,157,179,.16),rgba(243,223,182,.12));border-color:rgba(243,223,182,.55)}
+.status.err{background:rgba(255,159,138,.1);border-color:rgba(255,159,138,.55)}
+@keyframes stIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.btn.busy{opacity:.75;pointer-events:none}
+.btn.busy::before{content:"";width:14px;height:14px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -624,8 +632,8 @@ body.menu-open{overflow:hidden}
         <div class="field"><label for="r-diet">Allergies ou restrictions alimentaires</label><input type="text" id="r-diet" placeholder="Ex. sans noix, végétarien"></div>
         <div class="field"><label for="r-song">Une chanson pour faire danser Rose?</label><input type="text" id="r-song" placeholder="Titre et artiste"></div>
         <div class="field"><label for="r-msg">Un petit mot pour Rose (optionnel)</label><textarea id="r-msg" placeholder="Il sera gardé secret jusqu'à la fête"></textarea></div>
-        <div class="status" id="rsvpStatus" hidden></div>
         <button class="btn primary" type="submit" id="rsvpBtn">Envoyer ma réponse</button>
+        <div class="status" id="rsvpStatus" role="status" aria-live="polite" hidden></div>
         <p class="note">Vous pourrez modifier votre réponse plus tard en revenant sur cette page, à partir du même téléphone ou ordinateur.</p>
       </form>
     </div>
@@ -734,18 +742,6 @@ body.menu-open{overflow:hidden}
   </div>
 </section>
 
-<section class="band" style="padding-top:0">
-  <div class="wrap">
-    <div class="gift reveal">
-      <div>
-        <p class="eyebrow">Cadeau de groupe</p>
-        <h3 style="margin-top:8px">Votre présence est le plus beau cadeau.</h3>
-        <p>Pour ceux qui le souhaitent, une cagnotte commune servira à offrir à Rose une nouvelle aventure (parachute, voyage, surprise!). Les détails seront partagés bientôt.</p>
-      </div>
-      <span class="btn ghost" aria-disabled="true">Lien à venir</span>
-    </div>
-  </div>
-</section>
 
 <section class="band story" id="lieu">
   <div class="wrap">
@@ -806,7 +802,7 @@ body.menu-open{overflow:hidden}
       <details><summary>Y a-t-il du stationnement?</summary><p>Oui, le stationnement du Centre multifonctionnel est gratuit et juste à côté de l'entrée.</p></details>
       <details><summary>Quel est le code vestimentaire?</summary><p>Chic et confortable. Un petit clin d'œil rose est toujours le bienvenu!</p></details>
       <details><summary>Puis-je venir accompagné?</summary><p>Oui, ajoutez simplement la personne dans le nombre d'adultes de votre RSVP.</p></details>
-      <details><summary>Que puis-je offrir à Rose?</summary><p>Votre présence est le plus beau des cadeaux, et elle suffit amplement. Si vous souhaitez tout de même offrir quelque chose à Rose, c'est entièrement votre choix : chaque attention venant du cœur lui fera plaisir.</p></details>
+      <details><summary>Que puis-je offrir à Rose?</summary><p>Votre présence est le plus beau des cadeaux, et elle suffit amplement. Si vous souhaitez tout de même offrir quelque chose à Rose, c'est entièrement votre choix : chaque attention venant du cœur lui fera plaisir. Il n'y a pas de cadeau de groupe de prévu; pour toute question, écrivez-nous dans la conversation Messenger.</p></details>
       <details><summary>À quelle heure finit la soirée?</summary><p>Accueil à 17 h, souper à 18 h 30 et gâteau à 20 h. Ensuite on danse jusqu'à ce que tout le monde ait fini de danser. Partez quand vous voulez!</p></details>
       <details><summary>Y aura-t-il un bar?</summary><p>Oui! Un bar ouvert vous attend toute la soirée, avec un choix de consommations limité mais très bien. Prévoyez un chauffeur désigné ou un retour en taxi pour rentrer en sécurité.</p></details>
       <details><summary>Le souper est-il inclus?</summary><p>Oui, le souper est servi à 18 h 30. Les options du menu seront disponibles bientôt, dès qu'elles seront confirmées. D'ici là, indiquez vos allergies et restrictions alimentaires dans le RSVP.</p></details>
@@ -934,7 +930,7 @@ const EN={
 "Puis-je venir accompagné?":"Can I bring someone?",
 "Oui, ajoutez simplement la personne dans le nombre d'adultes de votre RSVP.":"Yes, just include them in the number of adults in your RSVP.",
 "Que puis-je offrir à Rose?":"What can I give Rose?",
-"Votre présence est le plus beau des cadeaux, et elle suffit amplement. Si vous souhaitez tout de même offrir quelque chose à Rose, c'est entièrement votre choix : chaque attention venant du cœur lui fera plaisir.":"Your presence is the best gift of all, and it is more than enough. If you would still like to give Rose something, that is entirely up to you: anything that comes from the heart will make her happy.",
+"Votre présence est le plus beau des cadeaux, et elle suffit amplement. Si vous souhaitez tout de même offrir quelque chose à Rose, c'est entièrement votre choix : chaque attention venant du cœur lui fera plaisir. Il n'y a pas de cadeau de groupe de prévu; pour toute question, écrivez-nous dans la conversation Messenger.":"Your presence is the best gift of all, and it is more than enough. If you would still like to give Rose something, that is entirely up to you: anything that comes from the heart will make her happy. There is no group gift planned; for any questions, message us in the Messenger chat.",
 "À quelle heure finit la soirée?":"What time does the party end?",
 "Accueil à 17 h, souper à 18 h 30 et gâteau à 20 h. Ensuite on danse jusqu'à ce que tout le monde ait fini de danser. Partez quand vous voulez!":"Doors at 5 p.m., dinner at 6:30 and cake at 8. Then we dance until everyone is done dancing. Leave whenever you like!",
 "Y aura-t-il un bar?":"Will there be a bar?",
@@ -995,7 +991,7 @@ const EN={
 "Réponses enregistrées. Pensez aussi à remplir le RSVP!":"Guesses saved. Don't forget to fill in the RSVP too!",
 "Écrivez un petit message avant de publier.":"Write a short message before posting.",
 "Merci! Votre mot a été ajouté.":"Thank you! Your note has been added.",
-"Un invité":"A guest","Agrandir : ":"Enlarge: "
+"Un invité":"A guest","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
 };
 const FR={};for(const k in EN)FR[EN[k]]=k;
 let LANG="fr";try{if(localStorage.getItem("rose30_lang")==="en")LANG="en"}catch(e){}
@@ -1220,6 +1216,7 @@ async function commit(path,data,stamp){
 const rStatus=document.getElementById("rsvpStatus");
 function say(el,msg,ok){el.hidden=false;el.textContent=T(msg);el.classList.toggle("ok",!!ok)}
 const NET="Impossible de joindre le serveur. Vérifiez votre connexion Internet et réessayez.";
+const CLOSED="Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.";
 let myId=load(ID_KEY),mine=null;
 
 // this guest's earlier answer (same phone or computer)
@@ -1247,11 +1244,11 @@ document.getElementById("rsvpForm").addEventListener("submit",async e=>{e.preven
   attending:document.querySelector('input[name=att]:checked').value,adults:counts.adults,kids:counts.kids,
   kidsAges:document.getElementById("r-ages").value.trim().slice(0,300),diet:document.getElementById("r-diet").value.trim().slice(0,300),
   song:document.getElementById("r-song").value.trim().slice(0,200),message:document.getElementById("r-msg").value.trim().slice(0,1000)};
- const btn=document.getElementById("rsvpBtn");btn.disabled=true;
+ const btn=document.getElementById("rsvpBtn");btn.disabled=true;btn.classList.add("busy");btn.textContent=T("Envoi en cours…");rStatus.hidden=true;rStatus.classList.remove("err");
  try{await saveMine(data);
   say(rStatus,data.attending==="no"?"Merci de nous avoir avisés. Vous allez nous manquer!":T("Merci {name}! Votre réponse est enregistrée. À bientôt le 19 décembre.").replace("{name}",name.split(" ")[0]),true);
   btn.textContent=T("Mettre à jour ma réponse");if(data.attending!=="no")confetti();showCal();
- }catch(err){say(rStatus,NET)}finally{btn.disabled=false}});
+ }catch(err){say(rStatus,String(err.message).includes("403")?CLOSED:NET);rStatus.classList.add("err")}finally{btn.disabled=false;btn.classList.remove("busy");btn.textContent=T(mine&&mine.attending&&mine.attending!=="none"?"Mettre à jour ma réponse":"Envoyer ma réponse")}rStatus.scrollIntoView({block:"center",behavior:"smooth"})});
 
 function showCal(){if(document.getElementById("calLinks"))return;const d=document.createElement("div");d.id="calLinks";d.style.cssText="display:flex;gap:10px;flex-wrap:wrap";
  const a=document.createElement("a");a.className="btn ghost";a.target="_blank";a.rel="noopener";a.textContent=T("Ajouter à Google Agenda");
@@ -1276,7 +1273,7 @@ document.getElementById("gbForm").addEventListener("submit",async e=>{e.preventD
  const name=document.getElementById("g-name").value.trim().slice(0,60),text=document.getElementById("g-text").value.trim().slice(0,500);
  if(!text){say(st,"Écrivez un petit message avant de publier.");return}
  try{await commit("guestbook/"+newId(),{name:name||"Un invité",text},"at");say(st,"Merci! Votre mot a été ajouté.",true);document.getElementById("g-text").value="";loadNotes()}
- catch(err){say(st,NET)}});
+ catch(err){say(st,String(err.message).includes("403")?CLOSED:NET);st.classList.add("err")}});
 
 /* confetti */
 function confetti(){if(reduce)return;const cv=document.createElement("canvas");cv.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20";document.body.appendChild(cv);
