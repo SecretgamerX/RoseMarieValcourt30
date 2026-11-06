@@ -59,6 +59,8 @@ nav.top .links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-
 nav.top .links::-webkit-scrollbar{display:none}
 nav.top .links a{color:var(--mist);text-decoration:none;font-size:.9rem;padding:6px 12px;border-radius:99px;white-space:nowrap;transition:color .2s,background .2s}
 nav.top .links a:hover,nav.top .links a.on{color:var(--frost);background:var(--night-2)}
+nav.top .lang{flex:0 0 auto;font:700 .78rem var(--f-body);letter-spacing:.1em;color:var(--frost);background:transparent;border:1px solid var(--line);border-radius:99px;padding:6px 12px;cursor:pointer;transition:border-color .2s,color .2s}
+nav.top .lang:hover{border-color:var(--rose);color:var(--rose)}
 nav.top .links a.cta{color:var(--night);background:var(--rose);font-weight:600}
 
 /* hero */
@@ -307,6 +309,7 @@ footer .big{font-family:var(--f-display);font-size:clamp(2rem,6vw,3.4rem);color:
       <a href="#lieu">Lieu & activités</a>
       <a href="#faq">FAQ</a>
     </div>
+    <button type="button" class="lang" id="langBtn" aria-label="Switch to English">EN</button>
   </div>
 </nav>
 
@@ -631,6 +634,173 @@ footer .big{font-family:var(--f-display);font-size:clamp(2rem,6vw,3.4rem);color:
 </dialog>
 
 <script>
+/* ---------- French / English ---------- */
+const EN={
+"La soirée":"The evening","Son histoire":"Her story","Zone enfants":"Kids' zone","Galerie":"Gallery","Jeu":"Game","Livre d'or":"Guestbook","Lieu & activités":"Venue & activities",
+"On célèbre les 30 ans de":"Celebrating the 30th birthday of",
+"Samedi 19 décembre 2026":"Saturday, December 19, 2026",
+"Accueil dès 17 h":"Doors open at 5 p.m.",
+"jours":"days","heures":"hours","minutes":"minutes","secondes":"seconds",
+"Je confirme ma présence":"RSVP now","Voir son histoire":"See her story",
+"Bienvenue":"Welcome",
+"Trente ans de rires, d'aventures et de grands sauts dans le vide. Le 19 décembre, on se réunit pour fêter":"Thirty years of laughter, adventures and big leaps into the void. On December 19, we're getting together to celebrate",
+", entourée de toutes les personnes qu'elle aime.":", surrounded by everyone she loves.",
+"Avec amour, au nom de toute la famille":"With love, on behalf of the whole family",
+"Toujours prête pour la prochaine aventure.":"Always ready for the next adventure.",
+"Déroulement":"Schedule",
+"Un bar ouvert, un souper, un gâteau, puis on danse jusqu'à ce que les derniers danseurs rendent les armes.":"An open bar, dinner, cake, then dancing until the last dancers give up.",
+"17 h":"5 p.m.","18 h 30":"6:30 p.m.","20 h":"8 p.m.",
+"Arrivée et bar ouvert":"Arrival and open bar",
+"Le bar ouvre dès votre arrivée : un choix de consommations plus limité, mais très bien. On trinque et on retrouve tout le monde.":"The bar opens as soon as you arrive: a smaller selection of drinks, but a really nice one. Raise a glass and catch up with everyone.",
+"Souper":"Dinner",
+"On passe à table. Les options du menu seront annoncées bientôt, dès qu'elles seront confirmées.":"Time to eat. Menu options will be announced soon, once they're confirmed.",
+"Gâteau":"Cake",
+"On chante bonne fête à Rose et on souffle les 30 bougies.":"We sing happy birthday to Rose and she blows out 30 candles.",
+"Après":"After","Danse":"Dancing",
+"La piste reste ouverte jusqu'à ce que tout le monde ait fini de danser.":"The dance floor stays open until everyone is done dancing.",
+"De la petite Rose à aujourd'hui":"From little Rose to today",
+"Son histoire en photos":"Her story in photos",
+"Faites défiler de gauche à droite, de ses premiers tours de vélo jusqu'à aujourd'hui. Touchez une photo pour l'agrandir.":"Scroll left to right, from her first bike rides to today. Tap a photo to enlarge it.",
+"Liste d'invités":"Guest list","Serez-vous des nôtres?":"Will you join us?",
+"Indiquez combien d'adultes et d'enfants vous accompagnent. Ça nous aide à prévoir la nourriture, les places et l'espace des enfants.":"Let us know how many adults and children are coming. It helps us plan the food, seating and the kids' area.",
+"Quand":"When","Accueil 17 h · Souper 18 h 30 · Gâteau 20 h":"Doors 5 p.m. · Dinner 6:30 p.m. · Cake 8 p.m.",
+"Où":"Where","Réponse souhaitée avant":"Please reply by","Le 5 décembre 2026":"December 5, 2026",
+"Enfants":"Children","Bienvenus!":"Welcome!","Jeu gonflable et coin des tout-petits":"Inflatable game and toddler corner",
+"Nom complet":"Full name","Courriel":"Email","Téléphone":"Phone","Serez-vous présent?":"Will you be there?",
+"Oui!":"Yes!","Peut-être":"Maybe","Non":"No","Adultes":"Adults","Vous inclus":"Including you","17 ans et moins":"17 and under",
+"Prénoms et âges des enfants":"Children's first names and ages",
+"Allergies ou restrictions alimentaires":"Allergies or dietary restrictions",
+"Une chanson pour faire danser Rose?":"A song to get Rose dancing?",
+"Un petit mot pour Rose (optionnel)":"A short note for Rose (optional)",
+"Envoyer ma réponse":"Send my RSVP","Mettre à jour ma réponse":"Update my RSVP",
+"Vous pourrez modifier votre réponse plus tard en revenant sur cette page, à partir du même téléphone ou ordinateur.":"You can change your answer later by coming back to this page from the same phone or computer.",
+"Pour les petits":"For the little ones","Zone":"The","des":"kids'","enfants":"zone",
+"Pendant que les grands célèbrent, les enfants auront leur propre espace avec un jeu gonflable, un coin tapis et jouets pour les tout-petits, et des collations.":"While the grown-ups celebrate, kids get their own space with an inflatable game, a mat-and-toys corner for toddlers, and snacks.",
+"Pour les plus grands":"For the bigger kids","Jeu gonflable":"Inflatable game",
+"Pour sauter, grimper et se dépenser pendant que les grands célèbrent.":"For jumping, climbing and burning energy while the grown-ups celebrate.",
+"Pour les tout-petits":"For toddlers","Coin tapis et jouets":"Mats and toys corner",
+"Un espace douillet avec des tapis de sol et des jouets, parfait pour les bébés et les petits qui préfèrent jouer en douceur.":"A cozy space with floor mats and toys, perfect for babies and little ones who prefer gentle play.",
+"Horaire des enfants":"Kids' schedule",
+"Arrivée : jeu gonflable et coin jouets ouverts":"Arrival: inflatable game and toy corner open",
+"Souper avec les grands":"Dinner with the grown-ups",
+"Gâteau : tout le monde chante pour Rose":"Cake: everyone sings for Rose",
+"Ensuite":"Then","Danse avec les grands ou dernier tour de jeu gonflable!":"Dancing with the grown-ups or one last round on the inflatable!",
+"Sécurité et quoi apporter":"Safety and what to bring",
+"Des adultes surveilleront les jeux en tout temps, mais les parents restent responsables de leurs enfants.":"Adults will watch the play areas at all times, but parents remain responsible for their children.",
+"Bas obligatoires dans le jeu gonflable, pas de souliers ni de bijoux.":"Socks required on the inflatable: no shoes or jewelry.",
+"Les tout-petits ont leur propre coin avec tapis, à l'écart du jeu gonflable.":"Toddlers have their own mat corner, away from the inflatable.",
+"Apportez des souliers d'intérieur et un change de vêtements.":"Bring indoor shoes and a change of clothes.",
+"Indiquez les allergies de vos enfants dans le formulaire RSVP.":"List your children's allergies in the RSVP form.",
+"Rose, en images":"Rose in pictures",
+"Les photos de la fête s'ajouteront ici après le 19 décembre.":"Party photos will be added here after December 19.",
+"Toutes":"All","Enfance":"Childhood","Adolescence":"Teen years","Aventures":"Adventures","Avec ses proches":"With loved ones",
+"Quel âge avait Rose?":"How old was Rose?",
+"Glissez pour deviner son âge sur chaque photo. Les bonnes réponses seront dévoilées pendant la fête, et la personne la plus proche gagne un prix!":"Slide to guess her age in each photo. The answers will be revealed at the party, and the closest guess wins a prize!",
+"Enregistrer mes réponses":"Save my guesses",
+"Un mot pour Rose":"A note for Rose",
+"Un souvenir, un souhait, une blague d'initié. Tous les mots seront lus le soir de la fête.":"A memory, a wish, an inside joke. All the notes will be read at the party.",
+"Votre nom":"Your name","Votre message":"Your message","Publier mon mot":"Post my note",
+"Les messages des invités apparaîtront ici. Soyez la première personne à écrire à Rose!":"Guests' notes will appear here. Be the first to write to Rose!",
+"Cadeau de groupe":"Group gift","Votre présence est le plus beau cadeau.":"Your presence is the best gift.",
+"Pour ceux qui le souhaitent, une cagnotte commune servira à offrir à Rose une nouvelle aventure (parachute, voyage, surprise!). Les détails seront partagés bientôt.":"For those who'd like to, a shared fund will give Rose a new adventure (skydiving, a trip, a surprise!). Details coming soon.",
+"Lien à venir":"Link coming soon",
+"Rendez-vous à Saint-Éphrem":"See you in Saint-Éphrem",
+"Au cœur du village, à deux pas de l'église. Stationnement gratuit sur place.":"In the heart of the village, steps from the church. Free parking on site.",
+"Téléphone du centre :":"Venue phone:",
+"Conduite d'hiver : prévoyez des pneus d'hiver et un peu plus de temps. Vérifiez l'état des routes sur Québec 511 avant de partir.":"Winter driving: use winter tires and allow extra time. Check road conditions on Québec 511 before you leave.",
+"À faire dans les environs":"Things to do nearby",
+"Pour ceux qui arrivent tôt ou restent la fin de semaine. Vérifiez les heures d'ouverture avant de vous déplacer, c'est le début de la saison d'hiver.":"For those arriving early or staying the weekend. Check opening hours before you go, it's the start of the winter season.",
+"Ski alpin · Saint-Georges":"Downhill skiing · Saint-Georges",
+"Une petite station familiale, parfaite pour initier les enfants au ski.":"A small family ski hill, perfect for kids learning to ski.",
+"En savoir plus →":"Learn more →",
+"Ski de fond & raquette":"Cross-country & snowshoeing",
+"17 km de sentiers de ski classique, du pas de patin et 8 km de raquette. Location sur place.":"17 km of classic ski trails, skate skiing and 8 km of snowshoe trails. Rentals on site.",
+"Station de ski":"Ski resort","Une station plus grande pour une journée complète de glisse.":"A bigger resort for a full day on the slopes.",
+"Restos & balade":"Food & strolling","Centre-ville de Saint-Georges":"Downtown Saint-Georges",
+"Restaurants, la grande cathédrale et les sculptures de Beauce Art le long de la rivière.":"Restaurants, the big cathedral and the Beauce Art sculptures along the river.",
+"Voir les restos →":"See restaurants →","Au village":"In the village",
+"Patinoire et parcs de Saint-Éphrem":"Saint-Éphrem rink and parks",
+"Patinoire extérieure et espaces verts gérés par la municipalité.":"Outdoor skating rink and green spaces run by the town.",
+"Site de la municipalité →":"Town website →","Où dormir":"Where to stay",
+"Hébergement à Saint-Georges":"Places to stay in Saint-Georges",
+"Hôtels et motels à Saint-Georges, ou chalets et Airbnb dans la région.":"Hotels and motels in Saint-Georges, or cottages and Airbnbs in the area.",
+"Voir les options →":"See options →",
+"Questions":"Questions","Bon à savoir":"Good to know",
+"Les enfants sont-ils invités?":"Are kids invited?",
+"Oui! Il y aura une zone enfants avec un jeu gonflable et un coin tapis et jouets pour les tout-petits. Indiquez le nombre d'enfants et leur âge dans le RSVP.":"Yes! There will be a kids' zone with an inflatable game and a mat-and-toys corner for toddlers. Enter the number of children and their ages in the RSVP.",
+"Y a-t-il du stationnement?":"Is there parking?",
+"Oui, le stationnement du Centre multifonctionnel est gratuit et juste à côté de l'entrée.":"Yes, the Centre multifonctionnel parking lot is free and right next to the entrance.",
+"Quel est le code vestimentaire?":"What's the dress code?",
+"Chic et confortable. Un petit clin d'œil rose est toujours le bienvenu!":"Chic and comfortable. A touch of pink is always welcome!",
+"Puis-je venir accompagné?":"Can I bring someone?",
+"Oui, ajoutez simplement la personne dans le nombre d'adultes de votre RSVP.":"Yes, just include them in the number of adults in your RSVP.",
+"Que puis-je offrir à Rose?":"What can I give Rose?",
+"Votre présence suffit. Pour ceux qui veulent participer, une cagnotte de groupe sera partagée sous peu.":"Your presence is enough. For those who want to chip in, a group fund will be shared soon.",
+"À quelle heure finit la soirée?":"What time does the party end?",
+"Accueil à 17 h, souper à 18 h 30 et gâteau à 20 h. Ensuite on danse jusqu'à ce que tout le monde ait fini de danser. Partez quand vous voulez!":"Doors at 5 p.m., dinner at 6:30 and cake at 8. Then we dance until everyone is done dancing. Leave whenever you like!",
+"Y aura-t-il un bar?":"Will there be a bar?",
+"Oui! Un bar ouvert vous attend toute la soirée, avec un choix de consommations limité mais très bien. Prévoyez un chauffeur désigné ou un retour en taxi pour rentrer en sécurité.":"Yes! An open bar all evening, with a limited but really nice selection of drinks. Plan a designated driver or a taxi to get home safely.",
+"Le souper est-il inclus?":"Is dinner included?",
+"Oui, le souper est servi à 18 h 30. Les options du menu seront disponibles bientôt, dès qu'elles seront confirmées. D'ici là, indiquez vos allergies et restrictions alimentaires dans le RSVP.":"Yes, dinner is served at 6:30 p.m. Menu options will be available soon, once confirmed. In the meantime, list any allergies or dietary restrictions in your RSVP.",
+"À bientôt le 19 décembre":"See you on December 19",
+"Samedi 19 décembre 2026 · Dès 17 h · Saint-Éphrem-de-Beauce":"Saturday, December 19, 2026 · From 5 p.m. · Saint-Éphrem-de-Beauce",
+"Église":"Church","La fête!":"The party!","Route 271":"Route 271",
+"Rose assise sur un rocher, une ville et la mer derrière elle":"Rose sitting on a rock with a town and the sea behind her",
+"Photos précédentes":"Previous photos","Photos suivantes":"Next photos",
+"Ex. Julie Poulin":"e.g. Julie Poulin","nom@exemple.com":"name@example.com",
+"Moins d'adultes":"Fewer adults","Plus d'adultes":"More adults","Moins d'enfants":"Fewer children","Plus d'enfants":"More children",
+"Ex. Léo 6 ans, Emma 3 ans":"e.g. Leo 6, Emma 3","Ex. sans noix, végétarien":"e.g. nut-free, vegetarian","Titre et artiste":"Title and artist",
+"Il sera gardé secret jusqu'à la fête":"It stays secret until the party","Filtrer les photos":"Filter photos",
+"Ex. Tante Lise":"e.g. Aunt Lise","Bonne fête Rose!":"Happy birthday Rose!",
+"Plan stylisé de Saint-Éphrem-de-Beauce":"Stylized map of Saint-Éphrem-de-Beauce","Photo agrandie":"Enlarged photo",
+"Fermer":"Close","Photo précédente":"Previous photo","Photo suivante":"Next photo",
+/* photo captions */
+"Premiers tours de roue":"First bike rides","Déjà le sourire d'une aventurière.":"Already an adventurer's smile.",
+"Avec son fidèle compagnon":"With her loyal companion","Un câlin à son petit caniche blanc.":"A hug for her little white poodle.",
+"Ce sourire-là":"That smile","Il n'a jamais changé.":"It never changed.",
+"Finissante!":"Graduate!","La fin du secondaire avec la gang.":"Finishing high school with the crew.",
+"Le grand soir avec maman":"The big night with Mom","Prête pour son bal des finissants.":"Ready for her graduation ball.",
+"Avec grand-maman et grand-papa":"With Grandma and Grandpa","Des grands-parents tellement fiers.":"Such proud grandparents.",
+"Main dans la main":"Hand in hand","Le bal, avec sa meilleure amie.":"The ball, with her best friend.",
+"Le cœur grand comme le monde":"A heart as big as the world","Un voyage qui l'a marquée.":"A trip that stayed with her.",
+"Boucles rouges":"Red curls","L'époque des cheveux rouges.":"The red-hair era.",
+"Tendresse":"Tenderness","Une petite pause câlin (avec oreilles de lapin).":"A little cuddle break (with bunny ears).",
+"Simplement Rose":"Simply Rose","Une petite découverte":"A little discovery","Juste avant de sauter de l'avion.":"Just before jumping out of the plane.",
+"En chute libre":"Free fall","Elle l'a fait!":"She did it!",
+"Ensemble dans les nuages":"Together in the clouds","En télécabine, à deux.":"In a gondola, just the two of us.",
+"Toujours plus haut":"Ever higher","Une marche à la fois.":"One step at a time.",
+"Au bord de la rivière":"By the river","Sa place préférée : dehors.":"Her favourite place: outdoors.",
+"Au sommet":"At the top","La vue valait la montée.":"The view was worth the climb.",
+"Entre amies":"With her girls","Prêtes pour la soirée.":"Ready for a night out.",
+"Amoureuse des chiens":"Dog lover","Impossible de résister à un câlin.":"Can't resist a cuddle.",
+"Santé!":"Cheers!","À la prochaine décennie.":"To the next decade.",
+/* messages from the page's code */
+"Photo":"Photo","ans":"years old",
+"Votre réponse est enregistrée. Vous pouvez la modifier ci-dessous.":"Your RSVP is saved. You can change it below.",
+"Entrez votre nom pour que l'on sache qui vient.":"Enter your name so we know who's coming.",
+"Merci de nous avoir avisés. Vous allez nous manquer!":"Thanks for letting us know. We'll miss you!",
+"Merci {name}! Votre réponse est enregistrée. À bientôt le 19 décembre.":"Thank you {name}! Your RSVP is saved. See you on December 19.",
+"Impossible de joindre le serveur. Vérifiez votre connexion Internet et réessayez.":"Couldn't reach the server. Check your internet connection and try again.",
+"Ajouter à Google Agenda":"Add to Google Calendar","Les 30 ans de Rose":"Rose's 30th birthday",
+"Réponses enregistrées. Dévoilées le 19 décembre!":"Guesses saved. Revealed on December 19!",
+"Réponses enregistrées. Pensez aussi à remplir le RSVP!":"Guesses saved. Don't forget to fill in the RSVP too!",
+"Écrivez un petit message avant de publier.":"Write a short message before posting.",
+"Merci! Votre mot a été ajouté.":"Thank you! Your note has been added.",
+"Un invité":"A guest","Agrandir : ":"Enlarge: "
+};
+const FR={};for(const k in EN)FR[EN[k]]=k;
+let LANG="fr";try{if(localStorage.getItem("rose30_lang")==="en")LANG="en"}catch(e){}
+function T(fr){return LANG==="en"&&EN[fr]!=null?EN[fr]:fr}
+function applyLang(){
+ const map=LANG==="en"?EN:FR;document.documentElement.lang=LANG;
+ document.title=LANG==="en"?"Rose turns 30":"Rose a 30 ans";
+ const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:n=>/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName)?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+ let n;while(n=w.nextNode()){const t=n.data.trim();if(t&&map[t]!=null&&map[t]!==t)n.data=n.data.replace(t,map[t])}
+ document.querySelectorAll("[placeholder],[aria-label],[alt]").forEach(el=>["placeholder","aria-label","alt"].forEach(a=>{const v=el.getAttribute(a);if(v&&map[v]!=null)el.setAttribute(a,map[v])}));
+ const b=document.getElementById("langBtn");if(b){b.textContent=LANG==="en"?"FR":"EN";b.setAttribute("aria-label",LANG==="en"?"Passer au français":"Switch to English")}
+}
+function setLang(l){LANG=l;try{localStorage.setItem("rose30_lang",l)}catch(e){}applyLang()}
+
 const PHOTOS=[
  {t:"Premiers tours de roue",d:"Déjà le sourire d'une aventurière.",c:"enfance"},
  {t:"Avec son fidèle compagnon",d:"Un câlin à son petit caniche blanc.",c:"enfance"},
@@ -689,13 +859,13 @@ document.getElementById("sNext").onclick=()=>strip.scrollBy({left:strip.clientWi
 /* gallery */
 const mas=document.getElementById("masonry");let shown=PHOTOS;
 function renderGallery(f){shown=f==="all"?PHOTOS:PHOTOS.filter(p=>p.c===f);mas.innerHTML="";
- shown.forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Agrandir : "+p.t);b.innerHTML=`<img loading="lazy" src="${p.src}" alt="${p.t}">`;b.onclick=()=>openLB(i,shown);b.animate?.([{opacity:.2,transform:"scale(.96)"},{opacity:1,transform:"none"}],{duration:450,delay:i*30,easing:"cubic-bezier(.2,.7,.2,1)",fill:"backwards"});mas.appendChild(b)})}
+ shown.forEach((p,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",T("Agrandir : ")+T(p.t));b.innerHTML=`<img loading="lazy" src="${p.src}" alt="${p.t}">`;b.onclick=()=>openLB(i,shown);b.animate?.([{opacity:.2,transform:"scale(.96)"},{opacity:1,transform:"none"}],{duration:450,delay:i*30,easing:"cubic-bezier(.2,.7,.2,1)",fill:"backwards"});mas.appendChild(b)})}
 renderGallery("all");
 document.getElementById("filters").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b));renderGallery(b.dataset.f)});
 
 /* lightbox */
 const lb=document.getElementById("lb");let lbList=PHOTOS,lbI=0;
-function showLB(){const p=lbList[lbI];const im=document.getElementById("lbImg");im.style.animation="none";im.offsetHeight;im.style.animation="";im.src=p.src;im.alt=p.t;document.getElementById("lbTitle").textContent=p.t;document.getElementById("lbText").textContent=p.d}
+function showLB(){const p=lbList[lbI];const im=document.getElementById("lbImg");im.style.animation="none";im.offsetHeight;im.style.animation="";im.src=p.src;im.alt=p.t;document.getElementById("lbTitle").textContent=T(p.t);document.getElementById("lbText").textContent=T(p.d)}
 function openLB(i,list){lbList=list;lbI=i;showLB();lb.showModal()}
 function step(d){lbI=(lbI+d+lbList.length)%lbList.length;showLB()}
 document.getElementById("lbX").onclick=()=>lb.close();
@@ -754,7 +924,7 @@ async function commit(path,data,stamp){
  if(!r.ok)throw new Error("status "+r.status)}
 
 const rStatus=document.getElementById("rsvpStatus");
-function say(el,msg,ok){el.hidden=false;el.textContent=msg;el.classList.toggle("ok",!!ok)}
+function say(el,msg,ok){el.hidden=false;el.textContent=T(msg);el.classList.toggle("ok",!!ok)}
 const NET="Impossible de joindre le serveur. Vérifiez votre connexion Internet et réessayez.";
 let myId=load(ID_KEY),mine=null;
 
@@ -766,7 +936,7 @@ let myId=load(ID_KEY),mine=null;
    const a=document.getElementById("att-"+({yes:"y",maybe:"m",no:"n"}[mine.attending]||"y"));if(a)a.checked=true;
    counts.adults=mine.adults??1;counts.kids=mine.kids??0;syncSteppers();
    document.getElementById("r-ages").value=mine.kidsAges||"";document.getElementById("r-diet").value=mine.diet||"";document.getElementById("r-song").value=mine.song||"";document.getElementById("r-msg").value=mine.message||"";
-   document.getElementById("rsvpBtn").textContent="Mettre à jour ma réponse";say(rStatus,"Votre réponse est enregistrée. Vous pouvez la modifier ci-dessous.",true)}
+   document.getElementById("rsvpBtn").textContent=T("Mettre à jour ma réponse");say(rStatus,"Votre réponse est enregistrée. Vous pouvez la modifier ci-dessous.",true)}
   if(mine.guesses)Object.entries(mine.guesses).forEach(([n,v])=>{const s=document.getElementById("g"+n.replace("p",""));if(s){s.value=v;guesses[n.replace("p","")]=v;document.getElementById("gv"+n.replace("p","")).textContent=v}})
  }catch(e){}})();
 
@@ -785,19 +955,19 @@ document.getElementById("rsvpForm").addEventListener("submit",async e=>{e.preven
   song:document.getElementById("r-song").value.trim().slice(0,200),message:document.getElementById("r-msg").value.trim().slice(0,1000)};
  const btn=document.getElementById("rsvpBtn");btn.disabled=true;
  try{await saveMine(data);
-  say(rStatus,data.attending==="no"?"Merci de nous avoir avisés. Vous allez nous manquer!":"Merci "+name.split(" ")[0]+"! Votre réponse est enregistrée. À bientôt le 19 décembre.",true);
-  btn.textContent="Mettre à jour ma réponse";if(data.attending!=="no")confetti();showCal();
+  say(rStatus,data.attending==="no"?"Merci de nous avoir avisés. Vous allez nous manquer!":T("Merci {name}! Votre réponse est enregistrée. À bientôt le 19 décembre.").replace("{name}",name.split(" ")[0]),true);
+  btn.textContent=T("Mettre à jour ma réponse");if(data.attending!=="no")confetti();showCal();
  }catch(err){say(rStatus,NET)}finally{btn.disabled=false}});
 
 function showCal(){if(document.getElementById("calLinks"))return;const d=document.createElement("div");d.id="calLinks";d.style.cssText="display:flex;gap:10px;flex-wrap:wrap";
- const a=document.createElement("a");a.className="btn ghost";a.target="_blank";a.rel="noopener";a.textContent="Ajouter à Google Agenda";
- a.href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Les 30 ans de Rose")+"&dates=20261219T170000/20261220T010000&ctz=America/Toronto&location="+encodeURIComponent("Centre multifonctionnel, 34 route 271 Sud, Saint-Éphrem-de-Beauce, QC");
+ const a=document.createElement("a");a.className="btn ghost";a.target="_blank";a.rel="noopener";a.textContent=T("Ajouter à Google Agenda");
+ a.href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(T("Les 30 ans de Rose"))+"&dates=20261219T170000/20261220T010000&ctz=America/Toronto&location="+encodeURIComponent("Centre multifonctionnel, 34 route 271 Sud, Saint-Éphrem-de-Beauce, QC");
  d.appendChild(a);rStatus.after(d)}
 
 document.getElementById("saveGuess").onclick=async()=>{const st=document.getElementById("guessStatus");
  try{await saveMine(mine?{}:{name:document.getElementById("r-name").value.trim().slice(0,100)||"Invité (jeu)"});
-  st.textContent=mine&&mine.attending!=="none"?"Réponses enregistrées. Dévoilées le 19 décembre!":"Réponses enregistrées. Pensez aussi à remplir le RSVP!"}
- catch(e){st.textContent=NET}};
+  st.textContent=T(mine&&mine.attending!=="none"?"Réponses enregistrées. Dévoilées le 19 décembre!":"Réponses enregistrées. Pensez aussi à remplir le RSVP!")}
+ catch(e){st.textContent=T(NET)}};
 
 // guestbook
 async function loadNotes(){try{
@@ -805,7 +975,7 @@ async function loadNotes(){try{
   body:JSON.stringify({structuredQuery:{from:[{collectionId:"guestbook"}],orderBy:[{field:{fieldPath:"at"},direction:"DESCENDING"}],limit:100}})});
  if(!r.ok)return;const rows=await r.json();renderNotes(rows.filter(x=>x.document).map(x=>fromFields(x.document.fields||{})))}catch(e){}}
 function renderNotes(list){const box=document.getElementById("notes");if(!list.length)return;box.innerHTML="";
- list.forEach(n=>{const c=document.createElement("div");c.className="notecard";const p=document.createElement("p");p.textContent=n.text;const s=document.createElement("small");s.textContent="— "+(n.name||"Un invité");c.append(p,s);box.appendChild(c)})}
+ list.forEach(n=>{const c=document.createElement("div");c.className="notecard";const p=document.createElement("p");p.textContent=n.text;const s=document.createElement("small");s.textContent="— "+(n.name||T("Un invité"));c.append(p,s);box.appendChild(c)})}
 loadNotes();setInterval(loadNotes,60000);
 
 document.getElementById("gbForm").addEventListener("submit",async e=>{e.preventDefault();const st=document.getElementById("gbStatus");
@@ -820,6 +990,8 @@ function confetti(){if(reduce)return;const cv=document.createElement("canvas");c
  const ps=Array.from({length:160},()=>({x:innerWidth/2,y:innerHeight*.6,vx:(Math.random()-.5)*14,vy:-Math.random()*16-6,r:Math.random()*6+3,c:cols[Math.floor(Math.random()*cols.length)],a:Math.random()*6}));
  let t=0;(function f(){x.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.a+=.2;x.save();x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r/2,-p.r/4,p.r,p.r/2);x.restore()});
   if(++t<140)requestAnimationFrame(f);else cv.remove()})()}
+document.getElementById("langBtn").onclick=()=>setLang(LANG==="en"?"fr":"en");
+if(LANG==="en")applyLang();
 </script>
 </body>
 </html>
