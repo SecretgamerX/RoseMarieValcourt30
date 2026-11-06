@@ -78,9 +78,11 @@ nav.top .links a.cta{color:var(--night);background:var(--rose);font-weight:600}
 .hero .meta{display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--frost);font-size:1.05rem;animation:rise 1.4s .3s cubic-bezier(.2,.7,.2,1) both}
 .hero .meta b{color:var(--champagne);font-weight:600}
 @keyframes rise{from{transform:translateY(28px);opacity:.2}to{transform:none;opacity:1}}
+.hero .bday{color:var(--champagne);font-size:1rem;max-width:52ch;animation:rise 1.4s .38s cubic-bezier(.2,.7,.2,1) both}
 .countdown{display:flex;gap:10px;flex-wrap:wrap;animation:rise 1.4s .45s cubic-bezier(.2,.7,.2,1) both}
 .countdown div{min-width:78px;padding:12px 14px;border:1px solid color-mix(in srgb,var(--champagne) 40%,transparent);border-radius:14px;background:color-mix(in srgb,var(--night) 55%,transparent);backdrop-filter:blur(6px);text-align:center}
 .countdown b{display:block;font-family:var(--f-display);font-size:2rem;font-weight:400;line-height:1;font-variant-numeric:tabular-nums}
+@media (max-width:440px){.countdown{flex-wrap:nowrap;gap:8px}.countdown div{min-width:0;flex:1;padding:10px 4px}.countdown b{font-size:1.6rem}.countdown span{font-size:.62rem;letter-spacing:.08em}}
 .countdown span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem var(--f-body);padding:14px 26px;border-radius:99px;border:0;cursor:pointer;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s}
 .btn.primary{background:var(--rose);color:var(--night)}
@@ -324,6 +326,7 @@ footer .big{font-family:var(--f-display);font-size:clamp(2rem,6vw,3.4rem);color:
       <span>Centre multifonctionnel de Saint-Éphrem</span>
       <span>Accueil dès 17 h</span>
     </div>
+    <p class="bday">Son anniversaire est le 31 décembre, mais on la fête un peu d'avance, le 19!</p>
     <div class="countdown" id="countdown" aria-live="off">
       <div><b id="cd-d">—</b><span>jours</span></div>
       <div><b id="cd-h">—</b><span>heures</span></div>
@@ -606,6 +609,7 @@ footer .big{font-family:var(--f-display);font-size:clamp(2rem,6vw,3.4rem);color:
   <div class="wrap">
     <div class="sec-head reveal"><p class="eyebrow">Questions</p><h2>Bon à savoir</h2></div>
     <div class="faq">
+      <details><summary>Pourquoi le 19 décembre?</summary><p>Rose a 30 ans le 31 décembre, en pleine période des Fêtes. On a choisi de célébrer un peu plus tôt, le samedi 19 décembre, pour que tout le monde puisse être là.</p></details>
       <details><summary>Les enfants sont-ils invités?</summary><p>Oui! Il y aura une zone enfants avec un jeu gonflable et un coin tapis et jouets pour les tout-petits. Indiquez le nombre d'enfants et leur âge dans le RSVP.</p></details>
       <details><summary>Y a-t-il du stationnement?</summary><p>Oui, le stationnement du Centre multifonctionnel est gratuit et juste à côté de l'entrée.</p></details>
       <details><summary>Quel est le code vestimentaire?</summary><p>Chic et confortable. Un petit clin d'œil rose est toujours le bienvenu!</p></details>
@@ -727,6 +731,9 @@ const EN={
 "Voir les options →":"See options →",
 "Questions":"Questions","Bon à savoir":"Good to know",
 "Les enfants sont-ils invités?":"Are kids invited?",
+"Son anniversaire est le 31 décembre, mais on la fête un peu d'avance, le 19!":"Her birthday is December 31, but we're celebrating a little early, on the 19th!",
+"Pourquoi le 19 décembre?":"Why December 19?",
+"Rose a 30 ans le 31 décembre, en pleine période des Fêtes. On a choisi de célébrer un peu plus tôt, le samedi 19 décembre, pour que tout le monde puisse être là.":"Rose turns 30 on December 31, right in the middle of the holidays. We chose to celebrate a little earlier, on Saturday, December 19, so everyone can be there.",
 "Oui! Il y aura une zone enfants avec un jeu gonflable et un coin tapis et jouets pour les tout-petits. Indiquez le nombre d'enfants et leur âge dans le RSVP.":"Yes! There will be a kids' zone with an inflatable game and a mat-and-toys corner for toddlers. Enter the number of children and their ages in the RSVP.",
 "Y a-t-il du stationnement?":"Is there parking?",
 "Oui, le stationnement du Centre multifonctionnel est gratuit et juste à côté de l'entrée.":"Yes, the Centre multifonctionnel parking lot is free and right next to the entrance.",
