@@ -800,13 +800,13 @@ body.menu-open{overflow:hidden}
     <div class="sec-head reveal">
       <p class="eyebrow">Déroulement</p>
       <h2>La soirée</h2>
-      <p>Un bar ouvert, un souper, un gâteau, puis on danse jusqu'à ce que les derniers danseurs rendent les armes.</p>
+      <p>Un bar ouvert, un souper, un gâteau, puis un DJ fait danser tout le monde jusqu'à ce que les derniers danseurs rendent les armes.</p>
     </div>
     <div class="prog reveal">
       <div class="stop"><span class="dot">1</span><span class="time">17 h</span><h3>Arrivée et bar ouvert</h3><p>Le bar ouvre dès votre arrivée : un choix de consommations plus limité, mais très bien. On trinque et on retrouve tout le monde.</p></div>
       <div class="stop"><span class="dot">2</span><span class="time">18 h 30</span><h3>Souper</h3><p>On passe à table. Les options du menu seront annoncées bientôt, dès qu'elles seront confirmées.</p></div>
       <div class="stop big"><span class="dot">3</span><span class="time">20 h</span><h3>Gâteau</h3><p>On chante bonne fête à Rose et on souffle les 30 bougies.</p></div>
-      <div class="stop"><span class="dot">4</span><span class="time">Après</span><h3>Danse</h3><p>La piste reste ouverte jusqu'à ce que tout le monde ait fini de danser.</p></div>
+      <div class="stop"><span class="dot">4</span><span class="time">Après</span><h3>Danse avec DJ</h3><p>Un DJ prend les platines et la piste reste ouverte jusqu'à ce que tout le monde ait fini de danser.</p></div>
     </div>
     <div class="addcal" data-cal>
       <button type="button" class="btn ghost addcal-btn" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Ajouter à mon calendrier</span></button>
@@ -891,7 +891,7 @@ body.menu-open{overflow:hidden}
           <div class="field"><label for="r-email">Courriel</label><input type="email" id="r-email" autocomplete="email" placeholder="nom@exemple.com"></div>
           <div class="field"><label for="r-phone">Téléphone</label><input type="tel" id="r-phone" autocomplete="tel" placeholder="418 555-1234"></div>
         </div>
-        <div class="field"><label for="r-song">Une chanson pour faire danser Rose?</label><input type="text" id="r-song" placeholder="Titre et artiste"></div>
+        <div class="field"><label for="r-song">Une chanson à demander au DJ?</label><input type="text" id="r-song" placeholder="Titre et artiste"></div>
         <div class="field"><label for="r-msg">Un petit mot pour Rose (optionnel)</label><textarea id="r-msg" placeholder="Il sera gardé secret jusqu'à la fête"></textarea></div>
         </div>
         <button class="btn primary" type="submit" id="rsvpBtn">Envoyer ma réponse</button>
@@ -1092,6 +1092,7 @@ body.menu-open{overflow:hidden}
       <details><summary>Puis-je venir accompagné?</summary><p>Oui, ajoutez simplement la personne dans le nombre d'adultes de votre RSVP.</p></details>
       <details><summary>Que puis-je offrir à Rose?</summary><p>Votre présence est le plus beau des cadeaux, et elle suffit amplement. Si vous souhaitez tout de même offrir quelque chose à Rose, c'est entièrement votre choix : chaque attention venant du cœur lui fera plaisir. Il n'y a pas de cadeau de groupe de prévu; pour toute question, écrivez-nous dans la conversation Messenger.</p></details>
       <details><summary>À quelle heure finit la soirée?</summary><p>Accueil à 17 h, souper à 18 h 30 et gâteau à 20 h. Ensuite on danse jusqu'à ce que tout le monde ait fini de danser. Partez quand vous voulez!</p></details>
+      <details><summary>Y aura-t-il de la musique?</summary><p>Oui! Un DJ animera la soirée et la piste de danse. Ajoutez votre demande spéciale dans le formulaire RSVP et il essaiera de la faire jouer.</p></details>
       <details><summary>Y aura-t-il un bar?</summary><p>Oui! Un bar ouvert vous attend toute la soirée, avec un choix de consommations limité mais très bien. Prévoyez un chauffeur désigné ou un retour en taxi pour rentrer en sécurité.</p></details>
       <details><summary>Le souper est-il inclus?</summary><p>Oui, le souper est servi à 18 h 30. Les options du menu seront disponibles bientôt, dès qu'elles seront confirmées. D'ici là, indiquez vos allergies et restrictions alimentaires dans le RSVP.</p></details>
     </div>
@@ -1128,7 +1129,7 @@ const EN={
 "Avec amour, au nom de toute la famille":"With love, on behalf of the whole family",
 "Toujours prête pour la prochaine aventure.":"Always ready for the next adventure.",
 "Déroulement":"Schedule",
-"Un bar ouvert, un souper, un gâteau, puis on danse jusqu'à ce que les derniers danseurs rendent les armes.":"An open bar, dinner, cake, then dancing until the last dancers give up.",
+"Un bar ouvert, un souper, un gâteau, puis un DJ fait danser tout le monde jusqu'à ce que les derniers danseurs rendent les armes.":"An open bar, dinner, cake, then a DJ keeps everyone dancing until the last dancers give up.",
 "17 h":"5 p.m.","18 h 30":"6:30 p.m.","20 h":"8 p.m.",
 "Arrivée et bar ouvert":"Arrival and open bar",
 "Le bar ouvre dès votre arrivée : un choix de consommations plus limité, mais très bien. On trinque et on retrouve tout le monde.":"The bar opens as soon as you arrive: a smaller selection of drinks, but a really nice one. Raise a glass and catch up with everyone.",
@@ -1137,7 +1138,7 @@ const EN={
 "Gâteau":"Cake",
 "On chante bonne fête à Rose et on souffle les 30 bougies.":"We sing happy birthday to Rose and she blows out 30 candles.",
 "Après":"After","Danse":"Dancing",
-"La piste reste ouverte jusqu'à ce que tout le monde ait fini de danser.":"The dance floor stays open until everyone is done dancing.",
+"Un DJ prend les platines et la piste reste ouverte jusqu'à ce que tout le monde ait fini de danser.":"A DJ takes over and the dance floor stays open until everyone is done dancing.","Danse avec DJ":"Dancing with a DJ",
 "De la petite Rose à aujourd'hui":"From little Rose to today",
 "Son histoire en photos":"Her story in photos",
 "Faites défiler de gauche à droite, de ses premiers tours de vélo jusqu'à aujourd'hui. Touchez une photo pour l'agrandir.":"Scroll left to right, from her first bike rides to today. Tap a photo to enlarge it.",
@@ -1150,7 +1151,7 @@ const EN={
 "Oui!":"Yes!","Peut-être":"Maybe","Non":"No","Adultes":"Adults","Vous inclus":"Including you","17 ans et moins":"17 and under",
 "Prénoms et âges des enfants":"Children's first names and ages",
 "Allergies ou restrictions alimentaires":"Allergies or dietary restrictions",
-"Une chanson pour faire danser Rose?":"A song to get Rose dancing?",
+"Une chanson à demander au DJ?":"A song request for the DJ?",
 "Un petit mot pour Rose (optionnel)":"A short note for Rose (optional)",
 "Envoyer ma réponse":"Send my RSVP","Mettre à jour ma réponse":"Update my RSVP",
 "Vous pourrez modifier votre réponse plus tard en revenant sur cette page, à partir du même téléphone ou ordinateur.":"You can change your answer later by coming back to this page from the same phone or computer.",
@@ -1279,7 +1280,7 @@ const EN={
 "Réponses enregistrées. Pensez aussi à remplir le RSVP!":"Guesses saved. Don't forget to fill in the RSVP too!",
 "Écrivez un petit message avant de publier.":"Write a short message before posting.",
 "Merci! Votre mot a été ajouté.":"Thank you! Your note has been added.",
-"Un invité":"A guest","Ajouter à mon calendrier":"Add to my calendar","Google Agenda":"Google Calendar","Vos photos":"Your photos","Vos photos avec Rose":"Your photos with Rose","Partagez une photo de vous avec Rose, avec votre nom et un petit mot. Elle apparaîtra ici après une petite vérification.":"Share a photo of you with Rose, with your name and a short message. It will appear here after a quick check.","+ Choisir une photo":"+ Choose a photo","Une photo de vous avec Rose":"A photo of you with Rose","Ex. Julie et Marc":"e.g. Julie and Marc","Un souvenir avec Rose…":"A memory with Rose…","Partager ma photo":"Share my photo","Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!":"Guests' photos will appear here. Be the first to share a memory with Rose!","Photos":"Photos","Choisissez d'abord une photo.":"Please choose a photo first.","Ajoutez votre nom pour que Rose sache de qui vient la photo.":"Add your name so Rose knows who the photo is from.","Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.":"Thank you! Your photo was received. It will appear here once it's approved.","Cette photo n'a pas pu être ouverte. Essayez une autre photo (JPG ou PNG).":"This photo couldn't be opened. Please try another one (JPG or PNG).","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
+"Un invité":"A guest","Y aura-t-il de la musique?":"Will there be music?","Oui! Un DJ animera la soirée et la piste de danse. Ajoutez votre demande spéciale dans le formulaire RSVP et il essaiera de la faire jouer.":"Yes! A DJ will run the music and the dance floor. Add your song request in the RSVP form and they'll try to play it.","Ajouter à mon calendrier":"Add to my calendar","Google Agenda":"Google Calendar","Vos photos":"Your photos","Vos photos avec Rose":"Your photos with Rose","Partagez une photo de vous avec Rose, avec votre nom et un petit mot. Elle apparaîtra ici après une petite vérification.":"Share a photo of you with Rose, with your name and a short message. It will appear here after a quick check.","+ Choisir une photo":"+ Choose a photo","Une photo de vous avec Rose":"A photo of you with Rose","Ex. Julie et Marc":"e.g. Julie and Marc","Un souvenir avec Rose…":"A memory with Rose…","Partager ma photo":"Share my photo","Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!":"Guests' photos will appear here. Be the first to share a memory with Rose!","Photos":"Photos","Choisissez d'abord une photo.":"Please choose a photo first.","Ajoutez votre nom pour que Rose sache de qui vient la photo.":"Add your name so Rose knows who the photo is from.","Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.":"Thank you! Your photo was received. It will appear here once it's approved.","Cette photo n'a pas pu être ouverte. Essayez une autre photo (JPG ou PNG).":"This photo couldn't be opened. Please try another one (JPG or PNG).","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
 };
 const FR={};for(const k in EN)FR[EN[k]]=k;
 let LANG="fr";try{if(localStorage.getItem("rose30_lang")==="en")LANG="en"}catch(e){}
