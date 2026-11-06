@@ -652,6 +652,35 @@ body.menu-open{overflow:hidden}
 }
 .hbars{gap:3px}
 @media (max-width:760px){.hbars{gap:2px}}
+
+/* guest photos */
+.gp-wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,48px);align-items:start}
+.gp-form{display:grid;gap:16px}
+.gp-drop{position:relative;display:grid;place-items:center;aspect-ratio:4/3;border-radius:20px;border:1.5px dashed rgba(232,210,172,.45);background:var(--night-2);cursor:pointer;overflow:hidden;transition:border-color .3s}
+.gp-drop:hover{border-color:var(--rose)}
+.gp-drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.gp-drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.gp-cta{display:grid;justify-items:center;gap:4px;text-align:center;pointer-events:none}
+.gp-cta b{font-family:var(--f-display);font-weight:600;font-size:1.5rem;color:var(--frost)}
+.gp-cta small{color:var(--mist);font-size:.85rem}
+.gp-drop.has .gp-cta{display:none}
+.gp-wall{columns:2 220px;column-gap:14px}
+.gp-card{break-inside:avoid;margin:0 0 14px;border-radius:18px;overflow:hidden;background:var(--night-2);border:1px solid var(--line);animation:pop .5s cubic-bezier(.3,1.5,.5,1) both}
+.gp-card button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in}
+.gp-card img{display:block;width:100%;height:auto}
+.gp-card .txt{padding:14px 16px 16px}
+.gp-card p{font-family:var(--f-display);font-size:1.15rem;line-height:1.35}
+.gp-card small{display:block;margin-top:8px;color:var(--champagne);font-size:.82rem;letter-spacing:.04em}
+@media (max-width:860px){.gp-wrap{grid-template-columns:1fr}}
+@media (max-width:760px){
+ .gp-drop{aspect-ratio:16/10;border-radius:16px}
+ .gp-cta b{font-size:1.25rem}
+ .gp-wall{columns:2;column-gap:8px}
+ .gp-card{margin-bottom:8px;border-radius:14px}
+ .gp-card .txt{padding:10px 12px 12px}
+ .gp-card p{font-size:.98rem}
+ .gp-card small{font-size:.74rem}
+}
 </style>
 </head>
 <body>
@@ -668,6 +697,7 @@ body.menu-open{overflow:hidden}
       <a href="#galerie">Galerie</a>
       <a href="#jeu">Jeu</a>
       <a href="#livre">Livre d'or</a>
+      <a href="#photos">Photos</a>
       <a href="#lieu">Lieu & activités</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -684,6 +714,7 @@ body.menu-open{overflow:hidden}
     <a href="#galerie">Galerie</a>
     <a href="#jeu">Jeu</a>
     <a href="#livre">Livre d'or</a>
+    <a href="#photos">Photos</a>
     <a href="#lieu">Lieu & activités</a>
     <a href="#faq">FAQ</a>
   </nav>
@@ -947,6 +978,32 @@ body.menu-open{overflow:hidden}
 </section>
 
 
+<section class="band" id="photos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Vos photos</p>
+      <h2>Vos photos avec Rose</h2>
+      <p>Partagez une photo de vous avec Rose, avec votre nom et un petit mot. Elle apparaîtra ici après une petite vérification.</p>
+    </div>
+    <div class="gp-wrap">
+      <form class="gp-form reveal" id="gpForm" novalidate>
+        <label class="gp-drop" id="gpDrop" for="gpFile">
+          <input type="file" id="gpFile" accept="image/*">
+          <img id="gpPrev" alt="" hidden>
+          <span class="gp-cta" id="gpCta"><b>+ Choisir une photo</b><small>Une photo de vous avec Rose</small></span>
+        </label>
+        <div class="field"><label for="gpName">Votre nom</label><input type="text" id="gpName" maxlength="60" placeholder="Ex. Julie et Marc"></div>
+        <div class="field"><label for="gpMsg">Votre message</label><textarea id="gpMsg" maxlength="300" placeholder="Un souvenir avec Rose…"></textarea></div>
+        <button class="btn primary" type="submit" id="gpBtn">Partager ma photo</button>
+        <div class="status" id="gpStatus" role="status" aria-live="polite" hidden></div>
+      </form>
+      <div class="gp-wall" id="gpWall">
+        <p class="empty" id="gpEmpty">Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="band story" id="lieu">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1195,7 +1252,7 @@ const EN={
 "Réponses enregistrées. Pensez aussi à remplir le RSVP!":"Guesses saved. Don't forget to fill in the RSVP too!",
 "Écrivez un petit message avant de publier.":"Write a short message before posting.",
 "Merci! Votre mot a été ajouté.":"Thank you! Your note has been added.",
-"Un invité":"A guest","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
+"Un invité":"A guest","Vos photos":"Your photos","Vos photos avec Rose":"Your photos with Rose","Partagez une photo de vous avec Rose, avec votre nom et un petit mot. Elle apparaîtra ici après une petite vérification.":"Share a photo of you with Rose, with your name and a short message. It will appear here after a quick check.","+ Choisir une photo":"+ Choose a photo","Une photo de vous avec Rose":"A photo of you with Rose","Ex. Julie et Marc":"e.g. Julie and Marc","Un souvenir avec Rose…":"A memory with Rose…","Partager ma photo":"Share my photo","Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!":"Guests' photos will appear here. Be the first to share a memory with Rose!","Photos":"Photos","Choisissez d'abord une photo.":"Please choose a photo first.","Ajoutez votre nom pour que Rose sache de qui vient la photo.":"Add your name so Rose knows who the photo is from.","Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.":"Thank you! Your photo was received. It will appear here once it's approved.","Cette photo n'a pas pu être ouverte. Essayez une autre photo (JPG ou PNG).":"This photo couldn't be opened. Please try another one (JPG or PNG).","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
 };
 const FR={};for(const k in EN)FR[EN[k]]=k;
 let LANG="fr";try{if(localStorage.getItem("rose30_lang")==="en")LANG="en"}catch(e){}
@@ -1370,8 +1427,10 @@ document.querySelectorAll("section[id]").forEach(s=>secIO.observe(s));
 
 /* nav turns solid after the hero, floating RSVP on phones */
 const navEl=document.querySelector("nav.top"),floatR=document.getElementById("floatRsvp"),rsvpSec=document.getElementById("rsvp");
-let rsvpVisible=false;
-new IntersectionObserver(es=>es.forEach(e=>{rsvpVisible=e.isIntersecting;onScroll()}),{threshold:.05}).observe(rsvpSec);
+let rsvpVisible=false;const formsOn=new Set();
+const fIO=new IntersectionObserver(es=>es.forEach(e=>{e.isIntersecting?formsOn.add(e.target):formsOn.delete(e.target);rsvpVisible=formsOn.size>0;onScroll()}),{threshold:.05});
+[rsvpSec,document.getElementById("gpForm"),document.getElementById("gbForm")].forEach(el=>el&&fIO.observe(el));
+document.addEventListener("focusin",e=>{if(e.target.matches("input,textarea"))floatR.classList.remove("show")});
 function onScroll(){const y=scrollY;navEl.classList.toggle("solid",y>40);floatR.classList.toggle("show",y>innerHeight*.9&&!rsvpVisible)}
 addEventListener("scroll",onScroll,{passive:true});onScroll();
 /* stagger children inside grids */
@@ -1486,6 +1545,39 @@ async function loadNotes(){try{
 function renderNotes(list){const box=document.getElementById("notes");if(!list.length)return;box.innerHTML="";
  list.forEach(n=>{const c=document.createElement("div");c.className="notecard";const p=document.createElement("p");p.textContent=n.text;const s=document.createElement("small");s.textContent="— "+(n.name||T("Un invité"));c.append(p,s);box.appendChild(c)})}
 loadNotes();setInterval(loadNotes,60000);
+
+/* ---------- guest photos with Rose ---------- */
+const gpFile=document.getElementById("gpFile"),gpPrev=document.getElementById("gpPrev"),gpDrop=document.getElementById("gpDrop"),gpStatus=document.getElementById("gpStatus");
+let gpImg=null;
+function loadImage(file){return new Promise((res,rej)=>{const u=URL.createObjectURL(file);const im=new Image();im.onload=()=>res(im);im.onerror=rej;im.src=u})}
+function shrink(im,max,q){const k=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight));const c=document.createElement("canvas");c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);return c.toDataURL("image/jpeg",q)}
+gpFile.addEventListener("change",async()=>{const f=gpFile.files[0];if(!f)return;try{gpImg=await loadImage(f);gpPrev.src=gpImg.src;gpPrev.hidden=false;gpDrop.classList.add("has");gpStatus.hidden=true}catch(e){gpImg=null;say(gpStatus,"Cette photo n'a pas pu être ouverte. Essayez une autre photo (JPG ou PNG).");gpStatus.classList.add("err")}});
+async function commitMany(writes){const r=await fetch(API+":commit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({writes:writes.map(([path,data,stamp])=>({update:{name:DB+"/"+path,fields:toFields(data)},updateTransforms:[{fieldPath:stamp,setToServerValue:"REQUEST_TIME"}],currentDocument:{exists:false}}))})});if(!r.ok)throw new Error("status "+r.status)}
+document.getElementById("gpForm").addEventListener("submit",async e=>{e.preventDefault();gpStatus.classList.remove("err");
+ const name=document.getElementById("gpName").value.trim().slice(0,60),msg=document.getElementById("gpMsg").value.trim().slice(0,300);
+ if(!gpImg){say(gpStatus,"Choisissez d'abord une photo.");gpStatus.classList.add("err");return}
+ if(!name){say(gpStatus,"Ajoutez votre nom pour que Rose sache de qui vient la photo.");gpStatus.classList.add("err");document.getElementById("gpName").focus();return}
+ const btn=document.getElementById("gpBtn");btn.disabled=true;btn.classList.add("busy");btn.textContent=T("Envoi en cours…");
+ try{let full=shrink(gpImg,1400,.78);if(full.length>900000)full=shrink(gpImg,1100,.7);if(full.length>900000)full=shrink(gpImg,900,.6);
+  const thumb=shrink(gpImg,520,.72);const id=newId();
+  await commitMany([["photoFull/"+id,{img:full},"at"],["photos/"+id,{name,message:msg,thumb,approved:false},"at"]]);
+  say(gpStatus,"Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.",true);confetti();
+  document.getElementById("gpForm").reset();gpPrev.hidden=true;gpDrop.classList.remove("has");gpImg=null;loadPhotos()}
+ catch(err){say(gpStatus,String(err.message).includes("403")?CLOSED:NET);gpStatus.classList.add("err")}
+ finally{btn.disabled=false;btn.classList.remove("busy");btn.textContent=T("Partager ma photo")}});
+let gpList=[];
+async function loadPhotos(){try{const r=await fetch(API+":runQuery",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredQuery:{from:[{collectionId:"photos"}],where:{fieldFilter:{field:{fieldPath:"approved"},op:"EQUAL",value:{booleanValue:true}}},limit:200}})});
+ if(!r.ok)return;const rows=await r.json();gpList=rows.filter(x=>x.document).map(x=>({id:x.document.name.split("/").pop(),...fromFields(x.document.fields||{})})).sort((a,b)=>String(b.at).localeCompare(String(a.at)));renderPhotos()}catch(e){}}
+function renderPhotos(){const w=document.getElementById("gpWall");if(!gpList.length)return;w.innerHTML="";
+ gpList.forEach((g,i)=>{const c=document.createElement("figure");c.className="gp-card";
+  const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",T("Agrandir : ")+(g.name||""));const im=document.createElement("img");im.loading="lazy";im.alt=g.name||"";im.src=g.thumb;b.appendChild(im);b.onclick=()=>openGuestPhoto(i);
+  const t=document.createElement("figcaption");t.className="txt";if(g.message){const p=document.createElement("p");p.textContent=g.message;t.appendChild(p)}const sm=document.createElement("small");sm.textContent="— "+(g.name||T("Un invité"));t.appendChild(sm);
+  c.append(b,t);w.appendChild(c)})}
+function openGuestPhoto(i){const list=gpList.map(g=>({src:g.thumb,t:g.name||T("Un invité"),d:g.message||"",gid:g.id}));openLB(i,list);
+ list.forEach((it,k)=>{fetch(API+"/photoFull/"+it.gid).then(r=>r.ok?r.json():null).then(d=>{if(!d)return;it.src=d.fields.img.stringValue;if(lbList===list&&lbI===k)document.getElementById("lbImg").src=it.src}).catch(()=>{})})}
+const gpObs=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){loadPhotos();gpObs.disconnect()}},{rootMargin:"600px"});gpObs.observe(document.getElementById("photos"));
+setInterval(()=>{if(document.getElementById("photos").getBoundingClientRect().top<innerHeight*2)loadPhotos()},45000);
+
 
 /* live headcount: numbers only, no names */
 async function agg1(a){const r=await fetch(API+":runAggregationQuery",{method:"POST",headers:{"Content-Type":"application/json"},
