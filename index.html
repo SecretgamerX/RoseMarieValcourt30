@@ -782,6 +782,7 @@ const EN={
 "Nous deux":"The two of us","Front contre front, au soleil.":"Forehead to forehead, in the sun.",
 "Amoureuse des chiens":"Dog lover","Impossible de résister à un câlin.":"Can't resist a cuddle.",
 "Santé!":"Cheers!","À la prochaine décennie.":"To the next decade.",
+"Fous rires au verger":"Laughing it up at the orchard","Un bisou au verger":"A kiss at the orchard","La tête en bas!":"Upside down!","Un nouvel ami":"A new friend","La rivière au crépuscule":"The river at dusk","Une rencontre inattendue":"An unexpected encounter","Au bout du monde":"At the edge of the world","Sur la piste Cabot":"On the Cabot Trail","Un baiser sur la route":"A kiss on the road","Prête pour la pluie":"Ready for the rain","Entre amis":"With friends","Sur la terrasse":"On the patio","Petit explorateur":"Little explorer","Dodo après la route":"Napping after the ride","Au coucher du soleil":"At sunset","À l'arcade":"At the arcade","Aux chutes Niagara":"At Niagara Falls","Gâteau de melon d'eau":"Watermelon cake","Une journée au golf":"A day on the golf course","Sous la vieille charpente":"Under the old beams",
 /* messages from the page's code */
 "Photo":"Photo","ans":"years old",
 "Votre réponse est enregistrée. Vous pouvez la modifier ci-dessous.":"Your RSVP is saved. You can change it below.",
@@ -836,7 +837,27 @@ const PHOTOS=[
  {t:"Avec Ethan",d:"En moto avec son neveu adoré.",c:"proches"},
  {t:"Dolly",d:"Son grand amour à quatre pattes.",c:"proches"},
  {t:"Rose et Deepesh",d:"Un baiser sous les lumières de Noël.",c:"proches"},
- {t:"Nous deux",d:"Front contre front, au soleil.",c:"proches"}
+ {t:"Nous deux",d:"Front contre front, au soleil.",c:"proches"},
+ {t:"Fous rires au verger",d:"",c:"proches",g:1},
+ {t:"Un bisou au verger",d:"",c:"proches",g:1},
+ {t:"La tête en bas!",d:"",c:"proches",g:1},
+ {t:"Un nouvel ami",d:"",c:"proches",g:1},
+ {t:"La rivière au crépuscule",d:"",c:"proches",g:1},
+ {t:"Une rencontre inattendue",d:"",c:"proches",g:1},
+ {t:"Au bout du monde",d:"",c:"proches",g:1},
+ {t:"Sur la piste Cabot",d:"",c:"proches",g:1},
+ {t:"Un baiser sur la route",d:"",c:"proches",g:1},
+ {t:"Prête pour la pluie",d:"",c:"proches",g:1},
+ {t:"Entre amis",d:"",c:"proches",g:1},
+ {t:"Sur la terrasse",d:"",c:"proches",g:1},
+ {t:"Petit explorateur",d:"",c:"proches",g:1},
+ {t:"Dodo après la route",d:"",c:"proches",g:1},
+ {t:"Au coucher du soleil",d:"",c:"proches",g:1},
+ {t:"À l'arcade",d:"",c:"proches",g:1},
+ {t:"Aux chutes Niagara",d:"",c:"proches",g:1},
+ {t:"Gâteau de melon d'eau",d:"",c:"proches",g:1},
+ {t:"Une journée au golf",d:"",c:"proches",g:1},
+ {t:"Sous la vieille charpente",d:"",c:"proches",g:1}
 ].map((p,i)=>({...p,src:`img/${String(i+1).padStart(2,"0")}.jpg`,n:i+1}));
 
 /* hero slideshow */
@@ -863,9 +884,10 @@ tick();setInterval(tick,1000);
 
 /* story strip */
 const strip=document.getElementById("strip");
-PHOTOS.forEach((p,i)=>{const b=document.createElement("button");b.className="frame";b.type="button";
- b.innerHTML=`<div class="ph"><img loading="lazy" src="${p.src}" alt="${p.t}"><span class="n">${String(p.n).padStart(2,"0")} / ${PHOTOS.length}</span></div><h3>${p.t}</h3><p>${p.d||"&nbsp;"}</p>`;
- b.onclick=()=>openLB(i,PHOTOS);strip.appendChild(b)});
+const STORY=PHOTOS.filter(p=>!p.g);
+STORY.forEach((p,i)=>{const b=document.createElement("button");b.className="frame";b.type="button";
+ b.innerHTML=`<div class="ph"><img loading="lazy" src="${p.src}" alt="${p.t}"><span class="n">${String(i+1).padStart(2,"0")} / ${STORY.length}</span></div><h3>${p.t}</h3><p>${p.d||"&nbsp;"}</p>`;
+ b.onclick=()=>openLB(i,STORY);strip.appendChild(b)});
 const bar=document.getElementById("agebar");
 strip.addEventListener("scroll",()=>{const m=strip.scrollWidth-strip.clientWidth;bar.style.width=(m>0?strip.scrollLeft/m*100:0)+"%"},{passive:true});
 document.getElementById("sPrev").onclick=()=>strip.scrollBy({left:-strip.clientWidth*.8,behavior:"smooth"});
