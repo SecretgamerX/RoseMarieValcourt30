@@ -681,6 +681,17 @@ body.menu-open{overflow:hidden}
  .gp-card p{font-size:.98rem}
  .gp-card small{font-size:.74rem}
 }
+
+/* add to calendar */
+.addcal{position:relative;display:inline-block;margin-top:30px}
+.addcal.center{display:block;width:max-content;margin:18px auto 0}
+.addcal-btn svg{flex:0 0 auto}
+.addcal-menu{position:absolute;z-index:6;left:0;top:calc(100% + 8px);min-width:220px;display:grid;padding:6px;border-radius:16px;background:var(--night-2);border:1px solid rgba(232,210,172,.3);box-shadow:0 18px 40px -14px rgba(0,0,0,.6);animation:stIn .25s ease}
+.addcal.center .addcal-menu{left:50%;transform:translateX(-50%)}
+.addcal-menu a{padding:12px 14px;border-radius:10px;color:var(--frost);text-decoration:none;font-weight:500;font-size:.95rem}
+.addcal-menu a:hover,.addcal-menu a:focus-visible{background:rgba(232,210,172,.1);color:#f3dfb6}
+#calLinks{margin-top:4px}
+@media (max-width:760px){.addcal{margin-top:22px}.addcal-btn{padding:12px 18px;font-size:.92rem}}
 </style>
 </head>
 <body>
@@ -757,6 +768,14 @@ body.menu-open{overflow:hidden}
       <div><b id="cd2-s">—</b><span>secondes</span></div>
     </div>
     <p class="mbday">Son anniversaire est le 31 décembre, mais on la fête un peu d'avance, le 19!</p>
+    <div class="addcal center" data-cal>
+      <button type="button" class="btn ghost addcal-btn" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Ajouter à mon calendrier</span></button>
+      <div class="addcal-menu" hidden>
+        <a href="rose30.ics" data-ics>Apple / iPhone</a>
+        <a target="_blank" rel="noopener" data-g>Google Agenda</a>
+        <a target="_blank" rel="noopener" data-o>Outlook</a>
+      </div>
+    </div>
   </div>
 </section>
 <div class="marquee" aria-hidden="true"><div class="mq"><span>Rose</span><i>✦</i><span>30</span><i>✦</i><span>19 · 12 · 2026</span><i>✦</i><span>Saint-Éphrem-de-Beauce</span><i>✦</i><span>Rose</span><i>✦</i><span>30</span><i>✦</i><span>19 · 12 · 2026</span><i>✦</i><span>Saint-Éphrem-de-Beauce</span><i>✦</i></div></div>
@@ -788,6 +807,14 @@ body.menu-open{overflow:hidden}
       <div class="stop"><span class="dot">2</span><span class="time">18 h 30</span><h3>Souper</h3><p>On passe à table. Les options du menu seront annoncées bientôt, dès qu'elles seront confirmées.</p></div>
       <div class="stop big"><span class="dot">3</span><span class="time">20 h</span><h3>Gâteau</h3><p>On chante bonne fête à Rose et on souffle les 30 bougies.</p></div>
       <div class="stop"><span class="dot">4</span><span class="time">Après</span><h3>Danse</h3><p>La piste reste ouverte jusqu'à ce que tout le monde ait fini de danser.</p></div>
+    </div>
+    <div class="addcal" data-cal>
+      <button type="button" class="btn ghost addcal-btn" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Ajouter à mon calendrier</span></button>
+      <div class="addcal-menu" hidden>
+        <a href="rose30.ics" data-ics>Apple / iPhone</a>
+        <a target="_blank" rel="noopener" data-g>Google Agenda</a>
+        <a target="_blank" rel="noopener" data-o>Outlook</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1252,7 +1279,7 @@ const EN={
 "Réponses enregistrées. Pensez aussi à remplir le RSVP!":"Guesses saved. Don't forget to fill in the RSVP too!",
 "Écrivez un petit message avant de publier.":"Write a short message before posting.",
 "Merci! Votre mot a été ajouté.":"Thank you! Your note has been added.",
-"Un invité":"A guest","Vos photos":"Your photos","Vos photos avec Rose":"Your photos with Rose","Partagez une photo de vous avec Rose, avec votre nom et un petit mot. Elle apparaîtra ici après une petite vérification.":"Share a photo of you with Rose, with your name and a short message. It will appear here after a quick check.","+ Choisir une photo":"+ Choose a photo","Une photo de vous avec Rose":"A photo of you with Rose","Ex. Julie et Marc":"e.g. Julie and Marc","Un souvenir avec Rose…":"A memory with Rose…","Partager ma photo":"Share my photo","Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!":"Guests' photos will appear here. Be the first to share a memory with Rose!","Photos":"Photos","Choisissez d'abord une photo.":"Please choose a photo first.","Ajoutez votre nom pour que Rose sache de qui vient la photo.":"Add your name so Rose knows who the photo is from.","Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.":"Thank you! Your photo was received. It will appear here once it's approved.","Cette photo n'a pas pu être ouverte. Essayez une autre photo (JPG ou PNG).":"This photo couldn't be opened. Please try another one (JPG or PNG).","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
+"Un invité":"A guest","Ajouter à mon calendrier":"Add to my calendar","Google Agenda":"Google Calendar","Vos photos":"Your photos","Vos photos avec Rose":"Your photos with Rose","Partagez une photo de vous avec Rose, avec votre nom et un petit mot. Elle apparaîtra ici après une petite vérification.":"Share a photo of you with Rose, with your name and a short message. It will appear here after a quick check.","+ Choisir une photo":"+ Choose a photo","Une photo de vous avec Rose":"A photo of you with Rose","Ex. Julie et Marc":"e.g. Julie and Marc","Un souvenir avec Rose…":"A memory with Rose…","Partager ma photo":"Share my photo","Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!":"Guests' photos will appear here. Be the first to share a memory with Rose!","Photos":"Photos","Choisissez d'abord une photo.":"Please choose a photo first.","Ajoutez votre nom pour que Rose sache de qui vient la photo.":"Add your name so Rose knows who the photo is from.","Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.":"Thank you! Your photo was received. It will appear here once it's approved.","Cette photo n'a pas pu être ouverte. Essayez une autre photo (JPG ou PNG).":"This photo couldn't be opened. Please try another one (JPG or PNG).","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
 };
 const FR={};for(const k in EN)FR[EN[k]]=k;
 let LANG="fr";try{if(localStorage.getItem("rose30_lang")==="en")LANG="en"}catch(e){}
@@ -1449,6 +1476,18 @@ addEventListener("keydown",e=>{if(e.key==="Escape"&&!mmenu.hidden)setMenu(false)
 const optT=document.getElementById("optToggle"),optF=document.getElementById("optFields");
 optT.onclick=()=>{const o=!optF.classList.contains("open");optF.classList.toggle("open",o);optT.setAttribute("aria-expanded",o);optT.textContent=T(o?"− Masquer les champs optionnels":"+ Ajouter un courriel, une chanson ou un petit mot (optionnel)")};
 document.querySelectorAll(".kids-cols .panel h3").forEach(h=>h.addEventListener("click",()=>{if(isPhone.matches)h.parentElement.classList.toggle("open")}));
+
+/* add to calendar */
+const CAL={title:"Les 30 ans de Rose",loc:"Centre multifonctionnel de Saint-Éphrem, 34 route 271 Sud, Saint-Éphrem-de-Beauce, QC G0M 1R0",
+ details:"Accueil et bar ouvert 17 h · Souper 18 h 30 · Gâteau 20 h · Danse ensuite! RSVP et infos : https://rosemarie30.ca"};
+function initCal(w){const b=w.querySelector(".addcal-btn"),m=w.querySelector(".addcal-menu");
+ const t=encodeURIComponent(T(CAL.title)),l=encodeURIComponent(CAL.loc),d=encodeURIComponent(CAL.details);
+ w.querySelector("[data-g]").href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+t+"&dates=20261219T170000/20261220T010000&ctz=America/Toronto&location="+l+"&details="+d;
+ w.querySelector("[data-o]").href="https://outlook.live.com/calendar/0/action/compose?subject="+t+"&startdt=2026-12-19T17:00:00-05:00&enddt=2026-12-20T01:00:00-05:00&location="+l+"&body="+d;
+ b.onclick=e=>{e.stopPropagation();const open=m.hidden;document.querySelectorAll(".addcal-menu").forEach(x=>x.hidden=true);document.querySelectorAll(".addcal-btn").forEach(x=>x.setAttribute("aria-expanded","false"));m.hidden=!open;b.setAttribute("aria-expanded",open)};
+ m.addEventListener("click",()=>{m.hidden=true;b.setAttribute("aria-expanded","false")})}
+document.querySelectorAll("[data-cal]").forEach(initCal);
+document.addEventListener("click",e=>{if(!e.target.closest(".addcal"))document.querySelectorAll(".addcal-menu").forEach(x=>x.hidden=true)});
 /* steppers */
 const counts={adults:1,kids:0};
 document.querySelectorAll(".stepper").forEach(s=>{const k=s.dataset.step;s.addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;counts[k]=Math.max(k==="adults"?0:0,Math.min(15,counts[k]+Number(b.dataset.d)));syncSteppers()})});
@@ -1527,10 +1566,7 @@ document.getElementById("rsvpForm").addEventListener("submit",async e=>{e.preven
   btn.textContent=T("Mettre à jour ma réponse");if(data.attending!=="no")confetti();showCal();
  }catch(err){say(rStatus,String(err.message).includes("403")?CLOSED:NET);rStatus.classList.add("err")}finally{btn.disabled=false;btn.classList.remove("busy");btn.textContent=T(mine&&mine.attending&&mine.attending!=="none"?"Mettre à jour ma réponse":"Envoyer ma réponse")}rStatus.scrollIntoView({block:"center",behavior:"smooth"})});
 
-function showCal(){if(document.getElementById("calLinks"))return;const d=document.createElement("div");d.id="calLinks";d.style.cssText="display:flex;gap:10px;flex-wrap:wrap";
- const a=document.createElement("a");a.className="btn ghost";a.target="_blank";a.rel="noopener";a.textContent=T("Ajouter à Google Agenda");
- a.href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(T("Les 30 ans de Rose"))+"&dates=20261219T170000/20261220T010000&ctz=America/Toronto&location="+encodeURIComponent("Centre multifonctionnel, 34 route 271 Sud, Saint-Éphrem-de-Beauce, QC");
- d.appendChild(a);rStatus.after(d)}
+function showCal(){if(document.getElementById("calLinks"))return;const tpl=document.querySelector("[data-cal]");const d=tpl.cloneNode(true);d.id="calLinks";d.classList.remove("center");rStatus.after(d);initCal(d);if(LANG==="en")applyLang()}
 
 document.getElementById("saveGuess").onclick=async()=>{const st=document.getElementById("guessStatus");
  try{await saveMine(mine?{}:{name:document.getElementById("r-name").value.trim().slice(0,100)||"Invité (jeu)"});

@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//rosemarie30.ca//Rose 30//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:rose30-20261219@rosemarie30.ca
+DTSTAMP:20261106T220000Z
+DTSTART:20261219T220000Z
+DTEND:20261220T060000Z
+SUMMARY:Les 30 ans de Rose 🎉
+LOCATION:Centre multifonctionnel de Saint-Éphrem\, 34 route 271 Sud\, Saint
+ -Éphrem-de-Beauce\, QC G0M 1R0
+DESCRIPTION:Accueil et bar ouvert 17 h · Souper 18 h 30 · Gâteau 20 h · Dan
+ se ensuite!\nRSVP et infos : https://rosemarie30.ca
+URL:https://rosemarie30.ca
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Les 30 ans de Rose demain!
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Les 30 ans de Rose dans 2 heures
+TRIGGER:-PT2H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
