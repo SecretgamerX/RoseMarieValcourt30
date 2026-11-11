@@ -708,6 +708,34 @@ body.menu-open{overflow:hidden}
 .gp-pics[data-n="3"] button:first-child img{aspect-ratio:2/1}
 .gp-pics button{position:relative}
 .gp-pics .more{position:absolute;inset:0;display:grid;place-items:center;background:rgba(23,18,28,.6);font-family:var(--f-display);font-size:1.8rem;color:var(--frost)}
+
+/* ===== Elegance pass ===== */
+.gp-note{border-color:rgba(232,210,172,.28);background:linear-gradient(160deg,rgba(236,157,179,.08),transparent 60%),var(--night-2)}
+.gp-note .txt{padding:18px}
+.gp-note p{font-style:italic}
+@media (max-width:760px){
+ :root{--kids-1:#e8d2ac;--kids-2:#f3dfb6;--kids-3:#ec9db3}
+ .kids{background:var(--night)}
+ /* one pink button: only RSVP actions stay pink */
+ #saveGuess,#gpBtn,.vcard .btn.primary{background:transparent;color:var(--frost);border:1px solid rgba(243,223,182,.45);box-shadow:none}
+ .mband .addcal{display:none}
+ .mbday{margin-top:16px}
+ /* lighter text, more air */
+ .band{padding-block:64px}
+ .welcome blockquote{font-size:1.32rem;line-height:1.38}
+ .frame h3{font-size:1.02rem}
+ .frame p{font-size:.8rem;color:var(--mist)}
+ .sec-head{margin-bottom:26px}
+ .sec-head p{font-size:.9rem}
+ .gp-drop{aspect-ratio:auto;padding:22px 16px;border-radius:14px;background:transparent}
+ .gp-drop.has{aspect-ratio:16/10;padding:0}
+ .gp-cta b{font-size:1.1rem}
+ /* slim bottom bar instead of the floating pill */
+ .btn.float-rsvp{left:0;right:0;bottom:0;width:100%;max-width:none;border-radius:0;transform:translateY(110%);padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));background:rgba(23,18,28,.97);color:#f3dfb6;border-top:1px solid rgba(232,210,172,.35);box-shadow:none;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+ .btn.float-rsvp.show{transform:none}
+ .btn.float-rsvp::after{display:none}
+ footer{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+}
 </style>
 </head>
 <body>
@@ -723,8 +751,7 @@ body.menu-open{overflow:hidden}
       <a href="#enfants">Zone enfants</a>
       <a href="#galerie">Galerie</a>
       <a href="#jeu">Jeu</a>
-      <a href="#livre">Livre d'or</a>
-      <a href="#photos">Photos</a>
+      <a href="#photos">Mots & photos</a>
       <a href="#lieu">Lieu & activités</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -740,8 +767,7 @@ body.menu-open{overflow:hidden}
     <a href="#enfants">Zone enfants</a>
     <a href="#galerie">Galerie</a>
     <a href="#jeu">Jeu</a>
-    <a href="#livre">Livre d'or</a>
-    <a href="#photos">Photos</a>
+    <a href="#photos">Mots & photos</a>
     <a href="#lieu">Lieu & activités</a>
     <a href="#faq">FAQ</a>
   </nav>
@@ -999,50 +1025,28 @@ body.menu-open{overflow:hidden}
   </div>
 </section>
 
-<section class="band" id="livre">
-  <div class="wrap gb">
-    <div class="reveal">
-      <div class="sec-head" style="margin-bottom:24px">
-        <p class="eyebrow">Livre d'or</p>
-        <h2>Un mot pour Rose</h2>
-        <p>Un souvenir, un souhait, une blague d'initié. Tous les mots seront lus le soir de la fête.</p>
-      </div>
-      <form class="card" id="gbForm" novalidate>
-        <div class="field"><label for="g-name">Votre nom</label><input type="text" id="g-name" placeholder="Ex. Tante Lise"></div>
-        <div class="field"><label for="g-text">Votre message</label><textarea id="g-text" maxlength="500" placeholder="Bonne fête Rose!"></textarea></div>
-        <div class="status" id="gbStatus" hidden></div>
-        <button class="btn primary" type="submit">Publier mon mot</button>
-      </form>
-    </div>
-    <div class="notes" id="notes">
-      <div class="empty">Les messages des invités apparaîtront ici. Soyez la première personne à écrire à Rose!</div>
-    </div>
-  </div>
-</section>
-
-
 <section class="band" id="photos">
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">Vos photos</p>
-      <h2>Vos photos avec Rose</h2>
-      <p>Partagez une ou plusieurs photos de vous avec Rose, avec votre nom et un petit mot. Elles apparaîtront ici après une petite vérification.</p>
+      <p class="eyebrow">Livre d'or</p>
+      <h2>Un mot ou une photo pour Rose</h2>
+      <p>Laissez un petit mot à Rose, avec ou sans photos. Les mots s'affichent tout de suite, les photos après une petite vérification.</p>
     </div>
     <div class="gp-wrap">
       <form class="gp-form reveal" id="gpForm" novalidate>
         <label class="gp-drop" id="gpDrop" for="gpFile">
           <input type="file" id="gpFile" accept="image/*" multiple>
           <div class="gp-mosaic" id="gpMosaic" aria-hidden="true"></div>
-          <span class="gp-cta" id="gpCta"><b>+ Choisir des photos</b><small>Jusqu'à 6 photos de vous avec Rose</small></span>
+          <span class="gp-cta" id="gpCta"><b>+ Ajouter des photos</b><small>Optionnel · jusqu'à 6 photos avec Rose</small></span>
         </label>
         <p class="gp-count" id="gpCount" aria-live="polite"></p>
         <div class="field"><label for="gpName">Votre nom</label><input type="text" id="gpName" maxlength="60" placeholder="Ex. Julie et Marc"></div>
-        <div class="field"><label for="gpMsg">Votre message</label><textarea id="gpMsg" maxlength="300" placeholder="Un souvenir avec Rose…"></textarea></div>
-        <button class="btn primary" type="submit" id="gpBtn">Partager mes photos</button>
+        <div class="field"><label for="gpMsg">Votre message</label><textarea id="gpMsg" maxlength="300" placeholder="Un souvenir, un souhait, une blague d'initié…"></textarea></div>
+        <button class="btn primary" type="submit" id="gpBtn">Publier</button>
         <div class="status" id="gpStatus" role="status" aria-live="polite" hidden></div>
       </form>
       <div class="gp-wall" id="gpWall">
-        <p class="empty" id="gpEmpty">Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!</p>
+        <p class="empty" id="gpEmpty">Les mots et les photos des invités apparaîtront ici. Soyez la première personne à écrire à Rose!</p>
       </div>
     </div>
   </div>
@@ -1297,7 +1301,7 @@ const EN={
 "Réponses enregistrées. Pensez aussi à remplir le RSVP!":"Guesses saved. Don't forget to fill in the RSVP too!",
 "Écrivez un petit message avant de publier.":"Write a short message before posting.",
 "Merci! Votre mot a été ajouté.":"Thank you! Your note has been added.",
-"Un invité":"A guest","Partagez une ou plusieurs photos de vous avec Rose, avec votre nom et un petit mot. Elles apparaîtront ici après une petite vérification.":"Share one or more photos of you with Rose, with your name and a short message. They will appear here after a quick check.","+ Choisir des photos":"+ Choose photos","Jusqu'à 6 photos de vous avec Rose":"Up to 6 photos of you with Rose","Partager mes photos":"Share my photos","{n} photo(s) choisie(s) · touchez pour changer":"{n} photo(s) selected · tap to change","Maximum {m} photos à la fois : les {m} premières ont été gardées.":"Up to {m} photos at a time: the first {m} were kept.","Certaines photos n'ont pas pu être ouvertes. Essayez en JPG ou PNG.":"Some photos couldn't be opened. Try JPG or PNG.","Envoi {i} sur {n}…":"Sending {i} of {n}…","Merci! Vos photos ont bien été reçues. Elles apparaîtront ici dès qu'elles seront approuvées.":"Thank you! Your photos were received. They will appear here once they're approved.","{s} photo(s) envoyée(s). ":"{s} photo(s) sent. ","Y aura-t-il de la musique?":"Will there be music?","Oui! Un DJ animera la soirée et la piste de danse. Ajoutez votre demande spéciale dans le formulaire RSVP et il essaiera de la faire jouer.":"Yes! A DJ will run the music and the dance floor. Add your song request in the RSVP form and they'll try to play it.","Ajouter à mon calendrier":"Add to my calendar","Google Agenda":"Google Calendar","Vos photos":"Your photos","Vos photos avec Rose":"Your photos with Rose","Partagez une photo de vous avec Rose, avec votre nom et un petit mot. Elle apparaîtra ici après une petite vérification.":"Share a photo of you with Rose, with your name and a short message. It will appear here after a quick check.","+ Choisir une photo":"+ Choose a photo","Une photo de vous avec Rose":"A photo of you with Rose","Ex. Julie et Marc":"e.g. Julie and Marc","Un souvenir avec Rose…":"A memory with Rose…","Partager ma photo":"Share my photo","Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!":"Guests' photos will appear here. Be the first to share a memory with Rose!","Photos":"Photos","Choisissez d'abord une photo.":"Please choose a photo first.","Ajoutez votre nom pour que Rose sache de qui vient la photo.":"Add your name so Rose knows who the photo is from.","Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.":"Thank you! Your photo was received. It will appear here once it's approved.","Cette photo n'a pas pu être ouverte. Essayez une autre photo (JPG ou PNG).":"This photo couldn't be opened. Please try another one (JPG or PNG).","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
+"Un invité":"A guest","Mots & photos":"Notes & photos","Un mot ou une photo pour Rose":"A note or a photo for Rose","Laissez un petit mot à Rose, avec ou sans photos. Les mots s'affichent tout de suite, les photos après une petite vérification.":"Leave Rose a short note, with or without photos. Notes show right away; photos after a quick check.","+ Ajouter des photos":"+ Add photos","Optionnel · jusqu'à 6 photos avec Rose":"Optional · up to 6 photos with Rose","Un souvenir, un souhait, une blague d'initié…":"A memory, a wish, an inside joke…","Publier":"Post","Les mots et les photos des invités apparaîtront ici. Soyez la première personne à écrire à Rose!":"Guests' notes and photos will appear here. Be the first to write to Rose!","Écrivez un petit mot ou ajoutez une photo avant de publier.":"Write a short note or add a photo before posting.","Partagez une ou plusieurs photos de vous avec Rose, avec votre nom et un petit mot. Elles apparaîtront ici après une petite vérification.":"Share one or more photos of you with Rose, with your name and a short message. They will appear here after a quick check.","+ Choisir des photos":"+ Choose photos","Jusqu'à 6 photos de vous avec Rose":"Up to 6 photos of you with Rose","Partager mes photos":"Share my photos","{n} photo(s) choisie(s) · touchez pour changer":"{n} photo(s) selected · tap to change","Maximum {m} photos à la fois : les {m} premières ont été gardées.":"Up to {m} photos at a time: the first {m} were kept.","Certaines photos n'ont pas pu être ouvertes. Essayez en JPG ou PNG.":"Some photos couldn't be opened. Try JPG or PNG.","Envoi {i} sur {n}…":"Sending {i} of {n}…","Merci! Vos photos ont bien été reçues. Elles apparaîtront ici dès qu'elles seront approuvées.":"Thank you! Your photos were received. They will appear here once they're approved.","{s} photo(s) envoyée(s). ":"{s} photo(s) sent. ","Y aura-t-il de la musique?":"Will there be music?","Oui! Un DJ animera la soirée et la piste de danse. Ajoutez votre demande spéciale dans le formulaire RSVP et il essaiera de la faire jouer.":"Yes! A DJ will run the music and the dance floor. Add your song request in the RSVP form and they'll try to play it.","Ajouter à mon calendrier":"Add to my calendar","Google Agenda":"Google Calendar","Vos photos":"Your photos","Vos photos avec Rose":"Your photos with Rose","Partagez une photo de vous avec Rose, avec votre nom et un petit mot. Elle apparaîtra ici après une petite vérification.":"Share a photo of you with Rose, with your name and a short message. It will appear here after a quick check.","+ Choisir une photo":"+ Choose a photo","Une photo de vous avec Rose":"A photo of you with Rose","Ex. Julie et Marc":"e.g. Julie and Marc","Un souvenir avec Rose…":"A memory with Rose…","Partager ma photo":"Share my photo","Les photos des invités apparaîtront ici. Soyez la première personne à partager un souvenir avec Rose!":"Guests' photos will appear here. Be the first to share a memory with Rose!","Photos":"Photos","Choisissez d'abord une photo.":"Please choose a photo first.","Ajoutez votre nom pour que Rose sache de qui ça vient.":"Add your name so Rose knows who it's from.","Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.":"Thank you! Your photo was received. It will appear here once it's approved.","Cette photo n'a pas pu être ouverte. Essayez une autre photo (JPG ou PNG).":"This photo couldn't be opened. Please try another one (JPG or PNG).","+ Ajouter un courriel, une chanson ou un petit mot (optionnel)":"+ Add an email, a song or a short note (optional)","− Masquer les champs optionnels":"− Hide optional fields","1 réponse reçue · mis à jour à chaque nouvelle réponse":"1 reply received · updates with every new reply","Déjà confirmés":"Confirmed so far","Au total":"In total","Mis à jour à chaque nouvelle réponse.":"Updates with every new reply.","{n} réponses reçues · mis à jour à chaque nouvelle réponse":"{n} replies received · updates with every new reply","Compte à rebours":"Countdown","Envoi en cours…":"Sending…","Envoyer ma réponse":"Send my RSVP","Oups! Votre réponse n'a pas pu être enregistrée pour le moment. Réessayez un peu plus tard ou confirmez votre présence dans la conversation Messenger.":"Oops! Your RSVP could not be saved right now. Please try again a bit later or confirm in the Messenger chat.","Agrandir : ":"Enlarge: "
 };
 const FR={};for(const k in EN)FR[EN[k]]=k;
 let LANG="fr";try{if(localStorage.getItem("rose30_lang")==="en")LANG="en"}catch(e){}
@@ -1596,8 +1600,8 @@ async function loadNotes(){try{
  const r=await fetch(API+":runQuery",{method:"POST",headers:{"Content-Type":"application/json"},
   body:JSON.stringify({structuredQuery:{from:[{collectionId:"guestbook"}],orderBy:[{field:{fieldPath:"at"},direction:"DESCENDING"}],limit:100}})});
  if(!r.ok)return;const rows=await r.json();renderNotes(rows.filter(x=>x.document).map(x=>fromFields(x.document.fields||{})))}catch(e){}}
-function renderNotes(list){const box=document.getElementById("notes");if(!list.length)return;box.innerHTML="";
- list.forEach(n=>{const c=document.createElement("div");c.className="notecard";const p=document.createElement("p");p.textContent=n.text;const s=document.createElement("small");s.textContent="— "+(n.name||T("Un invité"));c.append(p,s);box.appendChild(c)})}
+let gbNotes=[];
+function renderNotes(list){gbNotes=list;renderPhotos()}
 loadNotes();setInterval(loadNotes,60000);
 
 /* ---------- guest photos with Rose ---------- */
@@ -1616,21 +1620,22 @@ gpFile.addEventListener("change",async()=>{const fs=[...gpFile.files];if(!fs.len
 async function commitMany(writes){const r=await fetch(API+":commit",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({writes:writes.map(([path,data,stamp])=>({update:{name:DB+"/"+path,fields:toFields(data)},updateTransforms:[{fieldPath:stamp,setToServerValue:"REQUEST_TIME"}],currentDocument:{exists:false}}))})});if(!r.ok)throw new Error("status "+r.status)}
 document.getElementById("gpForm").addEventListener("submit",async e=>{e.preventDefault();gpStatus.classList.remove("err");
  const name=document.getElementById("gpName").value.trim().slice(0,60),msg=document.getElementById("gpMsg").value.trim().slice(0,300);
- if(!gpImgs.length){say(gpStatus,"Choisissez d'abord une photo.");gpStatus.classList.add("err");return}
- if(!name){say(gpStatus,"Ajoutez votre nom pour que Rose sache de qui vient la photo.");gpStatus.classList.add("err");document.getElementById("gpName").focus();return}
+ if(!gpImgs.length&&!msg){say(gpStatus,"Écrivez un petit mot ou ajoutez une photo avant de publier.");gpStatus.classList.add("err");return}
+ if(!name){say(gpStatus,"Ajoutez votre nom pour que Rose sache de qui ça vient.");gpStatus.classList.add("err");document.getElementById("gpName").focus();return}
  const btn=document.getElementById("gpBtn");btn.disabled=true;btn.classList.add("busy");let sent=0;
- try{for(const im of gpImgs){btn.textContent=T("Envoi {i} sur {n}…").replace("{i}",sent+1).replace("{n}",gpImgs.length);
+ try{if(!gpImgs.length){btn.textContent=T("Envoi en cours…");await commit("guestbook/"+newId(),{name,text:msg},"at");say(gpStatus,"Merci! Votre mot a été ajouté.",true);confetti();document.getElementById("gpForm").reset();loadNotes();return}
+  for(const im of gpImgs){btn.textContent=T("Envoi {i} sur {n}…").replace("{i}",sent+1).replace("{n}",gpImgs.length);
    let full=shrink(im,1400,.78);if(full.length>900000)full=shrink(im,1100,.7);if(full.length>900000)full=shrink(im,900,.6);
    const thumb=shrink(im,520,.72);const id=newId();
    await commitMany([["photoFull/"+id,{img:full},"at"],["photos/"+id,{name,message:msg,thumb,approved:false},"at"]]);sent++}
   say(gpStatus,sent>1?"Merci! Vos photos ont bien été reçues. Elles apparaîtront ici dès qu'elles seront approuvées.":"Merci! Votre photo a bien été reçue. Elle apparaîtra ici dès qu'elle sera approuvée.",true);confetti();
   document.getElementById("gpForm").reset();gpImgs=[];gpPreview();loadPhotos()}
  catch(err){say(gpStatus,(sent?T("{s} photo(s) envoyée(s). ").replace("{s}",sent):"")+T(String(err.message).includes("403")?CLOSED:NET));gpStatus.classList.add("err");gpImgs=gpImgs.slice(sent);gpPreview()}
- finally{btn.disabled=false;btn.classList.remove("busy");btn.textContent=T("Partager mes photos")}});
+ finally{btn.disabled=false;btn.classList.remove("busy");btn.textContent=T("Publier")}});
 let gpList=[],gpGroups=[];
 async function loadPhotos(){try{const r=await fetch(API+":runQuery",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({structuredQuery:{from:[{collectionId:"photos"}],where:{fieldFilter:{field:{fieldPath:"approved"},op:"EQUAL",value:{booleanValue:true}}},limit:300}})});
  if(!r.ok)return;const rows=await r.json();gpList=rows.filter(x=>x.document).map(x=>({id:x.document.name.split("/").pop(),...fromFields(x.document.fields||{})})).sort((a,b)=>String(b.at).localeCompare(String(a.at)));renderPhotos()}catch(e){}}
-function renderPhotos(){const w=document.getElementById("gpWall");if(!gpList.length)return;
+function renderPhotos(){const w=document.getElementById("gpWall");if(!gpList.length&&!gbNotes.length)return;
  const map=new Map();gpList.forEach(g=>{const k=(g.name||"")+"\u0001"+(g.message||"");if(!map.has(k))map.set(k,[]);map.get(k).push(g)});
  gpGroups=[...map.values()].map(arr=>arr.slice().reverse());
  w.innerHTML="";
@@ -1641,7 +1646,8 @@ function renderPhotos(){const w=document.getElementById("gpWall");if(!gpList.len
    if(pi===3&&grp.length>4){const more=document.createElement("span");more.className="more";more.textContent="+"+(grp.length-4);b.appendChild(more)}
    b.onclick=()=>openGuestPhoto(gi,pi);m.appendChild(b)});
   const t=document.createElement("figcaption");t.className="txt";if(g.message){const p=document.createElement("p");p.textContent=g.message;t.appendChild(p)}const sm=document.createElement("small");sm.textContent="— "+(g.name||T("Un invité"))+(grp.length>1?" · "+grp.length+" photos":"");t.appendChild(sm);
-  c.append(m,t);w.appendChild(c)})}
+  c.append(m,t);w.appendChild(c)})
+ gbNotes.forEach(n=>{if(!n.text)return;const c=document.createElement("figure");c.className="gp-card gp-note";const t=document.createElement("figcaption");t.className="txt";const p=document.createElement("p");p.textContent=n.text;const sm=document.createElement("small");sm.textContent="— "+(n.name||T("Un invité"));t.append(p,sm);c.appendChild(t);w.appendChild(c)})}
 function openGuestPhoto(gi,pi){const grp=gpGroups[gi];const list=grp.map(g=>({src:g.thumb,t:g.name||T("Un invité"),d:g.message||"",gid:g.id}));openLB(pi,list);
  list.forEach((it,k)=>{fetch(API+"/photoFull/"+it.gid).then(r=>r.ok?r.json():null).then(d=>{if(!d)return;it.src=d.fields.img.stringValue;if(lbList===list&&lbI===k)document.getElementById("lbImg").src=it.src}).catch(()=>{})})}
 const gpObs=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){loadPhotos();gpObs.disconnect()}},{rootMargin:"600px"});gpObs.observe(document.getElementById("photos"));
@@ -1660,12 +1666,6 @@ async function loadTally(){try{const all=await agg(null);const y=all;
  document.getElementById("tally").classList.add("on")}catch(e){}}
 loadTally();setInterval(loadTally,20000);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)loadTally()});
-
-document.getElementById("gbForm").addEventListener("submit",async e=>{e.preventDefault();const st=document.getElementById("gbStatus");
- const name=document.getElementById("g-name").value.trim().slice(0,60),text=document.getElementById("g-text").value.trim().slice(0,500);
- if(!text){say(st,"Écrivez un petit message avant de publier.");return}
- try{await commit("guestbook/"+newId(),{name:name||"Un invité",text},"at");say(st,"Merci! Votre mot a été ajouté.",true);document.getElementById("g-text").value="";loadNotes()}
- catch(err){say(st,String(err.message).includes("403")?CLOSED:NET);st.classList.add("err")}});
 
 /* confetti */
 function confetti(){if(reduce)return;const cv=document.createElement("canvas");cv.style.cssText="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:20";document.body.appendChild(cv);
